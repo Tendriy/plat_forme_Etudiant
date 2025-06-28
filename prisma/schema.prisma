@@ -1,0 +1,73 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Etudiant {
+  id              Int         @id @default(autoincrement())
+  prenom          String?     @db.VarChar(150)
+  nom             String      @db.VarChar(150)
+  email           String @unique      @db.VarChar(200)
+  motDePasse      String      @db.VarChar(255)
+  dateInscription DateTime    @default(now()) @db.Timestamp(6)
+  image           String?     @db.VarChar(250)
+  messagesEnvoyes Message[]   @relation("EtudiantMessages")
+  messagesRecus    Recevoire[]
+  annonces         Annonce[]
+  commentaires     Commentaire[]
+  signalements     Signaler[]
+}
+
+model Message {
+  id         Int        @id @default(autoincrement())
+  contenu    String?    @db.VarChar(150)
+  date       DateTime   @default(now()) @db.Timestamp(6)
+  etudiantId Int
+  etudiant   Etudiant   @relation("EtudiantMessages", fields: [etudiantId], references: [id], onDelete: Cascade)
+  receveurs  Recevoire[]
+}
+
+model Recevoire {
+  etudiantId Int
+  messageId  Int
+  etudiant   Etudiant  @relation(fields: [etudiantId], references: [id], onDelete: Cascade)
+  message    Message  @relation(fields: [messageId], references: [id])
+  @@id([etudiantId, messageId])
+}
+
+model Annonce {
+  id                 Int           @id @default(autoincrement())
+  titre              String        @db.VarChar(150)
+  contenu            String?
+  image              String?       @db.VarChar(250)
+  dateDePublication  DateTime      @default(now()) @db.Timestamp(6)
+  etudiantId         Int?
+  auteur             Etudiant?     @relation(fields: [etudiantId], references: [id], onDelete: SetNull)
+  commentaires       Commentaire[]
+  signalements       Signaler[]
+}
+
+model Commentaire {
+  id          Int        @id @default(autoincrement())
+  date        DateTime   @default(now()) @db.Timestamp(6)
+  etudiantId  Int?
+  annonceId   Int?
+  auteur      Etudiant?  @relation(fields: [etudiantId], references: [id], onDelete: SetNull)
+  annonce     Annonce?   @relation(fields: [annonceId], references: [id], onDelete: SetNull)
+}
+
+model Signaler {
+  annonceId  Int
+  etudiantId Int
+  annonce    Annonce   @relation(fields: [annonceId], references: [id], onDelete: Cascade)
+  etudiant   Etudiant  @relation(fields: [etudiantId], references: [id], onDelete: Cascade)
+  @@id([annonceId, etudiantId])
+}
+
+
+
