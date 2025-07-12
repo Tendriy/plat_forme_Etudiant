@@ -1492,6 +1492,8 @@ export namespace Prisma {
     accessToken: string | null
     refreshToken: string | null
     isAuthGoogle: boolean | null
+    otpCode: string | null
+    otpExpiresAt: Date | null
   }
 
   export type EtudiantMaxAggregateOutputType = {
@@ -1505,6 +1507,8 @@ export namespace Prisma {
     accessToken: string | null
     refreshToken: string | null
     isAuthGoogle: boolean | null
+    otpCode: string | null
+    otpExpiresAt: Date | null
   }
 
   export type EtudiantCountAggregateOutputType = {
@@ -1518,6 +1522,8 @@ export namespace Prisma {
     accessToken: number
     refreshToken: number
     isAuthGoogle: number
+    otpCode: number
+    otpExpiresAt: number
     _all: number
   }
 
@@ -1541,6 +1547,8 @@ export namespace Prisma {
     accessToken?: true
     refreshToken?: true
     isAuthGoogle?: true
+    otpCode?: true
+    otpExpiresAt?: true
   }
 
   export type EtudiantMaxAggregateInputType = {
@@ -1554,6 +1562,8 @@ export namespace Prisma {
     accessToken?: true
     refreshToken?: true
     isAuthGoogle?: true
+    otpCode?: true
+    otpExpiresAt?: true
   }
 
   export type EtudiantCountAggregateInputType = {
@@ -1567,6 +1577,8 @@ export namespace Prisma {
     accessToken?: true
     refreshToken?: true
     isAuthGoogle?: true
+    otpCode?: true
+    otpExpiresAt?: true
     _all?: true
   }
 
@@ -1667,6 +1679,8 @@ export namespace Prisma {
     accessToken: string | null
     refreshToken: string | null
     isAuthGoogle: boolean
+    otpCode: string | null
+    otpExpiresAt: Date | null
     _count: EtudiantCountAggregateOutputType | null
     _avg: EtudiantAvgAggregateOutputType | null
     _sum: EtudiantSumAggregateOutputType | null
@@ -1699,6 +1713,8 @@ export namespace Prisma {
     accessToken?: boolean
     refreshToken?: boolean
     isAuthGoogle?: boolean
+    otpCode?: boolean
+    otpExpiresAt?: boolean
     messagesEnvoyes?: boolean | Etudiant$messagesEnvoyesArgs<ExtArgs>
     messagesRecus?: boolean | Etudiant$messagesRecusArgs<ExtArgs>
     annonces?: boolean | Etudiant$annoncesArgs<ExtArgs>
@@ -1718,6 +1734,8 @@ export namespace Prisma {
     accessToken?: boolean
     refreshToken?: boolean
     isAuthGoogle?: boolean
+    otpCode?: boolean
+    otpExpiresAt?: boolean
   }, ExtArgs["result"]["etudiant"]>
 
   export type EtudiantSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -1731,6 +1749,8 @@ export namespace Prisma {
     accessToken?: boolean
     refreshToken?: boolean
     isAuthGoogle?: boolean
+    otpCode?: boolean
+    otpExpiresAt?: boolean
   }, ExtArgs["result"]["etudiant"]>
 
   export type EtudiantSelectScalar = {
@@ -1744,9 +1764,11 @@ export namespace Prisma {
     accessToken?: boolean
     refreshToken?: boolean
     isAuthGoogle?: boolean
+    otpCode?: boolean
+    otpExpiresAt?: boolean
   }
 
-  export type EtudiantOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "prenom" | "nom" | "email" | "motDePasse" | "dateInscription" | "image" | "accessToken" | "refreshToken" | "isAuthGoogle", ExtArgs["result"]["etudiant"]>
+  export type EtudiantOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "prenom" | "nom" | "email" | "motDePasse" | "dateInscription" | "image" | "accessToken" | "refreshToken" | "isAuthGoogle" | "otpCode" | "otpExpiresAt", ExtArgs["result"]["etudiant"]>
   export type EtudiantInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     messagesEnvoyes?: boolean | Etudiant$messagesEnvoyesArgs<ExtArgs>
     messagesRecus?: boolean | Etudiant$messagesRecusArgs<ExtArgs>
@@ -1778,6 +1800,8 @@ export namespace Prisma {
       accessToken: string | null
       refreshToken: string | null
       isAuthGoogle: boolean
+      otpCode: string | null
+      otpExpiresAt: Date | null
     }, ExtArgs["result"]["etudiant"]>
     composites: {}
   }
@@ -2216,6 +2240,8 @@ export namespace Prisma {
     readonly accessToken: FieldRef<"Etudiant", 'String'>
     readonly refreshToken: FieldRef<"Etudiant", 'String'>
     readonly isAuthGoogle: FieldRef<"Etudiant", 'Boolean'>
+    readonly otpCode: FieldRef<"Etudiant", 'String'>
+    readonly otpExpiresAt: FieldRef<"Etudiant", 'DateTime'>
   }
     
 
@@ -8328,7 +8354,9 @@ export namespace Prisma {
     image: 'image',
     accessToken: 'accessToken',
     refreshToken: 'refreshToken',
-    isAuthGoogle: 'isAuthGoogle'
+    isAuthGoogle: 'isAuthGoogle',
+    otpCode: 'otpCode',
+    otpExpiresAt: 'otpExpiresAt'
   };
 
   export type EtudiantScalarFieldEnum = (typeof EtudiantScalarFieldEnum)[keyof typeof EtudiantScalarFieldEnum]
@@ -8491,6 +8519,8 @@ export namespace Prisma {
     accessToken?: StringNullableFilter<"Etudiant"> | string | null
     refreshToken?: StringNullableFilter<"Etudiant"> | string | null
     isAuthGoogle?: BoolFilter<"Etudiant"> | boolean
+    otpCode?: StringNullableFilter<"Etudiant"> | string | null
+    otpExpiresAt?: DateTimeNullableFilter<"Etudiant"> | Date | string | null
     messagesEnvoyes?: MessageListRelationFilter
     messagesRecus?: RecevoireListRelationFilter
     annonces?: AnnonceListRelationFilter
@@ -8509,6 +8539,8 @@ export namespace Prisma {
     accessToken?: SortOrderInput | SortOrder
     refreshToken?: SortOrderInput | SortOrder
     isAuthGoogle?: SortOrder
+    otpCode?: SortOrderInput | SortOrder
+    otpExpiresAt?: SortOrderInput | SortOrder
     messagesEnvoyes?: MessageOrderByRelationAggregateInput
     messagesRecus?: RecevoireOrderByRelationAggregateInput
     annonces?: AnnonceOrderByRelationAggregateInput
@@ -8530,6 +8562,8 @@ export namespace Prisma {
     accessToken?: StringNullableFilter<"Etudiant"> | string | null
     refreshToken?: StringNullableFilter<"Etudiant"> | string | null
     isAuthGoogle?: BoolFilter<"Etudiant"> | boolean
+    otpCode?: StringNullableFilter<"Etudiant"> | string | null
+    otpExpiresAt?: DateTimeNullableFilter<"Etudiant"> | Date | string | null
     messagesEnvoyes?: MessageListRelationFilter
     messagesRecus?: RecevoireListRelationFilter
     annonces?: AnnonceListRelationFilter
@@ -8548,6 +8582,8 @@ export namespace Prisma {
     accessToken?: SortOrderInput | SortOrder
     refreshToken?: SortOrderInput | SortOrder
     isAuthGoogle?: SortOrder
+    otpCode?: SortOrderInput | SortOrder
+    otpExpiresAt?: SortOrderInput | SortOrder
     _count?: EtudiantCountOrderByAggregateInput
     _avg?: EtudiantAvgOrderByAggregateInput
     _max?: EtudiantMaxOrderByAggregateInput
@@ -8569,6 +8605,8 @@ export namespace Prisma {
     accessToken?: StringNullableWithAggregatesFilter<"Etudiant"> | string | null
     refreshToken?: StringNullableWithAggregatesFilter<"Etudiant"> | string | null
     isAuthGoogle?: BoolWithAggregatesFilter<"Etudiant"> | boolean
+    otpCode?: StringNullableWithAggregatesFilter<"Etudiant"> | string | null
+    otpExpiresAt?: DateTimeNullableWithAggregatesFilter<"Etudiant"> | Date | string | null
   }
 
   export type MessageWhereInput = {
@@ -8851,6 +8889,8 @@ export namespace Prisma {
     accessToken?: string | null
     refreshToken?: string | null
     isAuthGoogle?: boolean
+    otpCode?: string | null
+    otpExpiresAt?: Date | string | null
     messagesEnvoyes?: MessageCreateNestedManyWithoutEtudiantInput
     messagesRecus?: RecevoireCreateNestedManyWithoutEtudiantInput
     annonces?: AnnonceCreateNestedManyWithoutAuteurInput
@@ -8869,6 +8909,8 @@ export namespace Prisma {
     accessToken?: string | null
     refreshToken?: string | null
     isAuthGoogle?: boolean
+    otpCode?: string | null
+    otpExpiresAt?: Date | string | null
     messagesEnvoyes?: MessageUncheckedCreateNestedManyWithoutEtudiantInput
     messagesRecus?: RecevoireUncheckedCreateNestedManyWithoutEtudiantInput
     annonces?: AnnonceUncheckedCreateNestedManyWithoutAuteurInput
@@ -8886,6 +8928,8 @@ export namespace Prisma {
     accessToken?: NullableStringFieldUpdateOperationsInput | string | null
     refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
     isAuthGoogle?: BoolFieldUpdateOperationsInput | boolean
+    otpCode?: NullableStringFieldUpdateOperationsInput | string | null
+    otpExpiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     messagesEnvoyes?: MessageUpdateManyWithoutEtudiantNestedInput
     messagesRecus?: RecevoireUpdateManyWithoutEtudiantNestedInput
     annonces?: AnnonceUpdateManyWithoutAuteurNestedInput
@@ -8904,6 +8948,8 @@ export namespace Prisma {
     accessToken?: NullableStringFieldUpdateOperationsInput | string | null
     refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
     isAuthGoogle?: BoolFieldUpdateOperationsInput | boolean
+    otpCode?: NullableStringFieldUpdateOperationsInput | string | null
+    otpExpiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     messagesEnvoyes?: MessageUncheckedUpdateManyWithoutEtudiantNestedInput
     messagesRecus?: RecevoireUncheckedUpdateManyWithoutEtudiantNestedInput
     annonces?: AnnonceUncheckedUpdateManyWithoutAuteurNestedInput
@@ -8922,6 +8968,8 @@ export namespace Prisma {
     accessToken?: string | null
     refreshToken?: string | null
     isAuthGoogle?: boolean
+    otpCode?: string | null
+    otpExpiresAt?: Date | string | null
   }
 
   export type EtudiantUpdateManyMutationInput = {
@@ -8934,6 +8982,8 @@ export namespace Prisma {
     accessToken?: NullableStringFieldUpdateOperationsInput | string | null
     refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
     isAuthGoogle?: BoolFieldUpdateOperationsInput | boolean
+    otpCode?: NullableStringFieldUpdateOperationsInput | string | null
+    otpExpiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type EtudiantUncheckedUpdateManyInput = {
@@ -8947,6 +8997,8 @@ export namespace Prisma {
     accessToken?: NullableStringFieldUpdateOperationsInput | string | null
     refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
     isAuthGoogle?: BoolFieldUpdateOperationsInput | boolean
+    otpCode?: NullableStringFieldUpdateOperationsInput | string | null
+    otpExpiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type MessageCreateInput = {
@@ -9234,6 +9286,17 @@ export namespace Prisma {
     not?: NestedBoolFilter<$PrismaModel> | boolean
   }
 
+  export type DateTimeNullableFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
+  }
+
   export type MessageListRelationFilter = {
     every?: MessageWhereInput
     some?: MessageWhereInput
@@ -9300,6 +9363,8 @@ export namespace Prisma {
     accessToken?: SortOrder
     refreshToken?: SortOrder
     isAuthGoogle?: SortOrder
+    otpCode?: SortOrder
+    otpExpiresAt?: SortOrder
   }
 
   export type EtudiantAvgOrderByAggregateInput = {
@@ -9317,6 +9382,8 @@ export namespace Prisma {
     accessToken?: SortOrder
     refreshToken?: SortOrder
     isAuthGoogle?: SortOrder
+    otpCode?: SortOrder
+    otpExpiresAt?: SortOrder
   }
 
   export type EtudiantMinOrderByAggregateInput = {
@@ -9330,6 +9397,8 @@ export namespace Prisma {
     accessToken?: SortOrder
     refreshToken?: SortOrder
     isAuthGoogle?: SortOrder
+    otpCode?: SortOrder
+    otpExpiresAt?: SortOrder
   }
 
   export type EtudiantSumOrderByAggregateInput = {
@@ -9408,6 +9477,20 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedBoolFilter<$PrismaModel>
     _max?: NestedBoolFilter<$PrismaModel>
+  }
+
+  export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedDateTimeNullableFilter<$PrismaModel>
+    _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
   export type EtudiantScalarRelationFilter = {
@@ -9707,6 +9790,10 @@ export namespace Prisma {
 
   export type BoolFieldUpdateOperationsInput = {
     set?: boolean
+  }
+
+  export type NullableDateTimeFieldUpdateOperationsInput = {
+    set?: Date | string | null
   }
 
   export type MessageUpdateManyWithoutEtudiantNestedInput = {
@@ -10164,6 +10251,17 @@ export namespace Prisma {
     not?: NestedBoolFilter<$PrismaModel> | boolean
   }
 
+  export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
+  }
+
   export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
     in?: number[] | ListIntFieldRefInput<$PrismaModel>
@@ -10256,6 +10354,20 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedBoolFilter<$PrismaModel>
     _max?: NestedBoolFilter<$PrismaModel>
+  }
+
+  export type NestedDateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedDateTimeNullableFilter<$PrismaModel>
+    _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
   export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -10532,6 +10644,8 @@ export namespace Prisma {
     accessToken?: string | null
     refreshToken?: string | null
     isAuthGoogle?: boolean
+    otpCode?: string | null
+    otpExpiresAt?: Date | string | null
     messagesRecus?: RecevoireCreateNestedManyWithoutEtudiantInput
     annonces?: AnnonceCreateNestedManyWithoutAuteurInput
     commentaires?: CommentaireCreateNestedManyWithoutAuteurInput
@@ -10549,6 +10663,8 @@ export namespace Prisma {
     accessToken?: string | null
     refreshToken?: string | null
     isAuthGoogle?: boolean
+    otpCode?: string | null
+    otpExpiresAt?: Date | string | null
     messagesRecus?: RecevoireUncheckedCreateNestedManyWithoutEtudiantInput
     annonces?: AnnonceUncheckedCreateNestedManyWithoutAuteurInput
     commentaires?: CommentaireUncheckedCreateNestedManyWithoutAuteurInput
@@ -10599,6 +10715,8 @@ export namespace Prisma {
     accessToken?: NullableStringFieldUpdateOperationsInput | string | null
     refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
     isAuthGoogle?: BoolFieldUpdateOperationsInput | boolean
+    otpCode?: NullableStringFieldUpdateOperationsInput | string | null
+    otpExpiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     messagesRecus?: RecevoireUpdateManyWithoutEtudiantNestedInput
     annonces?: AnnonceUpdateManyWithoutAuteurNestedInput
     commentaires?: CommentaireUpdateManyWithoutAuteurNestedInput
@@ -10616,6 +10734,8 @@ export namespace Prisma {
     accessToken?: NullableStringFieldUpdateOperationsInput | string | null
     refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
     isAuthGoogle?: BoolFieldUpdateOperationsInput | boolean
+    otpCode?: NullableStringFieldUpdateOperationsInput | string | null
+    otpExpiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     messagesRecus?: RecevoireUncheckedUpdateManyWithoutEtudiantNestedInput
     annonces?: AnnonceUncheckedUpdateManyWithoutAuteurNestedInput
     commentaires?: CommentaireUncheckedUpdateManyWithoutAuteurNestedInput
@@ -10648,6 +10768,8 @@ export namespace Prisma {
     accessToken?: string | null
     refreshToken?: string | null
     isAuthGoogle?: boolean
+    otpCode?: string | null
+    otpExpiresAt?: Date | string | null
     messagesEnvoyes?: MessageCreateNestedManyWithoutEtudiantInput
     annonces?: AnnonceCreateNestedManyWithoutAuteurInput
     commentaires?: CommentaireCreateNestedManyWithoutAuteurInput
@@ -10665,6 +10787,8 @@ export namespace Prisma {
     accessToken?: string | null
     refreshToken?: string | null
     isAuthGoogle?: boolean
+    otpCode?: string | null
+    otpExpiresAt?: Date | string | null
     messagesEnvoyes?: MessageUncheckedCreateNestedManyWithoutEtudiantInput
     annonces?: AnnonceUncheckedCreateNestedManyWithoutAuteurInput
     commentaires?: CommentaireUncheckedCreateNestedManyWithoutAuteurInput
@@ -10715,6 +10839,8 @@ export namespace Prisma {
     accessToken?: NullableStringFieldUpdateOperationsInput | string | null
     refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
     isAuthGoogle?: BoolFieldUpdateOperationsInput | boolean
+    otpCode?: NullableStringFieldUpdateOperationsInput | string | null
+    otpExpiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     messagesEnvoyes?: MessageUpdateManyWithoutEtudiantNestedInput
     annonces?: AnnonceUpdateManyWithoutAuteurNestedInput
     commentaires?: CommentaireUpdateManyWithoutAuteurNestedInput
@@ -10732,6 +10858,8 @@ export namespace Prisma {
     accessToken?: NullableStringFieldUpdateOperationsInput | string | null
     refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
     isAuthGoogle?: BoolFieldUpdateOperationsInput | boolean
+    otpCode?: NullableStringFieldUpdateOperationsInput | string | null
+    otpExpiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     messagesEnvoyes?: MessageUncheckedUpdateManyWithoutEtudiantNestedInput
     annonces?: AnnonceUncheckedUpdateManyWithoutAuteurNestedInput
     commentaires?: CommentaireUncheckedUpdateManyWithoutAuteurNestedInput
@@ -10772,6 +10900,8 @@ export namespace Prisma {
     accessToken?: string | null
     refreshToken?: string | null
     isAuthGoogle?: boolean
+    otpCode?: string | null
+    otpExpiresAt?: Date | string | null
     messagesEnvoyes?: MessageCreateNestedManyWithoutEtudiantInput
     messagesRecus?: RecevoireCreateNestedManyWithoutEtudiantInput
     commentaires?: CommentaireCreateNestedManyWithoutAuteurInput
@@ -10789,6 +10919,8 @@ export namespace Prisma {
     accessToken?: string | null
     refreshToken?: string | null
     isAuthGoogle?: boolean
+    otpCode?: string | null
+    otpExpiresAt?: Date | string | null
     messagesEnvoyes?: MessageUncheckedCreateNestedManyWithoutEtudiantInput
     messagesRecus?: RecevoireUncheckedCreateNestedManyWithoutEtudiantInput
     commentaires?: CommentaireUncheckedCreateNestedManyWithoutAuteurInput
@@ -10860,6 +10992,8 @@ export namespace Prisma {
     accessToken?: NullableStringFieldUpdateOperationsInput | string | null
     refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
     isAuthGoogle?: BoolFieldUpdateOperationsInput | boolean
+    otpCode?: NullableStringFieldUpdateOperationsInput | string | null
+    otpExpiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     messagesEnvoyes?: MessageUpdateManyWithoutEtudiantNestedInput
     messagesRecus?: RecevoireUpdateManyWithoutEtudiantNestedInput
     commentaires?: CommentaireUpdateManyWithoutAuteurNestedInput
@@ -10877,6 +11011,8 @@ export namespace Prisma {
     accessToken?: NullableStringFieldUpdateOperationsInput | string | null
     refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
     isAuthGoogle?: BoolFieldUpdateOperationsInput | boolean
+    otpCode?: NullableStringFieldUpdateOperationsInput | string | null
+    otpExpiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     messagesEnvoyes?: MessageUncheckedUpdateManyWithoutEtudiantNestedInput
     messagesRecus?: RecevoireUncheckedUpdateManyWithoutEtudiantNestedInput
     commentaires?: CommentaireUncheckedUpdateManyWithoutAuteurNestedInput
@@ -10925,6 +11061,8 @@ export namespace Prisma {
     accessToken?: string | null
     refreshToken?: string | null
     isAuthGoogle?: boolean
+    otpCode?: string | null
+    otpExpiresAt?: Date | string | null
     messagesEnvoyes?: MessageCreateNestedManyWithoutEtudiantInput
     messagesRecus?: RecevoireCreateNestedManyWithoutEtudiantInput
     annonces?: AnnonceCreateNestedManyWithoutAuteurInput
@@ -10942,6 +11080,8 @@ export namespace Prisma {
     accessToken?: string | null
     refreshToken?: string | null
     isAuthGoogle?: boolean
+    otpCode?: string | null
+    otpExpiresAt?: Date | string | null
     messagesEnvoyes?: MessageUncheckedCreateNestedManyWithoutEtudiantInput
     messagesRecus?: RecevoireUncheckedCreateNestedManyWithoutEtudiantInput
     annonces?: AnnonceUncheckedCreateNestedManyWithoutAuteurInput
@@ -10998,6 +11138,8 @@ export namespace Prisma {
     accessToken?: NullableStringFieldUpdateOperationsInput | string | null
     refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
     isAuthGoogle?: BoolFieldUpdateOperationsInput | boolean
+    otpCode?: NullableStringFieldUpdateOperationsInput | string | null
+    otpExpiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     messagesEnvoyes?: MessageUpdateManyWithoutEtudiantNestedInput
     messagesRecus?: RecevoireUpdateManyWithoutEtudiantNestedInput
     annonces?: AnnonceUpdateManyWithoutAuteurNestedInput
@@ -11015,6 +11157,8 @@ export namespace Prisma {
     accessToken?: NullableStringFieldUpdateOperationsInput | string | null
     refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
     isAuthGoogle?: BoolFieldUpdateOperationsInput | boolean
+    otpCode?: NullableStringFieldUpdateOperationsInput | string | null
+    otpExpiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     messagesEnvoyes?: MessageUncheckedUpdateManyWithoutEtudiantNestedInput
     messagesRecus?: RecevoireUncheckedUpdateManyWithoutEtudiantNestedInput
     annonces?: AnnonceUncheckedUpdateManyWithoutAuteurNestedInput
@@ -11085,6 +11229,8 @@ export namespace Prisma {
     accessToken?: string | null
     refreshToken?: string | null
     isAuthGoogle?: boolean
+    otpCode?: string | null
+    otpExpiresAt?: Date | string | null
     messagesEnvoyes?: MessageCreateNestedManyWithoutEtudiantInput
     messagesRecus?: RecevoireCreateNestedManyWithoutEtudiantInput
     annonces?: AnnonceCreateNestedManyWithoutAuteurInput
@@ -11102,6 +11248,8 @@ export namespace Prisma {
     accessToken?: string | null
     refreshToken?: string | null
     isAuthGoogle?: boolean
+    otpCode?: string | null
+    otpExpiresAt?: Date | string | null
     messagesEnvoyes?: MessageUncheckedCreateNestedManyWithoutEtudiantInput
     messagesRecus?: RecevoireUncheckedCreateNestedManyWithoutEtudiantInput
     annonces?: AnnonceUncheckedCreateNestedManyWithoutAuteurInput
@@ -11164,6 +11312,8 @@ export namespace Prisma {
     accessToken?: NullableStringFieldUpdateOperationsInput | string | null
     refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
     isAuthGoogle?: BoolFieldUpdateOperationsInput | boolean
+    otpCode?: NullableStringFieldUpdateOperationsInput | string | null
+    otpExpiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     messagesEnvoyes?: MessageUpdateManyWithoutEtudiantNestedInput
     messagesRecus?: RecevoireUpdateManyWithoutEtudiantNestedInput
     annonces?: AnnonceUpdateManyWithoutAuteurNestedInput
@@ -11181,6 +11331,8 @@ export namespace Prisma {
     accessToken?: NullableStringFieldUpdateOperationsInput | string | null
     refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
     isAuthGoogle?: BoolFieldUpdateOperationsInput | boolean
+    otpCode?: NullableStringFieldUpdateOperationsInput | string | null
+    otpExpiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     messagesEnvoyes?: MessageUncheckedUpdateManyWithoutEtudiantNestedInput
     messagesRecus?: RecevoireUncheckedUpdateManyWithoutEtudiantNestedInput
     annonces?: AnnonceUncheckedUpdateManyWithoutAuteurNestedInput

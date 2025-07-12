@@ -24,6 +24,8 @@ model Etudiant {
   accessToken     String?     @db.Text
   refreshToken    String?     @db.Text
   isAuthGoogle    Boolean     @default(false)
+  otpCode         String?     @db.VarChar(6)
+  otpExpiresAt    DateTime?
 }
 
 model Message {

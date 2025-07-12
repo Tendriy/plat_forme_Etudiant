@@ -130,7 +130,9 @@ exports.Prisma.EtudiantScalarFieldEnum = {
   image: 'image',
   accessToken: 'accessToken',
   refreshToken: 'refreshToken',
-  isAuthGoogle: 'isAuthGoogle'
+  isAuthGoogle: 'isAuthGoogle',
+  otpCode: 'otpCode',
+  otpExpiresAt: 'otpExpiresAt'
 };
 
 exports.Prisma.MessageScalarFieldEnum = {

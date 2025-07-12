@@ -18,10 +18,22 @@ app.use(express.json());
 app.use(cors({ origin: 'http://localhost:5173', credentials: true }));
 app.use('/public', express.static(path.join(process.cwd(), 'public')));
 
+
 app.use(expressjwt({
   secret: process.env.ACCESS_TOKEN_SECRET,
   algorithms: ['HS256'],
-}).unless({ path: ['/auth/sign-in', '/auth/sign-up', '/auth/token', '/auth/google', '/auth/google/callback'] }));
+}).unless({
+  path: [
+    '/auth/sign-in',
+    '/auth/sign-up',
+    '/auth/token',
+    '/auth/google',
+    '/auth/google/callback',
+    '/auth/request-reset',
+    '/auth/verify-otp',
+    '/auth/reset-password'
+  ]
+}));
 
 for (const [pathName, router] of Object.entries(routes)) {
   app.use(`/${pathName}`, router);
