@@ -8,6 +8,7 @@ import { expressjwt } from 'express-jwt';
 import session from 'express-session';
 import passport from './config/passport.js';
 import setupChatSocket from './socket/chatSocket.js';
+import http from 'http'
 
 const app = express();
 const server = http.createServer(app)
@@ -19,6 +20,7 @@ app.use(passport.session());
 app.use(express.json());
 app.use(cors({ origin: 'http://localhost:5173', credentials: true }));
 app.use('/public', express.static(path.join(process.cwd(), 'public')));
+
 setupChatSocket(server) 
 
 app.use(expressjwt({

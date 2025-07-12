@@ -5,11 +5,12 @@ import jwt from 'jsonwebtoken';
 
 passport.serializeUser((user, done) => done(null, user));
 passport.deserializeUser((obj, done) => done(null, obj));
+const callbackURL = process.env.GOOGLE_CALLBACK_URL
 
 passport.use(new GoogleStrategy({
   clientID: process.env.GOOGLE_CLIENT_ID,
   clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-  callbackURL: 'http://localhost:3000/auth/google/callback',
+  callbackURL: callbackURL,
 }, async (_accessToken, _googleRefreshToken, profile, done) => {
   try {
     const email = profile.emails[0].value;

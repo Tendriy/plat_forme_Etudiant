@@ -1,5 +1,5 @@
 import { Server } from 'socket.io'
-import prisma from '../utils/prismaClient.js'
+import prisma from '../utils/prisma.js'
 
 export default function setupChatSocket(httpServer) {
   const io = new Server(httpServer, {
