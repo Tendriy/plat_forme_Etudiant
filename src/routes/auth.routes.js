@@ -87,7 +87,7 @@ router.get('/google',
 router.get('/google/callback',
   passport.authenticate('google', { failureRedirect: '/login-fail' }),
   (req, res) => {
-    res.redirect(`http://localhost:5173?accessToken=${req.user.accessToken}&refreshToken=${req.user.refreshToken}`);
+    res.redirect(`${process.env.FRONTEND_URL}?accessToken=${req.user.accessToken}&refreshToken=${req.user.refreshToken}`);
   }
 );
 

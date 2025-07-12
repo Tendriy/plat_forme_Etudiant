@@ -12,16 +12,13 @@ router.post('/:userId/upload', uploadUserImage, async (req, res) => {
 
   const imagePath = `/public/users/${userId}/${req.file.filename}`;
 
-  try {
-    await prisma.etudiant.update({
-      where: { id: userId },
-      data: { image: imagePath },
-    });
+  await prisma.etudiant.update({
+    where: { id: userId },
+    data: { image: imagePath },
+  });
 
-    res.json({ message: 'Image utilisateur uploadée', imagePath });
-  } catch (error) {
-    res.status(500).json({ message: 'Erreur base de données', error: error.message });
-  }
+  res.json({ message: 'Image utilisateur uploadée', imagePath });
+
 });
 
 export default router;

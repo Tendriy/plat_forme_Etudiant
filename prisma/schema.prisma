@@ -26,7 +26,12 @@ model Etudiant {
   isAuthGoogle    Boolean     @default(false)
   otpCode         String?     @db.VarChar(6)
   otpExpiresAt    DateTime?
+  demandesEnvoyees Amitie[]     @relation("DemandesEnvoyees")
+  demandesRecues   Amitie[]     @relation("DemandesRecues")
+  groupes          EtudiantGroupe[]
+  messagesGroupes  MessageGroupe[]
 }
+
 
 model Message {
   id         Int        @id @default(autoincrement())
@@ -74,5 +79,51 @@ model Signaler {
   @@id([annonceId, etudiantId])
 }
 
+enum StatutAmitie {
+  EN_ATTENTE
+  ACCEPTEE
+  REFUSEE
+}
 
+model Amitie {
+  id              Int          @id @default(autoincrement())
+  demandeurId      Int
+  receveurId       Int
+  statut          StatutAmitie @default(EN_ATTENTE)
+  dateDemande     DateTime     @default(now())
+  dateAcceptation DateTime?
 
+  demandeur        Etudiant      @relation("DemandesEnvoyees", fields: [demandeurId], references: [id], onDelete: Cascade)
+  receveur         Etudiant      @relation("DemandesRecues", fields: [receveurId], references: [id], onDelete: Cascade)
+
+  @@unique([demandeurId, receveurId])
+}
+
+model Groupe {
+  id        Int               @id @default(autoincrement())
+  nom       String            @db.VarChar(100)
+  membres   EtudiantGroupe[]
+  messages  MessageGroupe[]
+  createdAt DateTime          @default(now())
+}
+
+model EtudiantGroupe {
+  etudiantId Int
+  groupeId   Int
+
+  etudiant   Etudiant  @relation(fields: [etudiantId], references: [id], onDelete: Cascade)
+  groupe     Groupe    @relation(fields: [groupeId], references: [id], onDelete: Cascade)
+
+  @@id([etudiantId, groupeId])
+}
+
+model MessageGroupe {
+  id        Int       @id @default(autoincrement())
+  contenu   String    @db.VarChar(300)
+  date      DateTime  @default(now())
+  auteurId  Int
+  groupeId  Int
+
+  auteur    Etudiant  @relation(fields: [auteurId], references: [id], onDelete: Cascade)
+  groupe    Groupe    @relation(fields: [groupeId], references: [id], onDelete: Cascade)
+}

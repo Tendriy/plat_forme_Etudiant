@@ -43,6 +43,44 @@ export type Commentaire = $Result.DefaultSelection<Prisma.$CommentairePayload>
  * 
  */
 export type Signaler = $Result.DefaultSelection<Prisma.$SignalerPayload>
+/**
+ * Model Amitie
+ * 
+ */
+export type Amitie = $Result.DefaultSelection<Prisma.$AmitiePayload>
+/**
+ * Model Groupe
+ * 
+ */
+export type Groupe = $Result.DefaultSelection<Prisma.$GroupePayload>
+/**
+ * Model EtudiantGroupe
+ * 
+ */
+export type EtudiantGroupe = $Result.DefaultSelection<Prisma.$EtudiantGroupePayload>
+/**
+ * Model MessageGroupe
+ * 
+ */
+export type MessageGroupe = $Result.DefaultSelection<Prisma.$MessageGroupePayload>
+
+/**
+ * Enums
+ */
+export namespace $Enums {
+  export const StatutAmitie: {
+  EN_ATTENTE: 'EN_ATTENTE',
+  ACCEPTEE: 'ACCEPTEE',
+  REFUSEE: 'REFUSEE'
+};
+
+export type StatutAmitie = (typeof StatutAmitie)[keyof typeof StatutAmitie]
+
+}
+
+export type StatutAmitie = $Enums.StatutAmitie
+
+export const StatutAmitie: typeof $Enums.StatutAmitie
 
 /**
  * ##  Prisma Client ʲˢ
@@ -228,6 +266,46 @@ export class PrismaClient<
     * ```
     */
   get signaler(): Prisma.SignalerDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.amitie`: Exposes CRUD operations for the **Amitie** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Amities
+    * const amities = await prisma.amitie.findMany()
+    * ```
+    */
+  get amitie(): Prisma.AmitieDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.groupe`: Exposes CRUD operations for the **Groupe** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Groupes
+    * const groupes = await prisma.groupe.findMany()
+    * ```
+    */
+  get groupe(): Prisma.GroupeDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.etudiantGroupe`: Exposes CRUD operations for the **EtudiantGroupe** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more EtudiantGroupes
+    * const etudiantGroupes = await prisma.etudiantGroupe.findMany()
+    * ```
+    */
+  get etudiantGroupe(): Prisma.EtudiantGroupeDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.messageGroupe`: Exposes CRUD operations for the **MessageGroupe** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more MessageGroupes
+    * const messageGroupes = await prisma.messageGroupe.findMany()
+    * ```
+    */
+  get messageGroupe(): Prisma.MessageGroupeDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -673,7 +751,11 @@ export namespace Prisma {
     Recevoire: 'Recevoire',
     Annonce: 'Annonce',
     Commentaire: 'Commentaire',
-    Signaler: 'Signaler'
+    Signaler: 'Signaler',
+    Amitie: 'Amitie',
+    Groupe: 'Groupe',
+    EtudiantGroupe: 'EtudiantGroupe',
+    MessageGroupe: 'MessageGroupe'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -692,7 +774,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "etudiant" | "message" | "recevoire" | "annonce" | "commentaire" | "signaler"
+      modelProps: "etudiant" | "message" | "recevoire" | "annonce" | "commentaire" | "signaler" | "amitie" | "groupe" | "etudiantGroupe" | "messageGroupe"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1140,6 +1222,302 @@ export namespace Prisma {
           }
         }
       }
+      Amitie: {
+        payload: Prisma.$AmitiePayload<ExtArgs>
+        fields: Prisma.AmitieFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.AmitieFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AmitiePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.AmitieFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AmitiePayload>
+          }
+          findFirst: {
+            args: Prisma.AmitieFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AmitiePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.AmitieFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AmitiePayload>
+          }
+          findMany: {
+            args: Prisma.AmitieFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AmitiePayload>[]
+          }
+          create: {
+            args: Prisma.AmitieCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AmitiePayload>
+          }
+          createMany: {
+            args: Prisma.AmitieCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.AmitieCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AmitiePayload>[]
+          }
+          delete: {
+            args: Prisma.AmitieDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AmitiePayload>
+          }
+          update: {
+            args: Prisma.AmitieUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AmitiePayload>
+          }
+          deleteMany: {
+            args: Prisma.AmitieDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.AmitieUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.AmitieUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AmitiePayload>[]
+          }
+          upsert: {
+            args: Prisma.AmitieUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AmitiePayload>
+          }
+          aggregate: {
+            args: Prisma.AmitieAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateAmitie>
+          }
+          groupBy: {
+            args: Prisma.AmitieGroupByArgs<ExtArgs>
+            result: $Utils.Optional<AmitieGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.AmitieCountArgs<ExtArgs>
+            result: $Utils.Optional<AmitieCountAggregateOutputType> | number
+          }
+        }
+      }
+      Groupe: {
+        payload: Prisma.$GroupePayload<ExtArgs>
+        fields: Prisma.GroupeFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.GroupeFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GroupePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.GroupeFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GroupePayload>
+          }
+          findFirst: {
+            args: Prisma.GroupeFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GroupePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.GroupeFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GroupePayload>
+          }
+          findMany: {
+            args: Prisma.GroupeFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GroupePayload>[]
+          }
+          create: {
+            args: Prisma.GroupeCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GroupePayload>
+          }
+          createMany: {
+            args: Prisma.GroupeCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.GroupeCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GroupePayload>[]
+          }
+          delete: {
+            args: Prisma.GroupeDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GroupePayload>
+          }
+          update: {
+            args: Prisma.GroupeUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GroupePayload>
+          }
+          deleteMany: {
+            args: Prisma.GroupeDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.GroupeUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.GroupeUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GroupePayload>[]
+          }
+          upsert: {
+            args: Prisma.GroupeUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GroupePayload>
+          }
+          aggregate: {
+            args: Prisma.GroupeAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateGroupe>
+          }
+          groupBy: {
+            args: Prisma.GroupeGroupByArgs<ExtArgs>
+            result: $Utils.Optional<GroupeGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.GroupeCountArgs<ExtArgs>
+            result: $Utils.Optional<GroupeCountAggregateOutputType> | number
+          }
+        }
+      }
+      EtudiantGroupe: {
+        payload: Prisma.$EtudiantGroupePayload<ExtArgs>
+        fields: Prisma.EtudiantGroupeFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.EtudiantGroupeFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EtudiantGroupePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.EtudiantGroupeFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EtudiantGroupePayload>
+          }
+          findFirst: {
+            args: Prisma.EtudiantGroupeFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EtudiantGroupePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.EtudiantGroupeFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EtudiantGroupePayload>
+          }
+          findMany: {
+            args: Prisma.EtudiantGroupeFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EtudiantGroupePayload>[]
+          }
+          create: {
+            args: Prisma.EtudiantGroupeCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EtudiantGroupePayload>
+          }
+          createMany: {
+            args: Prisma.EtudiantGroupeCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.EtudiantGroupeCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EtudiantGroupePayload>[]
+          }
+          delete: {
+            args: Prisma.EtudiantGroupeDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EtudiantGroupePayload>
+          }
+          update: {
+            args: Prisma.EtudiantGroupeUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EtudiantGroupePayload>
+          }
+          deleteMany: {
+            args: Prisma.EtudiantGroupeDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.EtudiantGroupeUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.EtudiantGroupeUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EtudiantGroupePayload>[]
+          }
+          upsert: {
+            args: Prisma.EtudiantGroupeUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EtudiantGroupePayload>
+          }
+          aggregate: {
+            args: Prisma.EtudiantGroupeAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateEtudiantGroupe>
+          }
+          groupBy: {
+            args: Prisma.EtudiantGroupeGroupByArgs<ExtArgs>
+            result: $Utils.Optional<EtudiantGroupeGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.EtudiantGroupeCountArgs<ExtArgs>
+            result: $Utils.Optional<EtudiantGroupeCountAggregateOutputType> | number
+          }
+        }
+      }
+      MessageGroupe: {
+        payload: Prisma.$MessageGroupePayload<ExtArgs>
+        fields: Prisma.MessageGroupeFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.MessageGroupeFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MessageGroupePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.MessageGroupeFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MessageGroupePayload>
+          }
+          findFirst: {
+            args: Prisma.MessageGroupeFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MessageGroupePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.MessageGroupeFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MessageGroupePayload>
+          }
+          findMany: {
+            args: Prisma.MessageGroupeFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MessageGroupePayload>[]
+          }
+          create: {
+            args: Prisma.MessageGroupeCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MessageGroupePayload>
+          }
+          createMany: {
+            args: Prisma.MessageGroupeCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.MessageGroupeCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MessageGroupePayload>[]
+          }
+          delete: {
+            args: Prisma.MessageGroupeDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MessageGroupePayload>
+          }
+          update: {
+            args: Prisma.MessageGroupeUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MessageGroupePayload>
+          }
+          deleteMany: {
+            args: Prisma.MessageGroupeDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.MessageGroupeUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.MessageGroupeUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MessageGroupePayload>[]
+          }
+          upsert: {
+            args: Prisma.MessageGroupeUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MessageGroupePayload>
+          }
+          aggregate: {
+            args: Prisma.MessageGroupeAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateMessageGroupe>
+          }
+          groupBy: {
+            args: Prisma.MessageGroupeGroupByArgs<ExtArgs>
+            result: $Utils.Optional<MessageGroupeGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.MessageGroupeCountArgs<ExtArgs>
+            result: $Utils.Optional<MessageGroupeCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -1230,6 +1608,10 @@ export namespace Prisma {
     annonce?: AnnonceOmit
     commentaire?: CommentaireOmit
     signaler?: SignalerOmit
+    amitie?: AmitieOmit
+    groupe?: GroupeOmit
+    etudiantGroupe?: EtudiantGroupeOmit
+    messageGroupe?: MessageGroupeOmit
   }
 
   /* Types for Logging */
@@ -1329,6 +1711,10 @@ export namespace Prisma {
     annonces: number
     commentaires: number
     signalements: number
+    demandesEnvoyees: number
+    demandesRecues: number
+    groupes: number
+    messagesGroupes: number
   }
 
   export type EtudiantCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -1337,6 +1723,10 @@ export namespace Prisma {
     annonces?: boolean | EtudiantCountOutputTypeCountAnnoncesArgs
     commentaires?: boolean | EtudiantCountOutputTypeCountCommentairesArgs
     signalements?: boolean | EtudiantCountOutputTypeCountSignalementsArgs
+    demandesEnvoyees?: boolean | EtudiantCountOutputTypeCountDemandesEnvoyeesArgs
+    demandesRecues?: boolean | EtudiantCountOutputTypeCountDemandesRecuesArgs
+    groupes?: boolean | EtudiantCountOutputTypeCountGroupesArgs
+    messagesGroupes?: boolean | EtudiantCountOutputTypeCountMessagesGroupesArgs
   }
 
   // Custom InputTypes
@@ -1383,6 +1773,34 @@ export namespace Prisma {
    */
   export type EtudiantCountOutputTypeCountSignalementsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: SignalerWhereInput
+  }
+
+  /**
+   * EtudiantCountOutputType without action
+   */
+  export type EtudiantCountOutputTypeCountDemandesEnvoyeesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: AmitieWhereInput
+  }
+
+  /**
+   * EtudiantCountOutputType without action
+   */
+  export type EtudiantCountOutputTypeCountDemandesRecuesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: AmitieWhereInput
+  }
+
+  /**
+   * EtudiantCountOutputType without action
+   */
+  export type EtudiantCountOutputTypeCountGroupesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: EtudiantGroupeWhereInput
+  }
+
+  /**
+   * EtudiantCountOutputType without action
+   */
+  export type EtudiantCountOutputTypeCountMessagesGroupesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: MessageGroupeWhereInput
   }
 
 
@@ -1454,6 +1872,46 @@ export namespace Prisma {
    */
   export type AnnonceCountOutputTypeCountSignalementsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: SignalerWhereInput
+  }
+
+
+  /**
+   * Count Type GroupeCountOutputType
+   */
+
+  export type GroupeCountOutputType = {
+    membres: number
+    messages: number
+  }
+
+  export type GroupeCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    membres?: boolean | GroupeCountOutputTypeCountMembresArgs
+    messages?: boolean | GroupeCountOutputTypeCountMessagesArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * GroupeCountOutputType without action
+   */
+  export type GroupeCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GroupeCountOutputType
+     */
+    select?: GroupeCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * GroupeCountOutputType without action
+   */
+  export type GroupeCountOutputTypeCountMembresArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: EtudiantGroupeWhereInput
+  }
+
+  /**
+   * GroupeCountOutputType without action
+   */
+  export type GroupeCountOutputTypeCountMessagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: MessageGroupeWhereInput
   }
 
 
@@ -1720,6 +2178,10 @@ export namespace Prisma {
     annonces?: boolean | Etudiant$annoncesArgs<ExtArgs>
     commentaires?: boolean | Etudiant$commentairesArgs<ExtArgs>
     signalements?: boolean | Etudiant$signalementsArgs<ExtArgs>
+    demandesEnvoyees?: boolean | Etudiant$demandesEnvoyeesArgs<ExtArgs>
+    demandesRecues?: boolean | Etudiant$demandesRecuesArgs<ExtArgs>
+    groupes?: boolean | Etudiant$groupesArgs<ExtArgs>
+    messagesGroupes?: boolean | Etudiant$messagesGroupesArgs<ExtArgs>
     _count?: boolean | EtudiantCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["etudiant"]>
 
@@ -1775,6 +2237,10 @@ export namespace Prisma {
     annonces?: boolean | Etudiant$annoncesArgs<ExtArgs>
     commentaires?: boolean | Etudiant$commentairesArgs<ExtArgs>
     signalements?: boolean | Etudiant$signalementsArgs<ExtArgs>
+    demandesEnvoyees?: boolean | Etudiant$demandesEnvoyeesArgs<ExtArgs>
+    demandesRecues?: boolean | Etudiant$demandesRecuesArgs<ExtArgs>
+    groupes?: boolean | Etudiant$groupesArgs<ExtArgs>
+    messagesGroupes?: boolean | Etudiant$messagesGroupesArgs<ExtArgs>
     _count?: boolean | EtudiantCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type EtudiantIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -1788,6 +2254,10 @@ export namespace Prisma {
       annonces: Prisma.$AnnoncePayload<ExtArgs>[]
       commentaires: Prisma.$CommentairePayload<ExtArgs>[]
       signalements: Prisma.$SignalerPayload<ExtArgs>[]
+      demandesEnvoyees: Prisma.$AmitiePayload<ExtArgs>[]
+      demandesRecues: Prisma.$AmitiePayload<ExtArgs>[]
+      groupes: Prisma.$EtudiantGroupePayload<ExtArgs>[]
+      messagesGroupes: Prisma.$MessageGroupePayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -2201,6 +2671,10 @@ export namespace Prisma {
     annonces<T extends Etudiant$annoncesArgs<ExtArgs> = {}>(args?: Subset<T, Etudiant$annoncesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AnnoncePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     commentaires<T extends Etudiant$commentairesArgs<ExtArgs> = {}>(args?: Subset<T, Etudiant$commentairesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CommentairePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     signalements<T extends Etudiant$signalementsArgs<ExtArgs> = {}>(args?: Subset<T, Etudiant$signalementsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SignalerPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    demandesEnvoyees<T extends Etudiant$demandesEnvoyeesArgs<ExtArgs> = {}>(args?: Subset<T, Etudiant$demandesEnvoyeesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AmitiePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    demandesRecues<T extends Etudiant$demandesRecuesArgs<ExtArgs> = {}>(args?: Subset<T, Etudiant$demandesRecuesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AmitiePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    groupes<T extends Etudiant$groupesArgs<ExtArgs> = {}>(args?: Subset<T, Etudiant$groupesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$EtudiantGroupePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    messagesGroupes<T extends Etudiant$messagesGroupesArgs<ExtArgs> = {}>(args?: Subset<T, Etudiant$messagesGroupesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MessageGroupePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2747,6 +3221,102 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: SignalerScalarFieldEnum | SignalerScalarFieldEnum[]
+  }
+
+  /**
+   * Etudiant.demandesEnvoyees
+   */
+  export type Etudiant$demandesEnvoyeesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Amitie
+     */
+    select?: AmitieSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Amitie
+     */
+    omit?: AmitieOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AmitieInclude<ExtArgs> | null
+    where?: AmitieWhereInput
+    orderBy?: AmitieOrderByWithRelationInput | AmitieOrderByWithRelationInput[]
+    cursor?: AmitieWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: AmitieScalarFieldEnum | AmitieScalarFieldEnum[]
+  }
+
+  /**
+   * Etudiant.demandesRecues
+   */
+  export type Etudiant$demandesRecuesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Amitie
+     */
+    select?: AmitieSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Amitie
+     */
+    omit?: AmitieOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AmitieInclude<ExtArgs> | null
+    where?: AmitieWhereInput
+    orderBy?: AmitieOrderByWithRelationInput | AmitieOrderByWithRelationInput[]
+    cursor?: AmitieWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: AmitieScalarFieldEnum | AmitieScalarFieldEnum[]
+  }
+
+  /**
+   * Etudiant.groupes
+   */
+  export type Etudiant$groupesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EtudiantGroupe
+     */
+    select?: EtudiantGroupeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EtudiantGroupe
+     */
+    omit?: EtudiantGroupeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EtudiantGroupeInclude<ExtArgs> | null
+    where?: EtudiantGroupeWhereInput
+    orderBy?: EtudiantGroupeOrderByWithRelationInput | EtudiantGroupeOrderByWithRelationInput[]
+    cursor?: EtudiantGroupeWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: EtudiantGroupeScalarFieldEnum | EtudiantGroupeScalarFieldEnum[]
+  }
+
+  /**
+   * Etudiant.messagesGroupes
+   */
+  export type Etudiant$messagesGroupesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MessageGroupe
+     */
+    select?: MessageGroupeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MessageGroupe
+     */
+    omit?: MessageGroupeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MessageGroupeInclude<ExtArgs> | null
+    where?: MessageGroupeWhereInput
+    orderBy?: MessageGroupeOrderByWithRelationInput | MessageGroupeOrderByWithRelationInput[]
+    cursor?: MessageGroupeWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: MessageGroupeScalarFieldEnum | MessageGroupeScalarFieldEnum[]
   }
 
   /**
@@ -8331,6 +8901,4406 @@ export namespace Prisma {
 
 
   /**
+   * Model Amitie
+   */
+
+  export type AggregateAmitie = {
+    _count: AmitieCountAggregateOutputType | null
+    _avg: AmitieAvgAggregateOutputType | null
+    _sum: AmitieSumAggregateOutputType | null
+    _min: AmitieMinAggregateOutputType | null
+    _max: AmitieMaxAggregateOutputType | null
+  }
+
+  export type AmitieAvgAggregateOutputType = {
+    id: number | null
+    demandeurId: number | null
+    receveurId: number | null
+  }
+
+  export type AmitieSumAggregateOutputType = {
+    id: number | null
+    demandeurId: number | null
+    receveurId: number | null
+  }
+
+  export type AmitieMinAggregateOutputType = {
+    id: number | null
+    demandeurId: number | null
+    receveurId: number | null
+    statut: $Enums.StatutAmitie | null
+    dateDemande: Date | null
+    dateAcceptation: Date | null
+  }
+
+  export type AmitieMaxAggregateOutputType = {
+    id: number | null
+    demandeurId: number | null
+    receveurId: number | null
+    statut: $Enums.StatutAmitie | null
+    dateDemande: Date | null
+    dateAcceptation: Date | null
+  }
+
+  export type AmitieCountAggregateOutputType = {
+    id: number
+    demandeurId: number
+    receveurId: number
+    statut: number
+    dateDemande: number
+    dateAcceptation: number
+    _all: number
+  }
+
+
+  export type AmitieAvgAggregateInputType = {
+    id?: true
+    demandeurId?: true
+    receveurId?: true
+  }
+
+  export type AmitieSumAggregateInputType = {
+    id?: true
+    demandeurId?: true
+    receveurId?: true
+  }
+
+  export type AmitieMinAggregateInputType = {
+    id?: true
+    demandeurId?: true
+    receveurId?: true
+    statut?: true
+    dateDemande?: true
+    dateAcceptation?: true
+  }
+
+  export type AmitieMaxAggregateInputType = {
+    id?: true
+    demandeurId?: true
+    receveurId?: true
+    statut?: true
+    dateDemande?: true
+    dateAcceptation?: true
+  }
+
+  export type AmitieCountAggregateInputType = {
+    id?: true
+    demandeurId?: true
+    receveurId?: true
+    statut?: true
+    dateDemande?: true
+    dateAcceptation?: true
+    _all?: true
+  }
+
+  export type AmitieAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Amitie to aggregate.
+     */
+    where?: AmitieWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Amities to fetch.
+     */
+    orderBy?: AmitieOrderByWithRelationInput | AmitieOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: AmitieWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Amities from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Amities.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Amities
+    **/
+    _count?: true | AmitieCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: AmitieAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: AmitieSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: AmitieMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: AmitieMaxAggregateInputType
+  }
+
+  export type GetAmitieAggregateType<T extends AmitieAggregateArgs> = {
+        [P in keyof T & keyof AggregateAmitie]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateAmitie[P]>
+      : GetScalarType<T[P], AggregateAmitie[P]>
+  }
+
+
+
+
+  export type AmitieGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: AmitieWhereInput
+    orderBy?: AmitieOrderByWithAggregationInput | AmitieOrderByWithAggregationInput[]
+    by: AmitieScalarFieldEnum[] | AmitieScalarFieldEnum
+    having?: AmitieScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: AmitieCountAggregateInputType | true
+    _avg?: AmitieAvgAggregateInputType
+    _sum?: AmitieSumAggregateInputType
+    _min?: AmitieMinAggregateInputType
+    _max?: AmitieMaxAggregateInputType
+  }
+
+  export type AmitieGroupByOutputType = {
+    id: number
+    demandeurId: number
+    receveurId: number
+    statut: $Enums.StatutAmitie
+    dateDemande: Date
+    dateAcceptation: Date | null
+    _count: AmitieCountAggregateOutputType | null
+    _avg: AmitieAvgAggregateOutputType | null
+    _sum: AmitieSumAggregateOutputType | null
+    _min: AmitieMinAggregateOutputType | null
+    _max: AmitieMaxAggregateOutputType | null
+  }
+
+  type GetAmitieGroupByPayload<T extends AmitieGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<AmitieGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof AmitieGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], AmitieGroupByOutputType[P]>
+            : GetScalarType<T[P], AmitieGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type AmitieSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    demandeurId?: boolean
+    receveurId?: boolean
+    statut?: boolean
+    dateDemande?: boolean
+    dateAcceptation?: boolean
+    demandeur?: boolean | EtudiantDefaultArgs<ExtArgs>
+    receveur?: boolean | EtudiantDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["amitie"]>
+
+  export type AmitieSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    demandeurId?: boolean
+    receveurId?: boolean
+    statut?: boolean
+    dateDemande?: boolean
+    dateAcceptation?: boolean
+    demandeur?: boolean | EtudiantDefaultArgs<ExtArgs>
+    receveur?: boolean | EtudiantDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["amitie"]>
+
+  export type AmitieSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    demandeurId?: boolean
+    receveurId?: boolean
+    statut?: boolean
+    dateDemande?: boolean
+    dateAcceptation?: boolean
+    demandeur?: boolean | EtudiantDefaultArgs<ExtArgs>
+    receveur?: boolean | EtudiantDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["amitie"]>
+
+  export type AmitieSelectScalar = {
+    id?: boolean
+    demandeurId?: boolean
+    receveurId?: boolean
+    statut?: boolean
+    dateDemande?: boolean
+    dateAcceptation?: boolean
+  }
+
+  export type AmitieOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "demandeurId" | "receveurId" | "statut" | "dateDemande" | "dateAcceptation", ExtArgs["result"]["amitie"]>
+  export type AmitieInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    demandeur?: boolean | EtudiantDefaultArgs<ExtArgs>
+    receveur?: boolean | EtudiantDefaultArgs<ExtArgs>
+  }
+  export type AmitieIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    demandeur?: boolean | EtudiantDefaultArgs<ExtArgs>
+    receveur?: boolean | EtudiantDefaultArgs<ExtArgs>
+  }
+  export type AmitieIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    demandeur?: boolean | EtudiantDefaultArgs<ExtArgs>
+    receveur?: boolean | EtudiantDefaultArgs<ExtArgs>
+  }
+
+  export type $AmitiePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Amitie"
+    objects: {
+      demandeur: Prisma.$EtudiantPayload<ExtArgs>
+      receveur: Prisma.$EtudiantPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      demandeurId: number
+      receveurId: number
+      statut: $Enums.StatutAmitie
+      dateDemande: Date
+      dateAcceptation: Date | null
+    }, ExtArgs["result"]["amitie"]>
+    composites: {}
+  }
+
+  type AmitieGetPayload<S extends boolean | null | undefined | AmitieDefaultArgs> = $Result.GetResult<Prisma.$AmitiePayload, S>
+
+  type AmitieCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<AmitieFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: AmitieCountAggregateInputType | true
+    }
+
+  export interface AmitieDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Amitie'], meta: { name: 'Amitie' } }
+    /**
+     * Find zero or one Amitie that matches the filter.
+     * @param {AmitieFindUniqueArgs} args - Arguments to find a Amitie
+     * @example
+     * // Get one Amitie
+     * const amitie = await prisma.amitie.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends AmitieFindUniqueArgs>(args: SelectSubset<T, AmitieFindUniqueArgs<ExtArgs>>): Prisma__AmitieClient<$Result.GetResult<Prisma.$AmitiePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Amitie that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {AmitieFindUniqueOrThrowArgs} args - Arguments to find a Amitie
+     * @example
+     * // Get one Amitie
+     * const amitie = await prisma.amitie.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends AmitieFindUniqueOrThrowArgs>(args: SelectSubset<T, AmitieFindUniqueOrThrowArgs<ExtArgs>>): Prisma__AmitieClient<$Result.GetResult<Prisma.$AmitiePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Amitie that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AmitieFindFirstArgs} args - Arguments to find a Amitie
+     * @example
+     * // Get one Amitie
+     * const amitie = await prisma.amitie.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends AmitieFindFirstArgs>(args?: SelectSubset<T, AmitieFindFirstArgs<ExtArgs>>): Prisma__AmitieClient<$Result.GetResult<Prisma.$AmitiePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Amitie that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AmitieFindFirstOrThrowArgs} args - Arguments to find a Amitie
+     * @example
+     * // Get one Amitie
+     * const amitie = await prisma.amitie.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends AmitieFindFirstOrThrowArgs>(args?: SelectSubset<T, AmitieFindFirstOrThrowArgs<ExtArgs>>): Prisma__AmitieClient<$Result.GetResult<Prisma.$AmitiePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Amities that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AmitieFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Amities
+     * const amities = await prisma.amitie.findMany()
+     * 
+     * // Get first 10 Amities
+     * const amities = await prisma.amitie.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const amitieWithIdOnly = await prisma.amitie.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends AmitieFindManyArgs>(args?: SelectSubset<T, AmitieFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AmitiePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Amitie.
+     * @param {AmitieCreateArgs} args - Arguments to create a Amitie.
+     * @example
+     * // Create one Amitie
+     * const Amitie = await prisma.amitie.create({
+     *   data: {
+     *     // ... data to create a Amitie
+     *   }
+     * })
+     * 
+     */
+    create<T extends AmitieCreateArgs>(args: SelectSubset<T, AmitieCreateArgs<ExtArgs>>): Prisma__AmitieClient<$Result.GetResult<Prisma.$AmitiePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Amities.
+     * @param {AmitieCreateManyArgs} args - Arguments to create many Amities.
+     * @example
+     * // Create many Amities
+     * const amitie = await prisma.amitie.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends AmitieCreateManyArgs>(args?: SelectSubset<T, AmitieCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Amities and returns the data saved in the database.
+     * @param {AmitieCreateManyAndReturnArgs} args - Arguments to create many Amities.
+     * @example
+     * // Create many Amities
+     * const amitie = await prisma.amitie.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Amities and only return the `id`
+     * const amitieWithIdOnly = await prisma.amitie.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends AmitieCreateManyAndReturnArgs>(args?: SelectSubset<T, AmitieCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AmitiePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Amitie.
+     * @param {AmitieDeleteArgs} args - Arguments to delete one Amitie.
+     * @example
+     * // Delete one Amitie
+     * const Amitie = await prisma.amitie.delete({
+     *   where: {
+     *     // ... filter to delete one Amitie
+     *   }
+     * })
+     * 
+     */
+    delete<T extends AmitieDeleteArgs>(args: SelectSubset<T, AmitieDeleteArgs<ExtArgs>>): Prisma__AmitieClient<$Result.GetResult<Prisma.$AmitiePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Amitie.
+     * @param {AmitieUpdateArgs} args - Arguments to update one Amitie.
+     * @example
+     * // Update one Amitie
+     * const amitie = await prisma.amitie.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends AmitieUpdateArgs>(args: SelectSubset<T, AmitieUpdateArgs<ExtArgs>>): Prisma__AmitieClient<$Result.GetResult<Prisma.$AmitiePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Amities.
+     * @param {AmitieDeleteManyArgs} args - Arguments to filter Amities to delete.
+     * @example
+     * // Delete a few Amities
+     * const { count } = await prisma.amitie.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends AmitieDeleteManyArgs>(args?: SelectSubset<T, AmitieDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Amities.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AmitieUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Amities
+     * const amitie = await prisma.amitie.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends AmitieUpdateManyArgs>(args: SelectSubset<T, AmitieUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Amities and returns the data updated in the database.
+     * @param {AmitieUpdateManyAndReturnArgs} args - Arguments to update many Amities.
+     * @example
+     * // Update many Amities
+     * const amitie = await prisma.amitie.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Amities and only return the `id`
+     * const amitieWithIdOnly = await prisma.amitie.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends AmitieUpdateManyAndReturnArgs>(args: SelectSubset<T, AmitieUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AmitiePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Amitie.
+     * @param {AmitieUpsertArgs} args - Arguments to update or create a Amitie.
+     * @example
+     * // Update or create a Amitie
+     * const amitie = await prisma.amitie.upsert({
+     *   create: {
+     *     // ... data to create a Amitie
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Amitie we want to update
+     *   }
+     * })
+     */
+    upsert<T extends AmitieUpsertArgs>(args: SelectSubset<T, AmitieUpsertArgs<ExtArgs>>): Prisma__AmitieClient<$Result.GetResult<Prisma.$AmitiePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Amities.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AmitieCountArgs} args - Arguments to filter Amities to count.
+     * @example
+     * // Count the number of Amities
+     * const count = await prisma.amitie.count({
+     *   where: {
+     *     // ... the filter for the Amities we want to count
+     *   }
+     * })
+    **/
+    count<T extends AmitieCountArgs>(
+      args?: Subset<T, AmitieCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], AmitieCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Amitie.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AmitieAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends AmitieAggregateArgs>(args: Subset<T, AmitieAggregateArgs>): Prisma.PrismaPromise<GetAmitieAggregateType<T>>
+
+    /**
+     * Group by Amitie.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AmitieGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends AmitieGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: AmitieGroupByArgs['orderBy'] }
+        : { orderBy?: AmitieGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, AmitieGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetAmitieGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Amitie model
+   */
+  readonly fields: AmitieFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Amitie.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__AmitieClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    demandeur<T extends EtudiantDefaultArgs<ExtArgs> = {}>(args?: Subset<T, EtudiantDefaultArgs<ExtArgs>>): Prisma__EtudiantClient<$Result.GetResult<Prisma.$EtudiantPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    receveur<T extends EtudiantDefaultArgs<ExtArgs> = {}>(args?: Subset<T, EtudiantDefaultArgs<ExtArgs>>): Prisma__EtudiantClient<$Result.GetResult<Prisma.$EtudiantPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Amitie model
+   */
+  interface AmitieFieldRefs {
+    readonly id: FieldRef<"Amitie", 'Int'>
+    readonly demandeurId: FieldRef<"Amitie", 'Int'>
+    readonly receveurId: FieldRef<"Amitie", 'Int'>
+    readonly statut: FieldRef<"Amitie", 'StatutAmitie'>
+    readonly dateDemande: FieldRef<"Amitie", 'DateTime'>
+    readonly dateAcceptation: FieldRef<"Amitie", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Amitie findUnique
+   */
+  export type AmitieFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Amitie
+     */
+    select?: AmitieSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Amitie
+     */
+    omit?: AmitieOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AmitieInclude<ExtArgs> | null
+    /**
+     * Filter, which Amitie to fetch.
+     */
+    where: AmitieWhereUniqueInput
+  }
+
+  /**
+   * Amitie findUniqueOrThrow
+   */
+  export type AmitieFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Amitie
+     */
+    select?: AmitieSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Amitie
+     */
+    omit?: AmitieOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AmitieInclude<ExtArgs> | null
+    /**
+     * Filter, which Amitie to fetch.
+     */
+    where: AmitieWhereUniqueInput
+  }
+
+  /**
+   * Amitie findFirst
+   */
+  export type AmitieFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Amitie
+     */
+    select?: AmitieSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Amitie
+     */
+    omit?: AmitieOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AmitieInclude<ExtArgs> | null
+    /**
+     * Filter, which Amitie to fetch.
+     */
+    where?: AmitieWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Amities to fetch.
+     */
+    orderBy?: AmitieOrderByWithRelationInput | AmitieOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Amities.
+     */
+    cursor?: AmitieWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Amities from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Amities.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Amities.
+     */
+    distinct?: AmitieScalarFieldEnum | AmitieScalarFieldEnum[]
+  }
+
+  /**
+   * Amitie findFirstOrThrow
+   */
+  export type AmitieFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Amitie
+     */
+    select?: AmitieSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Amitie
+     */
+    omit?: AmitieOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AmitieInclude<ExtArgs> | null
+    /**
+     * Filter, which Amitie to fetch.
+     */
+    where?: AmitieWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Amities to fetch.
+     */
+    orderBy?: AmitieOrderByWithRelationInput | AmitieOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Amities.
+     */
+    cursor?: AmitieWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Amities from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Amities.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Amities.
+     */
+    distinct?: AmitieScalarFieldEnum | AmitieScalarFieldEnum[]
+  }
+
+  /**
+   * Amitie findMany
+   */
+  export type AmitieFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Amitie
+     */
+    select?: AmitieSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Amitie
+     */
+    omit?: AmitieOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AmitieInclude<ExtArgs> | null
+    /**
+     * Filter, which Amities to fetch.
+     */
+    where?: AmitieWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Amities to fetch.
+     */
+    orderBy?: AmitieOrderByWithRelationInput | AmitieOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Amities.
+     */
+    cursor?: AmitieWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Amities from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Amities.
+     */
+    skip?: number
+    distinct?: AmitieScalarFieldEnum | AmitieScalarFieldEnum[]
+  }
+
+  /**
+   * Amitie create
+   */
+  export type AmitieCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Amitie
+     */
+    select?: AmitieSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Amitie
+     */
+    omit?: AmitieOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AmitieInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Amitie.
+     */
+    data: XOR<AmitieCreateInput, AmitieUncheckedCreateInput>
+  }
+
+  /**
+   * Amitie createMany
+   */
+  export type AmitieCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Amities.
+     */
+    data: AmitieCreateManyInput | AmitieCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Amitie createManyAndReturn
+   */
+  export type AmitieCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Amitie
+     */
+    select?: AmitieSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Amitie
+     */
+    omit?: AmitieOmit<ExtArgs> | null
+    /**
+     * The data used to create many Amities.
+     */
+    data: AmitieCreateManyInput | AmitieCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AmitieIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Amitie update
+   */
+  export type AmitieUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Amitie
+     */
+    select?: AmitieSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Amitie
+     */
+    omit?: AmitieOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AmitieInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Amitie.
+     */
+    data: XOR<AmitieUpdateInput, AmitieUncheckedUpdateInput>
+    /**
+     * Choose, which Amitie to update.
+     */
+    where: AmitieWhereUniqueInput
+  }
+
+  /**
+   * Amitie updateMany
+   */
+  export type AmitieUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Amities.
+     */
+    data: XOR<AmitieUpdateManyMutationInput, AmitieUncheckedUpdateManyInput>
+    /**
+     * Filter which Amities to update
+     */
+    where?: AmitieWhereInput
+    /**
+     * Limit how many Amities to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Amitie updateManyAndReturn
+   */
+  export type AmitieUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Amitie
+     */
+    select?: AmitieSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Amitie
+     */
+    omit?: AmitieOmit<ExtArgs> | null
+    /**
+     * The data used to update Amities.
+     */
+    data: XOR<AmitieUpdateManyMutationInput, AmitieUncheckedUpdateManyInput>
+    /**
+     * Filter which Amities to update
+     */
+    where?: AmitieWhereInput
+    /**
+     * Limit how many Amities to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AmitieIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Amitie upsert
+   */
+  export type AmitieUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Amitie
+     */
+    select?: AmitieSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Amitie
+     */
+    omit?: AmitieOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AmitieInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Amitie to update in case it exists.
+     */
+    where: AmitieWhereUniqueInput
+    /**
+     * In case the Amitie found by the `where` argument doesn't exist, create a new Amitie with this data.
+     */
+    create: XOR<AmitieCreateInput, AmitieUncheckedCreateInput>
+    /**
+     * In case the Amitie was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<AmitieUpdateInput, AmitieUncheckedUpdateInput>
+  }
+
+  /**
+   * Amitie delete
+   */
+  export type AmitieDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Amitie
+     */
+    select?: AmitieSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Amitie
+     */
+    omit?: AmitieOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AmitieInclude<ExtArgs> | null
+    /**
+     * Filter which Amitie to delete.
+     */
+    where: AmitieWhereUniqueInput
+  }
+
+  /**
+   * Amitie deleteMany
+   */
+  export type AmitieDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Amities to delete
+     */
+    where?: AmitieWhereInput
+    /**
+     * Limit how many Amities to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Amitie without action
+   */
+  export type AmitieDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Amitie
+     */
+    select?: AmitieSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Amitie
+     */
+    omit?: AmitieOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AmitieInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Groupe
+   */
+
+  export type AggregateGroupe = {
+    _count: GroupeCountAggregateOutputType | null
+    _avg: GroupeAvgAggregateOutputType | null
+    _sum: GroupeSumAggregateOutputType | null
+    _min: GroupeMinAggregateOutputType | null
+    _max: GroupeMaxAggregateOutputType | null
+  }
+
+  export type GroupeAvgAggregateOutputType = {
+    id: number | null
+  }
+
+  export type GroupeSumAggregateOutputType = {
+    id: number | null
+  }
+
+  export type GroupeMinAggregateOutputType = {
+    id: number | null
+    nom: string | null
+    createdAt: Date | null
+  }
+
+  export type GroupeMaxAggregateOutputType = {
+    id: number | null
+    nom: string | null
+    createdAt: Date | null
+  }
+
+  export type GroupeCountAggregateOutputType = {
+    id: number
+    nom: number
+    createdAt: number
+    _all: number
+  }
+
+
+  export type GroupeAvgAggregateInputType = {
+    id?: true
+  }
+
+  export type GroupeSumAggregateInputType = {
+    id?: true
+  }
+
+  export type GroupeMinAggregateInputType = {
+    id?: true
+    nom?: true
+    createdAt?: true
+  }
+
+  export type GroupeMaxAggregateInputType = {
+    id?: true
+    nom?: true
+    createdAt?: true
+  }
+
+  export type GroupeCountAggregateInputType = {
+    id?: true
+    nom?: true
+    createdAt?: true
+    _all?: true
+  }
+
+  export type GroupeAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Groupe to aggregate.
+     */
+    where?: GroupeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Groupes to fetch.
+     */
+    orderBy?: GroupeOrderByWithRelationInput | GroupeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: GroupeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Groupes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Groupes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Groupes
+    **/
+    _count?: true | GroupeCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: GroupeAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: GroupeSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: GroupeMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: GroupeMaxAggregateInputType
+  }
+
+  export type GetGroupeAggregateType<T extends GroupeAggregateArgs> = {
+        [P in keyof T & keyof AggregateGroupe]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateGroupe[P]>
+      : GetScalarType<T[P], AggregateGroupe[P]>
+  }
+
+
+
+
+  export type GroupeGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: GroupeWhereInput
+    orderBy?: GroupeOrderByWithAggregationInput | GroupeOrderByWithAggregationInput[]
+    by: GroupeScalarFieldEnum[] | GroupeScalarFieldEnum
+    having?: GroupeScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: GroupeCountAggregateInputType | true
+    _avg?: GroupeAvgAggregateInputType
+    _sum?: GroupeSumAggregateInputType
+    _min?: GroupeMinAggregateInputType
+    _max?: GroupeMaxAggregateInputType
+  }
+
+  export type GroupeGroupByOutputType = {
+    id: number
+    nom: string
+    createdAt: Date
+    _count: GroupeCountAggregateOutputType | null
+    _avg: GroupeAvgAggregateOutputType | null
+    _sum: GroupeSumAggregateOutputType | null
+    _min: GroupeMinAggregateOutputType | null
+    _max: GroupeMaxAggregateOutputType | null
+  }
+
+  type GetGroupeGroupByPayload<T extends GroupeGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<GroupeGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof GroupeGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], GroupeGroupByOutputType[P]>
+            : GetScalarType<T[P], GroupeGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type GroupeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    nom?: boolean
+    createdAt?: boolean
+    membres?: boolean | Groupe$membresArgs<ExtArgs>
+    messages?: boolean | Groupe$messagesArgs<ExtArgs>
+    _count?: boolean | GroupeCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["groupe"]>
+
+  export type GroupeSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    nom?: boolean
+    createdAt?: boolean
+  }, ExtArgs["result"]["groupe"]>
+
+  export type GroupeSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    nom?: boolean
+    createdAt?: boolean
+  }, ExtArgs["result"]["groupe"]>
+
+  export type GroupeSelectScalar = {
+    id?: boolean
+    nom?: boolean
+    createdAt?: boolean
+  }
+
+  export type GroupeOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "nom" | "createdAt", ExtArgs["result"]["groupe"]>
+  export type GroupeInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    membres?: boolean | Groupe$membresArgs<ExtArgs>
+    messages?: boolean | Groupe$messagesArgs<ExtArgs>
+    _count?: boolean | GroupeCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type GroupeIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type GroupeIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+
+  export type $GroupePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Groupe"
+    objects: {
+      membres: Prisma.$EtudiantGroupePayload<ExtArgs>[]
+      messages: Prisma.$MessageGroupePayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      nom: string
+      createdAt: Date
+    }, ExtArgs["result"]["groupe"]>
+    composites: {}
+  }
+
+  type GroupeGetPayload<S extends boolean | null | undefined | GroupeDefaultArgs> = $Result.GetResult<Prisma.$GroupePayload, S>
+
+  type GroupeCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<GroupeFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: GroupeCountAggregateInputType | true
+    }
+
+  export interface GroupeDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Groupe'], meta: { name: 'Groupe' } }
+    /**
+     * Find zero or one Groupe that matches the filter.
+     * @param {GroupeFindUniqueArgs} args - Arguments to find a Groupe
+     * @example
+     * // Get one Groupe
+     * const groupe = await prisma.groupe.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends GroupeFindUniqueArgs>(args: SelectSubset<T, GroupeFindUniqueArgs<ExtArgs>>): Prisma__GroupeClient<$Result.GetResult<Prisma.$GroupePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Groupe that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {GroupeFindUniqueOrThrowArgs} args - Arguments to find a Groupe
+     * @example
+     * // Get one Groupe
+     * const groupe = await prisma.groupe.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends GroupeFindUniqueOrThrowArgs>(args: SelectSubset<T, GroupeFindUniqueOrThrowArgs<ExtArgs>>): Prisma__GroupeClient<$Result.GetResult<Prisma.$GroupePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Groupe that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {GroupeFindFirstArgs} args - Arguments to find a Groupe
+     * @example
+     * // Get one Groupe
+     * const groupe = await prisma.groupe.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends GroupeFindFirstArgs>(args?: SelectSubset<T, GroupeFindFirstArgs<ExtArgs>>): Prisma__GroupeClient<$Result.GetResult<Prisma.$GroupePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Groupe that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {GroupeFindFirstOrThrowArgs} args - Arguments to find a Groupe
+     * @example
+     * // Get one Groupe
+     * const groupe = await prisma.groupe.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends GroupeFindFirstOrThrowArgs>(args?: SelectSubset<T, GroupeFindFirstOrThrowArgs<ExtArgs>>): Prisma__GroupeClient<$Result.GetResult<Prisma.$GroupePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Groupes that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {GroupeFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Groupes
+     * const groupes = await prisma.groupe.findMany()
+     * 
+     * // Get first 10 Groupes
+     * const groupes = await prisma.groupe.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const groupeWithIdOnly = await prisma.groupe.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends GroupeFindManyArgs>(args?: SelectSubset<T, GroupeFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$GroupePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Groupe.
+     * @param {GroupeCreateArgs} args - Arguments to create a Groupe.
+     * @example
+     * // Create one Groupe
+     * const Groupe = await prisma.groupe.create({
+     *   data: {
+     *     // ... data to create a Groupe
+     *   }
+     * })
+     * 
+     */
+    create<T extends GroupeCreateArgs>(args: SelectSubset<T, GroupeCreateArgs<ExtArgs>>): Prisma__GroupeClient<$Result.GetResult<Prisma.$GroupePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Groupes.
+     * @param {GroupeCreateManyArgs} args - Arguments to create many Groupes.
+     * @example
+     * // Create many Groupes
+     * const groupe = await prisma.groupe.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends GroupeCreateManyArgs>(args?: SelectSubset<T, GroupeCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Groupes and returns the data saved in the database.
+     * @param {GroupeCreateManyAndReturnArgs} args - Arguments to create many Groupes.
+     * @example
+     * // Create many Groupes
+     * const groupe = await prisma.groupe.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Groupes and only return the `id`
+     * const groupeWithIdOnly = await prisma.groupe.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends GroupeCreateManyAndReturnArgs>(args?: SelectSubset<T, GroupeCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$GroupePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Groupe.
+     * @param {GroupeDeleteArgs} args - Arguments to delete one Groupe.
+     * @example
+     * // Delete one Groupe
+     * const Groupe = await prisma.groupe.delete({
+     *   where: {
+     *     // ... filter to delete one Groupe
+     *   }
+     * })
+     * 
+     */
+    delete<T extends GroupeDeleteArgs>(args: SelectSubset<T, GroupeDeleteArgs<ExtArgs>>): Prisma__GroupeClient<$Result.GetResult<Prisma.$GroupePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Groupe.
+     * @param {GroupeUpdateArgs} args - Arguments to update one Groupe.
+     * @example
+     * // Update one Groupe
+     * const groupe = await prisma.groupe.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends GroupeUpdateArgs>(args: SelectSubset<T, GroupeUpdateArgs<ExtArgs>>): Prisma__GroupeClient<$Result.GetResult<Prisma.$GroupePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Groupes.
+     * @param {GroupeDeleteManyArgs} args - Arguments to filter Groupes to delete.
+     * @example
+     * // Delete a few Groupes
+     * const { count } = await prisma.groupe.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends GroupeDeleteManyArgs>(args?: SelectSubset<T, GroupeDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Groupes.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {GroupeUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Groupes
+     * const groupe = await prisma.groupe.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends GroupeUpdateManyArgs>(args: SelectSubset<T, GroupeUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Groupes and returns the data updated in the database.
+     * @param {GroupeUpdateManyAndReturnArgs} args - Arguments to update many Groupes.
+     * @example
+     * // Update many Groupes
+     * const groupe = await prisma.groupe.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Groupes and only return the `id`
+     * const groupeWithIdOnly = await prisma.groupe.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends GroupeUpdateManyAndReturnArgs>(args: SelectSubset<T, GroupeUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$GroupePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Groupe.
+     * @param {GroupeUpsertArgs} args - Arguments to update or create a Groupe.
+     * @example
+     * // Update or create a Groupe
+     * const groupe = await prisma.groupe.upsert({
+     *   create: {
+     *     // ... data to create a Groupe
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Groupe we want to update
+     *   }
+     * })
+     */
+    upsert<T extends GroupeUpsertArgs>(args: SelectSubset<T, GroupeUpsertArgs<ExtArgs>>): Prisma__GroupeClient<$Result.GetResult<Prisma.$GroupePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Groupes.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {GroupeCountArgs} args - Arguments to filter Groupes to count.
+     * @example
+     * // Count the number of Groupes
+     * const count = await prisma.groupe.count({
+     *   where: {
+     *     // ... the filter for the Groupes we want to count
+     *   }
+     * })
+    **/
+    count<T extends GroupeCountArgs>(
+      args?: Subset<T, GroupeCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], GroupeCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Groupe.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {GroupeAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends GroupeAggregateArgs>(args: Subset<T, GroupeAggregateArgs>): Prisma.PrismaPromise<GetGroupeAggregateType<T>>
+
+    /**
+     * Group by Groupe.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {GroupeGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends GroupeGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: GroupeGroupByArgs['orderBy'] }
+        : { orderBy?: GroupeGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, GroupeGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetGroupeGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Groupe model
+   */
+  readonly fields: GroupeFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Groupe.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__GroupeClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    membres<T extends Groupe$membresArgs<ExtArgs> = {}>(args?: Subset<T, Groupe$membresArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$EtudiantGroupePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    messages<T extends Groupe$messagesArgs<ExtArgs> = {}>(args?: Subset<T, Groupe$messagesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MessageGroupePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Groupe model
+   */
+  interface GroupeFieldRefs {
+    readonly id: FieldRef<"Groupe", 'Int'>
+    readonly nom: FieldRef<"Groupe", 'String'>
+    readonly createdAt: FieldRef<"Groupe", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Groupe findUnique
+   */
+  export type GroupeFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Groupe
+     */
+    select?: GroupeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Groupe
+     */
+    omit?: GroupeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GroupeInclude<ExtArgs> | null
+    /**
+     * Filter, which Groupe to fetch.
+     */
+    where: GroupeWhereUniqueInput
+  }
+
+  /**
+   * Groupe findUniqueOrThrow
+   */
+  export type GroupeFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Groupe
+     */
+    select?: GroupeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Groupe
+     */
+    omit?: GroupeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GroupeInclude<ExtArgs> | null
+    /**
+     * Filter, which Groupe to fetch.
+     */
+    where: GroupeWhereUniqueInput
+  }
+
+  /**
+   * Groupe findFirst
+   */
+  export type GroupeFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Groupe
+     */
+    select?: GroupeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Groupe
+     */
+    omit?: GroupeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GroupeInclude<ExtArgs> | null
+    /**
+     * Filter, which Groupe to fetch.
+     */
+    where?: GroupeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Groupes to fetch.
+     */
+    orderBy?: GroupeOrderByWithRelationInput | GroupeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Groupes.
+     */
+    cursor?: GroupeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Groupes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Groupes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Groupes.
+     */
+    distinct?: GroupeScalarFieldEnum | GroupeScalarFieldEnum[]
+  }
+
+  /**
+   * Groupe findFirstOrThrow
+   */
+  export type GroupeFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Groupe
+     */
+    select?: GroupeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Groupe
+     */
+    omit?: GroupeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GroupeInclude<ExtArgs> | null
+    /**
+     * Filter, which Groupe to fetch.
+     */
+    where?: GroupeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Groupes to fetch.
+     */
+    orderBy?: GroupeOrderByWithRelationInput | GroupeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Groupes.
+     */
+    cursor?: GroupeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Groupes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Groupes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Groupes.
+     */
+    distinct?: GroupeScalarFieldEnum | GroupeScalarFieldEnum[]
+  }
+
+  /**
+   * Groupe findMany
+   */
+  export type GroupeFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Groupe
+     */
+    select?: GroupeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Groupe
+     */
+    omit?: GroupeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GroupeInclude<ExtArgs> | null
+    /**
+     * Filter, which Groupes to fetch.
+     */
+    where?: GroupeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Groupes to fetch.
+     */
+    orderBy?: GroupeOrderByWithRelationInput | GroupeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Groupes.
+     */
+    cursor?: GroupeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Groupes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Groupes.
+     */
+    skip?: number
+    distinct?: GroupeScalarFieldEnum | GroupeScalarFieldEnum[]
+  }
+
+  /**
+   * Groupe create
+   */
+  export type GroupeCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Groupe
+     */
+    select?: GroupeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Groupe
+     */
+    omit?: GroupeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GroupeInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Groupe.
+     */
+    data: XOR<GroupeCreateInput, GroupeUncheckedCreateInput>
+  }
+
+  /**
+   * Groupe createMany
+   */
+  export type GroupeCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Groupes.
+     */
+    data: GroupeCreateManyInput | GroupeCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Groupe createManyAndReturn
+   */
+  export type GroupeCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Groupe
+     */
+    select?: GroupeSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Groupe
+     */
+    omit?: GroupeOmit<ExtArgs> | null
+    /**
+     * The data used to create many Groupes.
+     */
+    data: GroupeCreateManyInput | GroupeCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Groupe update
+   */
+  export type GroupeUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Groupe
+     */
+    select?: GroupeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Groupe
+     */
+    omit?: GroupeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GroupeInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Groupe.
+     */
+    data: XOR<GroupeUpdateInput, GroupeUncheckedUpdateInput>
+    /**
+     * Choose, which Groupe to update.
+     */
+    where: GroupeWhereUniqueInput
+  }
+
+  /**
+   * Groupe updateMany
+   */
+  export type GroupeUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Groupes.
+     */
+    data: XOR<GroupeUpdateManyMutationInput, GroupeUncheckedUpdateManyInput>
+    /**
+     * Filter which Groupes to update
+     */
+    where?: GroupeWhereInput
+    /**
+     * Limit how many Groupes to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Groupe updateManyAndReturn
+   */
+  export type GroupeUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Groupe
+     */
+    select?: GroupeSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Groupe
+     */
+    omit?: GroupeOmit<ExtArgs> | null
+    /**
+     * The data used to update Groupes.
+     */
+    data: XOR<GroupeUpdateManyMutationInput, GroupeUncheckedUpdateManyInput>
+    /**
+     * Filter which Groupes to update
+     */
+    where?: GroupeWhereInput
+    /**
+     * Limit how many Groupes to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Groupe upsert
+   */
+  export type GroupeUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Groupe
+     */
+    select?: GroupeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Groupe
+     */
+    omit?: GroupeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GroupeInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Groupe to update in case it exists.
+     */
+    where: GroupeWhereUniqueInput
+    /**
+     * In case the Groupe found by the `where` argument doesn't exist, create a new Groupe with this data.
+     */
+    create: XOR<GroupeCreateInput, GroupeUncheckedCreateInput>
+    /**
+     * In case the Groupe was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<GroupeUpdateInput, GroupeUncheckedUpdateInput>
+  }
+
+  /**
+   * Groupe delete
+   */
+  export type GroupeDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Groupe
+     */
+    select?: GroupeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Groupe
+     */
+    omit?: GroupeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GroupeInclude<ExtArgs> | null
+    /**
+     * Filter which Groupe to delete.
+     */
+    where: GroupeWhereUniqueInput
+  }
+
+  /**
+   * Groupe deleteMany
+   */
+  export type GroupeDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Groupes to delete
+     */
+    where?: GroupeWhereInput
+    /**
+     * Limit how many Groupes to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Groupe.membres
+   */
+  export type Groupe$membresArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EtudiantGroupe
+     */
+    select?: EtudiantGroupeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EtudiantGroupe
+     */
+    omit?: EtudiantGroupeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EtudiantGroupeInclude<ExtArgs> | null
+    where?: EtudiantGroupeWhereInput
+    orderBy?: EtudiantGroupeOrderByWithRelationInput | EtudiantGroupeOrderByWithRelationInput[]
+    cursor?: EtudiantGroupeWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: EtudiantGroupeScalarFieldEnum | EtudiantGroupeScalarFieldEnum[]
+  }
+
+  /**
+   * Groupe.messages
+   */
+  export type Groupe$messagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MessageGroupe
+     */
+    select?: MessageGroupeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MessageGroupe
+     */
+    omit?: MessageGroupeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MessageGroupeInclude<ExtArgs> | null
+    where?: MessageGroupeWhereInput
+    orderBy?: MessageGroupeOrderByWithRelationInput | MessageGroupeOrderByWithRelationInput[]
+    cursor?: MessageGroupeWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: MessageGroupeScalarFieldEnum | MessageGroupeScalarFieldEnum[]
+  }
+
+  /**
+   * Groupe without action
+   */
+  export type GroupeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Groupe
+     */
+    select?: GroupeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Groupe
+     */
+    omit?: GroupeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GroupeInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model EtudiantGroupe
+   */
+
+  export type AggregateEtudiantGroupe = {
+    _count: EtudiantGroupeCountAggregateOutputType | null
+    _avg: EtudiantGroupeAvgAggregateOutputType | null
+    _sum: EtudiantGroupeSumAggregateOutputType | null
+    _min: EtudiantGroupeMinAggregateOutputType | null
+    _max: EtudiantGroupeMaxAggregateOutputType | null
+  }
+
+  export type EtudiantGroupeAvgAggregateOutputType = {
+    etudiantId: number | null
+    groupeId: number | null
+  }
+
+  export type EtudiantGroupeSumAggregateOutputType = {
+    etudiantId: number | null
+    groupeId: number | null
+  }
+
+  export type EtudiantGroupeMinAggregateOutputType = {
+    etudiantId: number | null
+    groupeId: number | null
+  }
+
+  export type EtudiantGroupeMaxAggregateOutputType = {
+    etudiantId: number | null
+    groupeId: number | null
+  }
+
+  export type EtudiantGroupeCountAggregateOutputType = {
+    etudiantId: number
+    groupeId: number
+    _all: number
+  }
+
+
+  export type EtudiantGroupeAvgAggregateInputType = {
+    etudiantId?: true
+    groupeId?: true
+  }
+
+  export type EtudiantGroupeSumAggregateInputType = {
+    etudiantId?: true
+    groupeId?: true
+  }
+
+  export type EtudiantGroupeMinAggregateInputType = {
+    etudiantId?: true
+    groupeId?: true
+  }
+
+  export type EtudiantGroupeMaxAggregateInputType = {
+    etudiantId?: true
+    groupeId?: true
+  }
+
+  export type EtudiantGroupeCountAggregateInputType = {
+    etudiantId?: true
+    groupeId?: true
+    _all?: true
+  }
+
+  export type EtudiantGroupeAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which EtudiantGroupe to aggregate.
+     */
+    where?: EtudiantGroupeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of EtudiantGroupes to fetch.
+     */
+    orderBy?: EtudiantGroupeOrderByWithRelationInput | EtudiantGroupeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: EtudiantGroupeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` EtudiantGroupes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` EtudiantGroupes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned EtudiantGroupes
+    **/
+    _count?: true | EtudiantGroupeCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: EtudiantGroupeAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: EtudiantGroupeSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: EtudiantGroupeMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: EtudiantGroupeMaxAggregateInputType
+  }
+
+  export type GetEtudiantGroupeAggregateType<T extends EtudiantGroupeAggregateArgs> = {
+        [P in keyof T & keyof AggregateEtudiantGroupe]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateEtudiantGroupe[P]>
+      : GetScalarType<T[P], AggregateEtudiantGroupe[P]>
+  }
+
+
+
+
+  export type EtudiantGroupeGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: EtudiantGroupeWhereInput
+    orderBy?: EtudiantGroupeOrderByWithAggregationInput | EtudiantGroupeOrderByWithAggregationInput[]
+    by: EtudiantGroupeScalarFieldEnum[] | EtudiantGroupeScalarFieldEnum
+    having?: EtudiantGroupeScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: EtudiantGroupeCountAggregateInputType | true
+    _avg?: EtudiantGroupeAvgAggregateInputType
+    _sum?: EtudiantGroupeSumAggregateInputType
+    _min?: EtudiantGroupeMinAggregateInputType
+    _max?: EtudiantGroupeMaxAggregateInputType
+  }
+
+  export type EtudiantGroupeGroupByOutputType = {
+    etudiantId: number
+    groupeId: number
+    _count: EtudiantGroupeCountAggregateOutputType | null
+    _avg: EtudiantGroupeAvgAggregateOutputType | null
+    _sum: EtudiantGroupeSumAggregateOutputType | null
+    _min: EtudiantGroupeMinAggregateOutputType | null
+    _max: EtudiantGroupeMaxAggregateOutputType | null
+  }
+
+  type GetEtudiantGroupeGroupByPayload<T extends EtudiantGroupeGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<EtudiantGroupeGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof EtudiantGroupeGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], EtudiantGroupeGroupByOutputType[P]>
+            : GetScalarType<T[P], EtudiantGroupeGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type EtudiantGroupeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    etudiantId?: boolean
+    groupeId?: boolean
+    etudiant?: boolean | EtudiantDefaultArgs<ExtArgs>
+    groupe?: boolean | GroupeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["etudiantGroupe"]>
+
+  export type EtudiantGroupeSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    etudiantId?: boolean
+    groupeId?: boolean
+    etudiant?: boolean | EtudiantDefaultArgs<ExtArgs>
+    groupe?: boolean | GroupeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["etudiantGroupe"]>
+
+  export type EtudiantGroupeSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    etudiantId?: boolean
+    groupeId?: boolean
+    etudiant?: boolean | EtudiantDefaultArgs<ExtArgs>
+    groupe?: boolean | GroupeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["etudiantGroupe"]>
+
+  export type EtudiantGroupeSelectScalar = {
+    etudiantId?: boolean
+    groupeId?: boolean
+  }
+
+  export type EtudiantGroupeOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"etudiantId" | "groupeId", ExtArgs["result"]["etudiantGroupe"]>
+  export type EtudiantGroupeInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    etudiant?: boolean | EtudiantDefaultArgs<ExtArgs>
+    groupe?: boolean | GroupeDefaultArgs<ExtArgs>
+  }
+  export type EtudiantGroupeIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    etudiant?: boolean | EtudiantDefaultArgs<ExtArgs>
+    groupe?: boolean | GroupeDefaultArgs<ExtArgs>
+  }
+  export type EtudiantGroupeIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    etudiant?: boolean | EtudiantDefaultArgs<ExtArgs>
+    groupe?: boolean | GroupeDefaultArgs<ExtArgs>
+  }
+
+  export type $EtudiantGroupePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "EtudiantGroupe"
+    objects: {
+      etudiant: Prisma.$EtudiantPayload<ExtArgs>
+      groupe: Prisma.$GroupePayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      etudiantId: number
+      groupeId: number
+    }, ExtArgs["result"]["etudiantGroupe"]>
+    composites: {}
+  }
+
+  type EtudiantGroupeGetPayload<S extends boolean | null | undefined | EtudiantGroupeDefaultArgs> = $Result.GetResult<Prisma.$EtudiantGroupePayload, S>
+
+  type EtudiantGroupeCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<EtudiantGroupeFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: EtudiantGroupeCountAggregateInputType | true
+    }
+
+  export interface EtudiantGroupeDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['EtudiantGroupe'], meta: { name: 'EtudiantGroupe' } }
+    /**
+     * Find zero or one EtudiantGroupe that matches the filter.
+     * @param {EtudiantGroupeFindUniqueArgs} args - Arguments to find a EtudiantGroupe
+     * @example
+     * // Get one EtudiantGroupe
+     * const etudiantGroupe = await prisma.etudiantGroupe.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends EtudiantGroupeFindUniqueArgs>(args: SelectSubset<T, EtudiantGroupeFindUniqueArgs<ExtArgs>>): Prisma__EtudiantGroupeClient<$Result.GetResult<Prisma.$EtudiantGroupePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one EtudiantGroupe that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {EtudiantGroupeFindUniqueOrThrowArgs} args - Arguments to find a EtudiantGroupe
+     * @example
+     * // Get one EtudiantGroupe
+     * const etudiantGroupe = await prisma.etudiantGroupe.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends EtudiantGroupeFindUniqueOrThrowArgs>(args: SelectSubset<T, EtudiantGroupeFindUniqueOrThrowArgs<ExtArgs>>): Prisma__EtudiantGroupeClient<$Result.GetResult<Prisma.$EtudiantGroupePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first EtudiantGroupe that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {EtudiantGroupeFindFirstArgs} args - Arguments to find a EtudiantGroupe
+     * @example
+     * // Get one EtudiantGroupe
+     * const etudiantGroupe = await prisma.etudiantGroupe.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends EtudiantGroupeFindFirstArgs>(args?: SelectSubset<T, EtudiantGroupeFindFirstArgs<ExtArgs>>): Prisma__EtudiantGroupeClient<$Result.GetResult<Prisma.$EtudiantGroupePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first EtudiantGroupe that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {EtudiantGroupeFindFirstOrThrowArgs} args - Arguments to find a EtudiantGroupe
+     * @example
+     * // Get one EtudiantGroupe
+     * const etudiantGroupe = await prisma.etudiantGroupe.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends EtudiantGroupeFindFirstOrThrowArgs>(args?: SelectSubset<T, EtudiantGroupeFindFirstOrThrowArgs<ExtArgs>>): Prisma__EtudiantGroupeClient<$Result.GetResult<Prisma.$EtudiantGroupePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more EtudiantGroupes that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {EtudiantGroupeFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all EtudiantGroupes
+     * const etudiantGroupes = await prisma.etudiantGroupe.findMany()
+     * 
+     * // Get first 10 EtudiantGroupes
+     * const etudiantGroupes = await prisma.etudiantGroupe.findMany({ take: 10 })
+     * 
+     * // Only select the `etudiantId`
+     * const etudiantGroupeWithEtudiantIdOnly = await prisma.etudiantGroupe.findMany({ select: { etudiantId: true } })
+     * 
+     */
+    findMany<T extends EtudiantGroupeFindManyArgs>(args?: SelectSubset<T, EtudiantGroupeFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$EtudiantGroupePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a EtudiantGroupe.
+     * @param {EtudiantGroupeCreateArgs} args - Arguments to create a EtudiantGroupe.
+     * @example
+     * // Create one EtudiantGroupe
+     * const EtudiantGroupe = await prisma.etudiantGroupe.create({
+     *   data: {
+     *     // ... data to create a EtudiantGroupe
+     *   }
+     * })
+     * 
+     */
+    create<T extends EtudiantGroupeCreateArgs>(args: SelectSubset<T, EtudiantGroupeCreateArgs<ExtArgs>>): Prisma__EtudiantGroupeClient<$Result.GetResult<Prisma.$EtudiantGroupePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many EtudiantGroupes.
+     * @param {EtudiantGroupeCreateManyArgs} args - Arguments to create many EtudiantGroupes.
+     * @example
+     * // Create many EtudiantGroupes
+     * const etudiantGroupe = await prisma.etudiantGroupe.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends EtudiantGroupeCreateManyArgs>(args?: SelectSubset<T, EtudiantGroupeCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many EtudiantGroupes and returns the data saved in the database.
+     * @param {EtudiantGroupeCreateManyAndReturnArgs} args - Arguments to create many EtudiantGroupes.
+     * @example
+     * // Create many EtudiantGroupes
+     * const etudiantGroupe = await prisma.etudiantGroupe.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many EtudiantGroupes and only return the `etudiantId`
+     * const etudiantGroupeWithEtudiantIdOnly = await prisma.etudiantGroupe.createManyAndReturn({
+     *   select: { etudiantId: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends EtudiantGroupeCreateManyAndReturnArgs>(args?: SelectSubset<T, EtudiantGroupeCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$EtudiantGroupePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a EtudiantGroupe.
+     * @param {EtudiantGroupeDeleteArgs} args - Arguments to delete one EtudiantGroupe.
+     * @example
+     * // Delete one EtudiantGroupe
+     * const EtudiantGroupe = await prisma.etudiantGroupe.delete({
+     *   where: {
+     *     // ... filter to delete one EtudiantGroupe
+     *   }
+     * })
+     * 
+     */
+    delete<T extends EtudiantGroupeDeleteArgs>(args: SelectSubset<T, EtudiantGroupeDeleteArgs<ExtArgs>>): Prisma__EtudiantGroupeClient<$Result.GetResult<Prisma.$EtudiantGroupePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one EtudiantGroupe.
+     * @param {EtudiantGroupeUpdateArgs} args - Arguments to update one EtudiantGroupe.
+     * @example
+     * // Update one EtudiantGroupe
+     * const etudiantGroupe = await prisma.etudiantGroupe.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends EtudiantGroupeUpdateArgs>(args: SelectSubset<T, EtudiantGroupeUpdateArgs<ExtArgs>>): Prisma__EtudiantGroupeClient<$Result.GetResult<Prisma.$EtudiantGroupePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more EtudiantGroupes.
+     * @param {EtudiantGroupeDeleteManyArgs} args - Arguments to filter EtudiantGroupes to delete.
+     * @example
+     * // Delete a few EtudiantGroupes
+     * const { count } = await prisma.etudiantGroupe.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends EtudiantGroupeDeleteManyArgs>(args?: SelectSubset<T, EtudiantGroupeDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more EtudiantGroupes.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {EtudiantGroupeUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many EtudiantGroupes
+     * const etudiantGroupe = await prisma.etudiantGroupe.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends EtudiantGroupeUpdateManyArgs>(args: SelectSubset<T, EtudiantGroupeUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more EtudiantGroupes and returns the data updated in the database.
+     * @param {EtudiantGroupeUpdateManyAndReturnArgs} args - Arguments to update many EtudiantGroupes.
+     * @example
+     * // Update many EtudiantGroupes
+     * const etudiantGroupe = await prisma.etudiantGroupe.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more EtudiantGroupes and only return the `etudiantId`
+     * const etudiantGroupeWithEtudiantIdOnly = await prisma.etudiantGroupe.updateManyAndReturn({
+     *   select: { etudiantId: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends EtudiantGroupeUpdateManyAndReturnArgs>(args: SelectSubset<T, EtudiantGroupeUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$EtudiantGroupePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one EtudiantGroupe.
+     * @param {EtudiantGroupeUpsertArgs} args - Arguments to update or create a EtudiantGroupe.
+     * @example
+     * // Update or create a EtudiantGroupe
+     * const etudiantGroupe = await prisma.etudiantGroupe.upsert({
+     *   create: {
+     *     // ... data to create a EtudiantGroupe
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the EtudiantGroupe we want to update
+     *   }
+     * })
+     */
+    upsert<T extends EtudiantGroupeUpsertArgs>(args: SelectSubset<T, EtudiantGroupeUpsertArgs<ExtArgs>>): Prisma__EtudiantGroupeClient<$Result.GetResult<Prisma.$EtudiantGroupePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of EtudiantGroupes.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {EtudiantGroupeCountArgs} args - Arguments to filter EtudiantGroupes to count.
+     * @example
+     * // Count the number of EtudiantGroupes
+     * const count = await prisma.etudiantGroupe.count({
+     *   where: {
+     *     // ... the filter for the EtudiantGroupes we want to count
+     *   }
+     * })
+    **/
+    count<T extends EtudiantGroupeCountArgs>(
+      args?: Subset<T, EtudiantGroupeCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], EtudiantGroupeCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a EtudiantGroupe.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {EtudiantGroupeAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends EtudiantGroupeAggregateArgs>(args: Subset<T, EtudiantGroupeAggregateArgs>): Prisma.PrismaPromise<GetEtudiantGroupeAggregateType<T>>
+
+    /**
+     * Group by EtudiantGroupe.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {EtudiantGroupeGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends EtudiantGroupeGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: EtudiantGroupeGroupByArgs['orderBy'] }
+        : { orderBy?: EtudiantGroupeGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, EtudiantGroupeGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetEtudiantGroupeGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the EtudiantGroupe model
+   */
+  readonly fields: EtudiantGroupeFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for EtudiantGroupe.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__EtudiantGroupeClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    etudiant<T extends EtudiantDefaultArgs<ExtArgs> = {}>(args?: Subset<T, EtudiantDefaultArgs<ExtArgs>>): Prisma__EtudiantClient<$Result.GetResult<Prisma.$EtudiantPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    groupe<T extends GroupeDefaultArgs<ExtArgs> = {}>(args?: Subset<T, GroupeDefaultArgs<ExtArgs>>): Prisma__GroupeClient<$Result.GetResult<Prisma.$GroupePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the EtudiantGroupe model
+   */
+  interface EtudiantGroupeFieldRefs {
+    readonly etudiantId: FieldRef<"EtudiantGroupe", 'Int'>
+    readonly groupeId: FieldRef<"EtudiantGroupe", 'Int'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * EtudiantGroupe findUnique
+   */
+  export type EtudiantGroupeFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EtudiantGroupe
+     */
+    select?: EtudiantGroupeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EtudiantGroupe
+     */
+    omit?: EtudiantGroupeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EtudiantGroupeInclude<ExtArgs> | null
+    /**
+     * Filter, which EtudiantGroupe to fetch.
+     */
+    where: EtudiantGroupeWhereUniqueInput
+  }
+
+  /**
+   * EtudiantGroupe findUniqueOrThrow
+   */
+  export type EtudiantGroupeFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EtudiantGroupe
+     */
+    select?: EtudiantGroupeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EtudiantGroupe
+     */
+    omit?: EtudiantGroupeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EtudiantGroupeInclude<ExtArgs> | null
+    /**
+     * Filter, which EtudiantGroupe to fetch.
+     */
+    where: EtudiantGroupeWhereUniqueInput
+  }
+
+  /**
+   * EtudiantGroupe findFirst
+   */
+  export type EtudiantGroupeFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EtudiantGroupe
+     */
+    select?: EtudiantGroupeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EtudiantGroupe
+     */
+    omit?: EtudiantGroupeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EtudiantGroupeInclude<ExtArgs> | null
+    /**
+     * Filter, which EtudiantGroupe to fetch.
+     */
+    where?: EtudiantGroupeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of EtudiantGroupes to fetch.
+     */
+    orderBy?: EtudiantGroupeOrderByWithRelationInput | EtudiantGroupeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for EtudiantGroupes.
+     */
+    cursor?: EtudiantGroupeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` EtudiantGroupes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` EtudiantGroupes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of EtudiantGroupes.
+     */
+    distinct?: EtudiantGroupeScalarFieldEnum | EtudiantGroupeScalarFieldEnum[]
+  }
+
+  /**
+   * EtudiantGroupe findFirstOrThrow
+   */
+  export type EtudiantGroupeFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EtudiantGroupe
+     */
+    select?: EtudiantGroupeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EtudiantGroupe
+     */
+    omit?: EtudiantGroupeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EtudiantGroupeInclude<ExtArgs> | null
+    /**
+     * Filter, which EtudiantGroupe to fetch.
+     */
+    where?: EtudiantGroupeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of EtudiantGroupes to fetch.
+     */
+    orderBy?: EtudiantGroupeOrderByWithRelationInput | EtudiantGroupeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for EtudiantGroupes.
+     */
+    cursor?: EtudiantGroupeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` EtudiantGroupes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` EtudiantGroupes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of EtudiantGroupes.
+     */
+    distinct?: EtudiantGroupeScalarFieldEnum | EtudiantGroupeScalarFieldEnum[]
+  }
+
+  /**
+   * EtudiantGroupe findMany
+   */
+  export type EtudiantGroupeFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EtudiantGroupe
+     */
+    select?: EtudiantGroupeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EtudiantGroupe
+     */
+    omit?: EtudiantGroupeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EtudiantGroupeInclude<ExtArgs> | null
+    /**
+     * Filter, which EtudiantGroupes to fetch.
+     */
+    where?: EtudiantGroupeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of EtudiantGroupes to fetch.
+     */
+    orderBy?: EtudiantGroupeOrderByWithRelationInput | EtudiantGroupeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing EtudiantGroupes.
+     */
+    cursor?: EtudiantGroupeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` EtudiantGroupes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` EtudiantGroupes.
+     */
+    skip?: number
+    distinct?: EtudiantGroupeScalarFieldEnum | EtudiantGroupeScalarFieldEnum[]
+  }
+
+  /**
+   * EtudiantGroupe create
+   */
+  export type EtudiantGroupeCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EtudiantGroupe
+     */
+    select?: EtudiantGroupeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EtudiantGroupe
+     */
+    omit?: EtudiantGroupeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EtudiantGroupeInclude<ExtArgs> | null
+    /**
+     * The data needed to create a EtudiantGroupe.
+     */
+    data: XOR<EtudiantGroupeCreateInput, EtudiantGroupeUncheckedCreateInput>
+  }
+
+  /**
+   * EtudiantGroupe createMany
+   */
+  export type EtudiantGroupeCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many EtudiantGroupes.
+     */
+    data: EtudiantGroupeCreateManyInput | EtudiantGroupeCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * EtudiantGroupe createManyAndReturn
+   */
+  export type EtudiantGroupeCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EtudiantGroupe
+     */
+    select?: EtudiantGroupeSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the EtudiantGroupe
+     */
+    omit?: EtudiantGroupeOmit<ExtArgs> | null
+    /**
+     * The data used to create many EtudiantGroupes.
+     */
+    data: EtudiantGroupeCreateManyInput | EtudiantGroupeCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EtudiantGroupeIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * EtudiantGroupe update
+   */
+  export type EtudiantGroupeUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EtudiantGroupe
+     */
+    select?: EtudiantGroupeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EtudiantGroupe
+     */
+    omit?: EtudiantGroupeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EtudiantGroupeInclude<ExtArgs> | null
+    /**
+     * The data needed to update a EtudiantGroupe.
+     */
+    data: XOR<EtudiantGroupeUpdateInput, EtudiantGroupeUncheckedUpdateInput>
+    /**
+     * Choose, which EtudiantGroupe to update.
+     */
+    where: EtudiantGroupeWhereUniqueInput
+  }
+
+  /**
+   * EtudiantGroupe updateMany
+   */
+  export type EtudiantGroupeUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update EtudiantGroupes.
+     */
+    data: XOR<EtudiantGroupeUpdateManyMutationInput, EtudiantGroupeUncheckedUpdateManyInput>
+    /**
+     * Filter which EtudiantGroupes to update
+     */
+    where?: EtudiantGroupeWhereInput
+    /**
+     * Limit how many EtudiantGroupes to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * EtudiantGroupe updateManyAndReturn
+   */
+  export type EtudiantGroupeUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EtudiantGroupe
+     */
+    select?: EtudiantGroupeSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the EtudiantGroupe
+     */
+    omit?: EtudiantGroupeOmit<ExtArgs> | null
+    /**
+     * The data used to update EtudiantGroupes.
+     */
+    data: XOR<EtudiantGroupeUpdateManyMutationInput, EtudiantGroupeUncheckedUpdateManyInput>
+    /**
+     * Filter which EtudiantGroupes to update
+     */
+    where?: EtudiantGroupeWhereInput
+    /**
+     * Limit how many EtudiantGroupes to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EtudiantGroupeIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * EtudiantGroupe upsert
+   */
+  export type EtudiantGroupeUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EtudiantGroupe
+     */
+    select?: EtudiantGroupeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EtudiantGroupe
+     */
+    omit?: EtudiantGroupeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EtudiantGroupeInclude<ExtArgs> | null
+    /**
+     * The filter to search for the EtudiantGroupe to update in case it exists.
+     */
+    where: EtudiantGroupeWhereUniqueInput
+    /**
+     * In case the EtudiantGroupe found by the `where` argument doesn't exist, create a new EtudiantGroupe with this data.
+     */
+    create: XOR<EtudiantGroupeCreateInput, EtudiantGroupeUncheckedCreateInput>
+    /**
+     * In case the EtudiantGroupe was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<EtudiantGroupeUpdateInput, EtudiantGroupeUncheckedUpdateInput>
+  }
+
+  /**
+   * EtudiantGroupe delete
+   */
+  export type EtudiantGroupeDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EtudiantGroupe
+     */
+    select?: EtudiantGroupeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EtudiantGroupe
+     */
+    omit?: EtudiantGroupeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EtudiantGroupeInclude<ExtArgs> | null
+    /**
+     * Filter which EtudiantGroupe to delete.
+     */
+    where: EtudiantGroupeWhereUniqueInput
+  }
+
+  /**
+   * EtudiantGroupe deleteMany
+   */
+  export type EtudiantGroupeDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which EtudiantGroupes to delete
+     */
+    where?: EtudiantGroupeWhereInput
+    /**
+     * Limit how many EtudiantGroupes to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * EtudiantGroupe without action
+   */
+  export type EtudiantGroupeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EtudiantGroupe
+     */
+    select?: EtudiantGroupeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EtudiantGroupe
+     */
+    omit?: EtudiantGroupeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EtudiantGroupeInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model MessageGroupe
+   */
+
+  export type AggregateMessageGroupe = {
+    _count: MessageGroupeCountAggregateOutputType | null
+    _avg: MessageGroupeAvgAggregateOutputType | null
+    _sum: MessageGroupeSumAggregateOutputType | null
+    _min: MessageGroupeMinAggregateOutputType | null
+    _max: MessageGroupeMaxAggregateOutputType | null
+  }
+
+  export type MessageGroupeAvgAggregateOutputType = {
+    id: number | null
+    auteurId: number | null
+    groupeId: number | null
+  }
+
+  export type MessageGroupeSumAggregateOutputType = {
+    id: number | null
+    auteurId: number | null
+    groupeId: number | null
+  }
+
+  export type MessageGroupeMinAggregateOutputType = {
+    id: number | null
+    contenu: string | null
+    date: Date | null
+    auteurId: number | null
+    groupeId: number | null
+  }
+
+  export type MessageGroupeMaxAggregateOutputType = {
+    id: number | null
+    contenu: string | null
+    date: Date | null
+    auteurId: number | null
+    groupeId: number | null
+  }
+
+  export type MessageGroupeCountAggregateOutputType = {
+    id: number
+    contenu: number
+    date: number
+    auteurId: number
+    groupeId: number
+    _all: number
+  }
+
+
+  export type MessageGroupeAvgAggregateInputType = {
+    id?: true
+    auteurId?: true
+    groupeId?: true
+  }
+
+  export type MessageGroupeSumAggregateInputType = {
+    id?: true
+    auteurId?: true
+    groupeId?: true
+  }
+
+  export type MessageGroupeMinAggregateInputType = {
+    id?: true
+    contenu?: true
+    date?: true
+    auteurId?: true
+    groupeId?: true
+  }
+
+  export type MessageGroupeMaxAggregateInputType = {
+    id?: true
+    contenu?: true
+    date?: true
+    auteurId?: true
+    groupeId?: true
+  }
+
+  export type MessageGroupeCountAggregateInputType = {
+    id?: true
+    contenu?: true
+    date?: true
+    auteurId?: true
+    groupeId?: true
+    _all?: true
+  }
+
+  export type MessageGroupeAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which MessageGroupe to aggregate.
+     */
+    where?: MessageGroupeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MessageGroupes to fetch.
+     */
+    orderBy?: MessageGroupeOrderByWithRelationInput | MessageGroupeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: MessageGroupeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MessageGroupes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MessageGroupes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned MessageGroupes
+    **/
+    _count?: true | MessageGroupeCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: MessageGroupeAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: MessageGroupeSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: MessageGroupeMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: MessageGroupeMaxAggregateInputType
+  }
+
+  export type GetMessageGroupeAggregateType<T extends MessageGroupeAggregateArgs> = {
+        [P in keyof T & keyof AggregateMessageGroupe]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateMessageGroupe[P]>
+      : GetScalarType<T[P], AggregateMessageGroupe[P]>
+  }
+
+
+
+
+  export type MessageGroupeGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: MessageGroupeWhereInput
+    orderBy?: MessageGroupeOrderByWithAggregationInput | MessageGroupeOrderByWithAggregationInput[]
+    by: MessageGroupeScalarFieldEnum[] | MessageGroupeScalarFieldEnum
+    having?: MessageGroupeScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: MessageGroupeCountAggregateInputType | true
+    _avg?: MessageGroupeAvgAggregateInputType
+    _sum?: MessageGroupeSumAggregateInputType
+    _min?: MessageGroupeMinAggregateInputType
+    _max?: MessageGroupeMaxAggregateInputType
+  }
+
+  export type MessageGroupeGroupByOutputType = {
+    id: number
+    contenu: string
+    date: Date
+    auteurId: number
+    groupeId: number
+    _count: MessageGroupeCountAggregateOutputType | null
+    _avg: MessageGroupeAvgAggregateOutputType | null
+    _sum: MessageGroupeSumAggregateOutputType | null
+    _min: MessageGroupeMinAggregateOutputType | null
+    _max: MessageGroupeMaxAggregateOutputType | null
+  }
+
+  type GetMessageGroupeGroupByPayload<T extends MessageGroupeGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<MessageGroupeGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof MessageGroupeGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], MessageGroupeGroupByOutputType[P]>
+            : GetScalarType<T[P], MessageGroupeGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type MessageGroupeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    contenu?: boolean
+    date?: boolean
+    auteurId?: boolean
+    groupeId?: boolean
+    auteur?: boolean | EtudiantDefaultArgs<ExtArgs>
+    groupe?: boolean | GroupeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["messageGroupe"]>
+
+  export type MessageGroupeSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    contenu?: boolean
+    date?: boolean
+    auteurId?: boolean
+    groupeId?: boolean
+    auteur?: boolean | EtudiantDefaultArgs<ExtArgs>
+    groupe?: boolean | GroupeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["messageGroupe"]>
+
+  export type MessageGroupeSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    contenu?: boolean
+    date?: boolean
+    auteurId?: boolean
+    groupeId?: boolean
+    auteur?: boolean | EtudiantDefaultArgs<ExtArgs>
+    groupe?: boolean | GroupeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["messageGroupe"]>
+
+  export type MessageGroupeSelectScalar = {
+    id?: boolean
+    contenu?: boolean
+    date?: boolean
+    auteurId?: boolean
+    groupeId?: boolean
+  }
+
+  export type MessageGroupeOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "contenu" | "date" | "auteurId" | "groupeId", ExtArgs["result"]["messageGroupe"]>
+  export type MessageGroupeInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    auteur?: boolean | EtudiantDefaultArgs<ExtArgs>
+    groupe?: boolean | GroupeDefaultArgs<ExtArgs>
+  }
+  export type MessageGroupeIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    auteur?: boolean | EtudiantDefaultArgs<ExtArgs>
+    groupe?: boolean | GroupeDefaultArgs<ExtArgs>
+  }
+  export type MessageGroupeIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    auteur?: boolean | EtudiantDefaultArgs<ExtArgs>
+    groupe?: boolean | GroupeDefaultArgs<ExtArgs>
+  }
+
+  export type $MessageGroupePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "MessageGroupe"
+    objects: {
+      auteur: Prisma.$EtudiantPayload<ExtArgs>
+      groupe: Prisma.$GroupePayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      contenu: string
+      date: Date
+      auteurId: number
+      groupeId: number
+    }, ExtArgs["result"]["messageGroupe"]>
+    composites: {}
+  }
+
+  type MessageGroupeGetPayload<S extends boolean | null | undefined | MessageGroupeDefaultArgs> = $Result.GetResult<Prisma.$MessageGroupePayload, S>
+
+  type MessageGroupeCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<MessageGroupeFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: MessageGroupeCountAggregateInputType | true
+    }
+
+  export interface MessageGroupeDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['MessageGroupe'], meta: { name: 'MessageGroupe' } }
+    /**
+     * Find zero or one MessageGroupe that matches the filter.
+     * @param {MessageGroupeFindUniqueArgs} args - Arguments to find a MessageGroupe
+     * @example
+     * // Get one MessageGroupe
+     * const messageGroupe = await prisma.messageGroupe.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends MessageGroupeFindUniqueArgs>(args: SelectSubset<T, MessageGroupeFindUniqueArgs<ExtArgs>>): Prisma__MessageGroupeClient<$Result.GetResult<Prisma.$MessageGroupePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one MessageGroupe that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {MessageGroupeFindUniqueOrThrowArgs} args - Arguments to find a MessageGroupe
+     * @example
+     * // Get one MessageGroupe
+     * const messageGroupe = await prisma.messageGroupe.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends MessageGroupeFindUniqueOrThrowArgs>(args: SelectSubset<T, MessageGroupeFindUniqueOrThrowArgs<ExtArgs>>): Prisma__MessageGroupeClient<$Result.GetResult<Prisma.$MessageGroupePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first MessageGroupe that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MessageGroupeFindFirstArgs} args - Arguments to find a MessageGroupe
+     * @example
+     * // Get one MessageGroupe
+     * const messageGroupe = await prisma.messageGroupe.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends MessageGroupeFindFirstArgs>(args?: SelectSubset<T, MessageGroupeFindFirstArgs<ExtArgs>>): Prisma__MessageGroupeClient<$Result.GetResult<Prisma.$MessageGroupePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first MessageGroupe that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MessageGroupeFindFirstOrThrowArgs} args - Arguments to find a MessageGroupe
+     * @example
+     * // Get one MessageGroupe
+     * const messageGroupe = await prisma.messageGroupe.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends MessageGroupeFindFirstOrThrowArgs>(args?: SelectSubset<T, MessageGroupeFindFirstOrThrowArgs<ExtArgs>>): Prisma__MessageGroupeClient<$Result.GetResult<Prisma.$MessageGroupePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more MessageGroupes that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MessageGroupeFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all MessageGroupes
+     * const messageGroupes = await prisma.messageGroupe.findMany()
+     * 
+     * // Get first 10 MessageGroupes
+     * const messageGroupes = await prisma.messageGroupe.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const messageGroupeWithIdOnly = await prisma.messageGroupe.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends MessageGroupeFindManyArgs>(args?: SelectSubset<T, MessageGroupeFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MessageGroupePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a MessageGroupe.
+     * @param {MessageGroupeCreateArgs} args - Arguments to create a MessageGroupe.
+     * @example
+     * // Create one MessageGroupe
+     * const MessageGroupe = await prisma.messageGroupe.create({
+     *   data: {
+     *     // ... data to create a MessageGroupe
+     *   }
+     * })
+     * 
+     */
+    create<T extends MessageGroupeCreateArgs>(args: SelectSubset<T, MessageGroupeCreateArgs<ExtArgs>>): Prisma__MessageGroupeClient<$Result.GetResult<Prisma.$MessageGroupePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many MessageGroupes.
+     * @param {MessageGroupeCreateManyArgs} args - Arguments to create many MessageGroupes.
+     * @example
+     * // Create many MessageGroupes
+     * const messageGroupe = await prisma.messageGroupe.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends MessageGroupeCreateManyArgs>(args?: SelectSubset<T, MessageGroupeCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many MessageGroupes and returns the data saved in the database.
+     * @param {MessageGroupeCreateManyAndReturnArgs} args - Arguments to create many MessageGroupes.
+     * @example
+     * // Create many MessageGroupes
+     * const messageGroupe = await prisma.messageGroupe.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many MessageGroupes and only return the `id`
+     * const messageGroupeWithIdOnly = await prisma.messageGroupe.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends MessageGroupeCreateManyAndReturnArgs>(args?: SelectSubset<T, MessageGroupeCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MessageGroupePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a MessageGroupe.
+     * @param {MessageGroupeDeleteArgs} args - Arguments to delete one MessageGroupe.
+     * @example
+     * // Delete one MessageGroupe
+     * const MessageGroupe = await prisma.messageGroupe.delete({
+     *   where: {
+     *     // ... filter to delete one MessageGroupe
+     *   }
+     * })
+     * 
+     */
+    delete<T extends MessageGroupeDeleteArgs>(args: SelectSubset<T, MessageGroupeDeleteArgs<ExtArgs>>): Prisma__MessageGroupeClient<$Result.GetResult<Prisma.$MessageGroupePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one MessageGroupe.
+     * @param {MessageGroupeUpdateArgs} args - Arguments to update one MessageGroupe.
+     * @example
+     * // Update one MessageGroupe
+     * const messageGroupe = await prisma.messageGroupe.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends MessageGroupeUpdateArgs>(args: SelectSubset<T, MessageGroupeUpdateArgs<ExtArgs>>): Prisma__MessageGroupeClient<$Result.GetResult<Prisma.$MessageGroupePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more MessageGroupes.
+     * @param {MessageGroupeDeleteManyArgs} args - Arguments to filter MessageGroupes to delete.
+     * @example
+     * // Delete a few MessageGroupes
+     * const { count } = await prisma.messageGroupe.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends MessageGroupeDeleteManyArgs>(args?: SelectSubset<T, MessageGroupeDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more MessageGroupes.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MessageGroupeUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many MessageGroupes
+     * const messageGroupe = await prisma.messageGroupe.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends MessageGroupeUpdateManyArgs>(args: SelectSubset<T, MessageGroupeUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more MessageGroupes and returns the data updated in the database.
+     * @param {MessageGroupeUpdateManyAndReturnArgs} args - Arguments to update many MessageGroupes.
+     * @example
+     * // Update many MessageGroupes
+     * const messageGroupe = await prisma.messageGroupe.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more MessageGroupes and only return the `id`
+     * const messageGroupeWithIdOnly = await prisma.messageGroupe.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends MessageGroupeUpdateManyAndReturnArgs>(args: SelectSubset<T, MessageGroupeUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MessageGroupePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one MessageGroupe.
+     * @param {MessageGroupeUpsertArgs} args - Arguments to update or create a MessageGroupe.
+     * @example
+     * // Update or create a MessageGroupe
+     * const messageGroupe = await prisma.messageGroupe.upsert({
+     *   create: {
+     *     // ... data to create a MessageGroupe
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the MessageGroupe we want to update
+     *   }
+     * })
+     */
+    upsert<T extends MessageGroupeUpsertArgs>(args: SelectSubset<T, MessageGroupeUpsertArgs<ExtArgs>>): Prisma__MessageGroupeClient<$Result.GetResult<Prisma.$MessageGroupePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of MessageGroupes.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MessageGroupeCountArgs} args - Arguments to filter MessageGroupes to count.
+     * @example
+     * // Count the number of MessageGroupes
+     * const count = await prisma.messageGroupe.count({
+     *   where: {
+     *     // ... the filter for the MessageGroupes we want to count
+     *   }
+     * })
+    **/
+    count<T extends MessageGroupeCountArgs>(
+      args?: Subset<T, MessageGroupeCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], MessageGroupeCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a MessageGroupe.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MessageGroupeAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends MessageGroupeAggregateArgs>(args: Subset<T, MessageGroupeAggregateArgs>): Prisma.PrismaPromise<GetMessageGroupeAggregateType<T>>
+
+    /**
+     * Group by MessageGroupe.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MessageGroupeGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends MessageGroupeGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: MessageGroupeGroupByArgs['orderBy'] }
+        : { orderBy?: MessageGroupeGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, MessageGroupeGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetMessageGroupeGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the MessageGroupe model
+   */
+  readonly fields: MessageGroupeFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for MessageGroupe.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__MessageGroupeClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    auteur<T extends EtudiantDefaultArgs<ExtArgs> = {}>(args?: Subset<T, EtudiantDefaultArgs<ExtArgs>>): Prisma__EtudiantClient<$Result.GetResult<Prisma.$EtudiantPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    groupe<T extends GroupeDefaultArgs<ExtArgs> = {}>(args?: Subset<T, GroupeDefaultArgs<ExtArgs>>): Prisma__GroupeClient<$Result.GetResult<Prisma.$GroupePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the MessageGroupe model
+   */
+  interface MessageGroupeFieldRefs {
+    readonly id: FieldRef<"MessageGroupe", 'Int'>
+    readonly contenu: FieldRef<"MessageGroupe", 'String'>
+    readonly date: FieldRef<"MessageGroupe", 'DateTime'>
+    readonly auteurId: FieldRef<"MessageGroupe", 'Int'>
+    readonly groupeId: FieldRef<"MessageGroupe", 'Int'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * MessageGroupe findUnique
+   */
+  export type MessageGroupeFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MessageGroupe
+     */
+    select?: MessageGroupeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MessageGroupe
+     */
+    omit?: MessageGroupeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MessageGroupeInclude<ExtArgs> | null
+    /**
+     * Filter, which MessageGroupe to fetch.
+     */
+    where: MessageGroupeWhereUniqueInput
+  }
+
+  /**
+   * MessageGroupe findUniqueOrThrow
+   */
+  export type MessageGroupeFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MessageGroupe
+     */
+    select?: MessageGroupeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MessageGroupe
+     */
+    omit?: MessageGroupeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MessageGroupeInclude<ExtArgs> | null
+    /**
+     * Filter, which MessageGroupe to fetch.
+     */
+    where: MessageGroupeWhereUniqueInput
+  }
+
+  /**
+   * MessageGroupe findFirst
+   */
+  export type MessageGroupeFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MessageGroupe
+     */
+    select?: MessageGroupeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MessageGroupe
+     */
+    omit?: MessageGroupeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MessageGroupeInclude<ExtArgs> | null
+    /**
+     * Filter, which MessageGroupe to fetch.
+     */
+    where?: MessageGroupeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MessageGroupes to fetch.
+     */
+    orderBy?: MessageGroupeOrderByWithRelationInput | MessageGroupeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for MessageGroupes.
+     */
+    cursor?: MessageGroupeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MessageGroupes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MessageGroupes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of MessageGroupes.
+     */
+    distinct?: MessageGroupeScalarFieldEnum | MessageGroupeScalarFieldEnum[]
+  }
+
+  /**
+   * MessageGroupe findFirstOrThrow
+   */
+  export type MessageGroupeFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MessageGroupe
+     */
+    select?: MessageGroupeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MessageGroupe
+     */
+    omit?: MessageGroupeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MessageGroupeInclude<ExtArgs> | null
+    /**
+     * Filter, which MessageGroupe to fetch.
+     */
+    where?: MessageGroupeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MessageGroupes to fetch.
+     */
+    orderBy?: MessageGroupeOrderByWithRelationInput | MessageGroupeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for MessageGroupes.
+     */
+    cursor?: MessageGroupeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MessageGroupes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MessageGroupes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of MessageGroupes.
+     */
+    distinct?: MessageGroupeScalarFieldEnum | MessageGroupeScalarFieldEnum[]
+  }
+
+  /**
+   * MessageGroupe findMany
+   */
+  export type MessageGroupeFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MessageGroupe
+     */
+    select?: MessageGroupeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MessageGroupe
+     */
+    omit?: MessageGroupeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MessageGroupeInclude<ExtArgs> | null
+    /**
+     * Filter, which MessageGroupes to fetch.
+     */
+    where?: MessageGroupeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MessageGroupes to fetch.
+     */
+    orderBy?: MessageGroupeOrderByWithRelationInput | MessageGroupeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing MessageGroupes.
+     */
+    cursor?: MessageGroupeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MessageGroupes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MessageGroupes.
+     */
+    skip?: number
+    distinct?: MessageGroupeScalarFieldEnum | MessageGroupeScalarFieldEnum[]
+  }
+
+  /**
+   * MessageGroupe create
+   */
+  export type MessageGroupeCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MessageGroupe
+     */
+    select?: MessageGroupeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MessageGroupe
+     */
+    omit?: MessageGroupeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MessageGroupeInclude<ExtArgs> | null
+    /**
+     * The data needed to create a MessageGroupe.
+     */
+    data: XOR<MessageGroupeCreateInput, MessageGroupeUncheckedCreateInput>
+  }
+
+  /**
+   * MessageGroupe createMany
+   */
+  export type MessageGroupeCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many MessageGroupes.
+     */
+    data: MessageGroupeCreateManyInput | MessageGroupeCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * MessageGroupe createManyAndReturn
+   */
+  export type MessageGroupeCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MessageGroupe
+     */
+    select?: MessageGroupeSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the MessageGroupe
+     */
+    omit?: MessageGroupeOmit<ExtArgs> | null
+    /**
+     * The data used to create many MessageGroupes.
+     */
+    data: MessageGroupeCreateManyInput | MessageGroupeCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MessageGroupeIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * MessageGroupe update
+   */
+  export type MessageGroupeUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MessageGroupe
+     */
+    select?: MessageGroupeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MessageGroupe
+     */
+    omit?: MessageGroupeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MessageGroupeInclude<ExtArgs> | null
+    /**
+     * The data needed to update a MessageGroupe.
+     */
+    data: XOR<MessageGroupeUpdateInput, MessageGroupeUncheckedUpdateInput>
+    /**
+     * Choose, which MessageGroupe to update.
+     */
+    where: MessageGroupeWhereUniqueInput
+  }
+
+  /**
+   * MessageGroupe updateMany
+   */
+  export type MessageGroupeUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update MessageGroupes.
+     */
+    data: XOR<MessageGroupeUpdateManyMutationInput, MessageGroupeUncheckedUpdateManyInput>
+    /**
+     * Filter which MessageGroupes to update
+     */
+    where?: MessageGroupeWhereInput
+    /**
+     * Limit how many MessageGroupes to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * MessageGroupe updateManyAndReturn
+   */
+  export type MessageGroupeUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MessageGroupe
+     */
+    select?: MessageGroupeSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the MessageGroupe
+     */
+    omit?: MessageGroupeOmit<ExtArgs> | null
+    /**
+     * The data used to update MessageGroupes.
+     */
+    data: XOR<MessageGroupeUpdateManyMutationInput, MessageGroupeUncheckedUpdateManyInput>
+    /**
+     * Filter which MessageGroupes to update
+     */
+    where?: MessageGroupeWhereInput
+    /**
+     * Limit how many MessageGroupes to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MessageGroupeIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * MessageGroupe upsert
+   */
+  export type MessageGroupeUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MessageGroupe
+     */
+    select?: MessageGroupeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MessageGroupe
+     */
+    omit?: MessageGroupeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MessageGroupeInclude<ExtArgs> | null
+    /**
+     * The filter to search for the MessageGroupe to update in case it exists.
+     */
+    where: MessageGroupeWhereUniqueInput
+    /**
+     * In case the MessageGroupe found by the `where` argument doesn't exist, create a new MessageGroupe with this data.
+     */
+    create: XOR<MessageGroupeCreateInput, MessageGroupeUncheckedCreateInput>
+    /**
+     * In case the MessageGroupe was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<MessageGroupeUpdateInput, MessageGroupeUncheckedUpdateInput>
+  }
+
+  /**
+   * MessageGroupe delete
+   */
+  export type MessageGroupeDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MessageGroupe
+     */
+    select?: MessageGroupeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MessageGroupe
+     */
+    omit?: MessageGroupeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MessageGroupeInclude<ExtArgs> | null
+    /**
+     * Filter which MessageGroupe to delete.
+     */
+    where: MessageGroupeWhereUniqueInput
+  }
+
+  /**
+   * MessageGroupe deleteMany
+   */
+  export type MessageGroupeDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which MessageGroupes to delete
+     */
+    where?: MessageGroupeWhereInput
+    /**
+     * Limit how many MessageGroupes to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * MessageGroupe without action
+   */
+  export type MessageGroupeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MessageGroupe
+     */
+    select?: MessageGroupeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MessageGroupe
+     */
+    omit?: MessageGroupeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MessageGroupeInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -8408,6 +13378,46 @@ export namespace Prisma {
   };
 
   export type SignalerScalarFieldEnum = (typeof SignalerScalarFieldEnum)[keyof typeof SignalerScalarFieldEnum]
+
+
+  export const AmitieScalarFieldEnum: {
+    id: 'id',
+    demandeurId: 'demandeurId',
+    receveurId: 'receveurId',
+    statut: 'statut',
+    dateDemande: 'dateDemande',
+    dateAcceptation: 'dateAcceptation'
+  };
+
+  export type AmitieScalarFieldEnum = (typeof AmitieScalarFieldEnum)[keyof typeof AmitieScalarFieldEnum]
+
+
+  export const GroupeScalarFieldEnum: {
+    id: 'id',
+    nom: 'nom',
+    createdAt: 'createdAt'
+  };
+
+  export type GroupeScalarFieldEnum = (typeof GroupeScalarFieldEnum)[keyof typeof GroupeScalarFieldEnum]
+
+
+  export const EtudiantGroupeScalarFieldEnum: {
+    etudiantId: 'etudiantId',
+    groupeId: 'groupeId'
+  };
+
+  export type EtudiantGroupeScalarFieldEnum = (typeof EtudiantGroupeScalarFieldEnum)[keyof typeof EtudiantGroupeScalarFieldEnum]
+
+
+  export const MessageGroupeScalarFieldEnum: {
+    id: 'id',
+    contenu: 'contenu',
+    date: 'date',
+    auteurId: 'auteurId',
+    groupeId: 'groupeId'
+  };
+
+  export type MessageGroupeScalarFieldEnum = (typeof MessageGroupeScalarFieldEnum)[keyof typeof MessageGroupeScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -8489,6 +13499,20 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'StatutAmitie'
+   */
+  export type EnumStatutAmitieFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'StatutAmitie'>
+    
+
+
+  /**
+   * Reference to a field of type 'StatutAmitie[]'
+   */
+  export type ListEnumStatutAmitieFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'StatutAmitie[]'>
+    
+
+
+  /**
    * Reference to a field of type 'Float'
    */
   export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
@@ -8526,6 +13550,10 @@ export namespace Prisma {
     annonces?: AnnonceListRelationFilter
     commentaires?: CommentaireListRelationFilter
     signalements?: SignalerListRelationFilter
+    demandesEnvoyees?: AmitieListRelationFilter
+    demandesRecues?: AmitieListRelationFilter
+    groupes?: EtudiantGroupeListRelationFilter
+    messagesGroupes?: MessageGroupeListRelationFilter
   }
 
   export type EtudiantOrderByWithRelationInput = {
@@ -8546,6 +13574,10 @@ export namespace Prisma {
     annonces?: AnnonceOrderByRelationAggregateInput
     commentaires?: CommentaireOrderByRelationAggregateInput
     signalements?: SignalerOrderByRelationAggregateInput
+    demandesEnvoyees?: AmitieOrderByRelationAggregateInput
+    demandesRecues?: AmitieOrderByRelationAggregateInput
+    groupes?: EtudiantGroupeOrderByRelationAggregateInput
+    messagesGroupes?: MessageGroupeOrderByRelationAggregateInput
   }
 
   export type EtudiantWhereUniqueInput = Prisma.AtLeast<{
@@ -8569,6 +13601,10 @@ export namespace Prisma {
     annonces?: AnnonceListRelationFilter
     commentaires?: CommentaireListRelationFilter
     signalements?: SignalerListRelationFilter
+    demandesEnvoyees?: AmitieListRelationFilter
+    demandesRecues?: AmitieListRelationFilter
+    groupes?: EtudiantGroupeListRelationFilter
+    messagesGroupes?: MessageGroupeListRelationFilter
   }, "id" | "email">
 
   export type EtudiantOrderByWithAggregationInput = {
@@ -8879,6 +13915,228 @@ export namespace Prisma {
     etudiantId?: IntWithAggregatesFilter<"Signaler"> | number
   }
 
+  export type AmitieWhereInput = {
+    AND?: AmitieWhereInput | AmitieWhereInput[]
+    OR?: AmitieWhereInput[]
+    NOT?: AmitieWhereInput | AmitieWhereInput[]
+    id?: IntFilter<"Amitie"> | number
+    demandeurId?: IntFilter<"Amitie"> | number
+    receveurId?: IntFilter<"Amitie"> | number
+    statut?: EnumStatutAmitieFilter<"Amitie"> | $Enums.StatutAmitie
+    dateDemande?: DateTimeFilter<"Amitie"> | Date | string
+    dateAcceptation?: DateTimeNullableFilter<"Amitie"> | Date | string | null
+    demandeur?: XOR<EtudiantScalarRelationFilter, EtudiantWhereInput>
+    receveur?: XOR<EtudiantScalarRelationFilter, EtudiantWhereInput>
+  }
+
+  export type AmitieOrderByWithRelationInput = {
+    id?: SortOrder
+    demandeurId?: SortOrder
+    receveurId?: SortOrder
+    statut?: SortOrder
+    dateDemande?: SortOrder
+    dateAcceptation?: SortOrderInput | SortOrder
+    demandeur?: EtudiantOrderByWithRelationInput
+    receveur?: EtudiantOrderByWithRelationInput
+  }
+
+  export type AmitieWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    demandeurId_receveurId?: AmitieDemandeurIdReceveurIdCompoundUniqueInput
+    AND?: AmitieWhereInput | AmitieWhereInput[]
+    OR?: AmitieWhereInput[]
+    NOT?: AmitieWhereInput | AmitieWhereInput[]
+    demandeurId?: IntFilter<"Amitie"> | number
+    receveurId?: IntFilter<"Amitie"> | number
+    statut?: EnumStatutAmitieFilter<"Amitie"> | $Enums.StatutAmitie
+    dateDemande?: DateTimeFilter<"Amitie"> | Date | string
+    dateAcceptation?: DateTimeNullableFilter<"Amitie"> | Date | string | null
+    demandeur?: XOR<EtudiantScalarRelationFilter, EtudiantWhereInput>
+    receveur?: XOR<EtudiantScalarRelationFilter, EtudiantWhereInput>
+  }, "id" | "demandeurId_receveurId">
+
+  export type AmitieOrderByWithAggregationInput = {
+    id?: SortOrder
+    demandeurId?: SortOrder
+    receveurId?: SortOrder
+    statut?: SortOrder
+    dateDemande?: SortOrder
+    dateAcceptation?: SortOrderInput | SortOrder
+    _count?: AmitieCountOrderByAggregateInput
+    _avg?: AmitieAvgOrderByAggregateInput
+    _max?: AmitieMaxOrderByAggregateInput
+    _min?: AmitieMinOrderByAggregateInput
+    _sum?: AmitieSumOrderByAggregateInput
+  }
+
+  export type AmitieScalarWhereWithAggregatesInput = {
+    AND?: AmitieScalarWhereWithAggregatesInput | AmitieScalarWhereWithAggregatesInput[]
+    OR?: AmitieScalarWhereWithAggregatesInput[]
+    NOT?: AmitieScalarWhereWithAggregatesInput | AmitieScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"Amitie"> | number
+    demandeurId?: IntWithAggregatesFilter<"Amitie"> | number
+    receveurId?: IntWithAggregatesFilter<"Amitie"> | number
+    statut?: EnumStatutAmitieWithAggregatesFilter<"Amitie"> | $Enums.StatutAmitie
+    dateDemande?: DateTimeWithAggregatesFilter<"Amitie"> | Date | string
+    dateAcceptation?: DateTimeNullableWithAggregatesFilter<"Amitie"> | Date | string | null
+  }
+
+  export type GroupeWhereInput = {
+    AND?: GroupeWhereInput | GroupeWhereInput[]
+    OR?: GroupeWhereInput[]
+    NOT?: GroupeWhereInput | GroupeWhereInput[]
+    id?: IntFilter<"Groupe"> | number
+    nom?: StringFilter<"Groupe"> | string
+    createdAt?: DateTimeFilter<"Groupe"> | Date | string
+    membres?: EtudiantGroupeListRelationFilter
+    messages?: MessageGroupeListRelationFilter
+  }
+
+  export type GroupeOrderByWithRelationInput = {
+    id?: SortOrder
+    nom?: SortOrder
+    createdAt?: SortOrder
+    membres?: EtudiantGroupeOrderByRelationAggregateInput
+    messages?: MessageGroupeOrderByRelationAggregateInput
+  }
+
+  export type GroupeWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: GroupeWhereInput | GroupeWhereInput[]
+    OR?: GroupeWhereInput[]
+    NOT?: GroupeWhereInput | GroupeWhereInput[]
+    nom?: StringFilter<"Groupe"> | string
+    createdAt?: DateTimeFilter<"Groupe"> | Date | string
+    membres?: EtudiantGroupeListRelationFilter
+    messages?: MessageGroupeListRelationFilter
+  }, "id">
+
+  export type GroupeOrderByWithAggregationInput = {
+    id?: SortOrder
+    nom?: SortOrder
+    createdAt?: SortOrder
+    _count?: GroupeCountOrderByAggregateInput
+    _avg?: GroupeAvgOrderByAggregateInput
+    _max?: GroupeMaxOrderByAggregateInput
+    _min?: GroupeMinOrderByAggregateInput
+    _sum?: GroupeSumOrderByAggregateInput
+  }
+
+  export type GroupeScalarWhereWithAggregatesInput = {
+    AND?: GroupeScalarWhereWithAggregatesInput | GroupeScalarWhereWithAggregatesInput[]
+    OR?: GroupeScalarWhereWithAggregatesInput[]
+    NOT?: GroupeScalarWhereWithAggregatesInput | GroupeScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"Groupe"> | number
+    nom?: StringWithAggregatesFilter<"Groupe"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"Groupe"> | Date | string
+  }
+
+  export type EtudiantGroupeWhereInput = {
+    AND?: EtudiantGroupeWhereInput | EtudiantGroupeWhereInput[]
+    OR?: EtudiantGroupeWhereInput[]
+    NOT?: EtudiantGroupeWhereInput | EtudiantGroupeWhereInput[]
+    etudiantId?: IntFilter<"EtudiantGroupe"> | number
+    groupeId?: IntFilter<"EtudiantGroupe"> | number
+    etudiant?: XOR<EtudiantScalarRelationFilter, EtudiantWhereInput>
+    groupe?: XOR<GroupeScalarRelationFilter, GroupeWhereInput>
+  }
+
+  export type EtudiantGroupeOrderByWithRelationInput = {
+    etudiantId?: SortOrder
+    groupeId?: SortOrder
+    etudiant?: EtudiantOrderByWithRelationInput
+    groupe?: GroupeOrderByWithRelationInput
+  }
+
+  export type EtudiantGroupeWhereUniqueInput = Prisma.AtLeast<{
+    etudiantId_groupeId?: EtudiantGroupeEtudiantIdGroupeIdCompoundUniqueInput
+    AND?: EtudiantGroupeWhereInput | EtudiantGroupeWhereInput[]
+    OR?: EtudiantGroupeWhereInput[]
+    NOT?: EtudiantGroupeWhereInput | EtudiantGroupeWhereInput[]
+    etudiantId?: IntFilter<"EtudiantGroupe"> | number
+    groupeId?: IntFilter<"EtudiantGroupe"> | number
+    etudiant?: XOR<EtudiantScalarRelationFilter, EtudiantWhereInput>
+    groupe?: XOR<GroupeScalarRelationFilter, GroupeWhereInput>
+  }, "etudiantId_groupeId">
+
+  export type EtudiantGroupeOrderByWithAggregationInput = {
+    etudiantId?: SortOrder
+    groupeId?: SortOrder
+    _count?: EtudiantGroupeCountOrderByAggregateInput
+    _avg?: EtudiantGroupeAvgOrderByAggregateInput
+    _max?: EtudiantGroupeMaxOrderByAggregateInput
+    _min?: EtudiantGroupeMinOrderByAggregateInput
+    _sum?: EtudiantGroupeSumOrderByAggregateInput
+  }
+
+  export type EtudiantGroupeScalarWhereWithAggregatesInput = {
+    AND?: EtudiantGroupeScalarWhereWithAggregatesInput | EtudiantGroupeScalarWhereWithAggregatesInput[]
+    OR?: EtudiantGroupeScalarWhereWithAggregatesInput[]
+    NOT?: EtudiantGroupeScalarWhereWithAggregatesInput | EtudiantGroupeScalarWhereWithAggregatesInput[]
+    etudiantId?: IntWithAggregatesFilter<"EtudiantGroupe"> | number
+    groupeId?: IntWithAggregatesFilter<"EtudiantGroupe"> | number
+  }
+
+  export type MessageGroupeWhereInput = {
+    AND?: MessageGroupeWhereInput | MessageGroupeWhereInput[]
+    OR?: MessageGroupeWhereInput[]
+    NOT?: MessageGroupeWhereInput | MessageGroupeWhereInput[]
+    id?: IntFilter<"MessageGroupe"> | number
+    contenu?: StringFilter<"MessageGroupe"> | string
+    date?: DateTimeFilter<"MessageGroupe"> | Date | string
+    auteurId?: IntFilter<"MessageGroupe"> | number
+    groupeId?: IntFilter<"MessageGroupe"> | number
+    auteur?: XOR<EtudiantScalarRelationFilter, EtudiantWhereInput>
+    groupe?: XOR<GroupeScalarRelationFilter, GroupeWhereInput>
+  }
+
+  export type MessageGroupeOrderByWithRelationInput = {
+    id?: SortOrder
+    contenu?: SortOrder
+    date?: SortOrder
+    auteurId?: SortOrder
+    groupeId?: SortOrder
+    auteur?: EtudiantOrderByWithRelationInput
+    groupe?: GroupeOrderByWithRelationInput
+  }
+
+  export type MessageGroupeWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: MessageGroupeWhereInput | MessageGroupeWhereInput[]
+    OR?: MessageGroupeWhereInput[]
+    NOT?: MessageGroupeWhereInput | MessageGroupeWhereInput[]
+    contenu?: StringFilter<"MessageGroupe"> | string
+    date?: DateTimeFilter<"MessageGroupe"> | Date | string
+    auteurId?: IntFilter<"MessageGroupe"> | number
+    groupeId?: IntFilter<"MessageGroupe"> | number
+    auteur?: XOR<EtudiantScalarRelationFilter, EtudiantWhereInput>
+    groupe?: XOR<GroupeScalarRelationFilter, GroupeWhereInput>
+  }, "id">
+
+  export type MessageGroupeOrderByWithAggregationInput = {
+    id?: SortOrder
+    contenu?: SortOrder
+    date?: SortOrder
+    auteurId?: SortOrder
+    groupeId?: SortOrder
+    _count?: MessageGroupeCountOrderByAggregateInput
+    _avg?: MessageGroupeAvgOrderByAggregateInput
+    _max?: MessageGroupeMaxOrderByAggregateInput
+    _min?: MessageGroupeMinOrderByAggregateInput
+    _sum?: MessageGroupeSumOrderByAggregateInput
+  }
+
+  export type MessageGroupeScalarWhereWithAggregatesInput = {
+    AND?: MessageGroupeScalarWhereWithAggregatesInput | MessageGroupeScalarWhereWithAggregatesInput[]
+    OR?: MessageGroupeScalarWhereWithAggregatesInput[]
+    NOT?: MessageGroupeScalarWhereWithAggregatesInput | MessageGroupeScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"MessageGroupe"> | number
+    contenu?: StringWithAggregatesFilter<"MessageGroupe"> | string
+    date?: DateTimeWithAggregatesFilter<"MessageGroupe"> | Date | string
+    auteurId?: IntWithAggregatesFilter<"MessageGroupe"> | number
+    groupeId?: IntWithAggregatesFilter<"MessageGroupe"> | number
+  }
+
   export type EtudiantCreateInput = {
     prenom?: string | null
     nom: string
@@ -8896,6 +14154,10 @@ export namespace Prisma {
     annonces?: AnnonceCreateNestedManyWithoutAuteurInput
     commentaires?: CommentaireCreateNestedManyWithoutAuteurInput
     signalements?: SignalerCreateNestedManyWithoutEtudiantInput
+    demandesEnvoyees?: AmitieCreateNestedManyWithoutDemandeurInput
+    demandesRecues?: AmitieCreateNestedManyWithoutReceveurInput
+    groupes?: EtudiantGroupeCreateNestedManyWithoutEtudiantInput
+    messagesGroupes?: MessageGroupeCreateNestedManyWithoutAuteurInput
   }
 
   export type EtudiantUncheckedCreateInput = {
@@ -8916,6 +14178,10 @@ export namespace Prisma {
     annonces?: AnnonceUncheckedCreateNestedManyWithoutAuteurInput
     commentaires?: CommentaireUncheckedCreateNestedManyWithoutAuteurInput
     signalements?: SignalerUncheckedCreateNestedManyWithoutEtudiantInput
+    demandesEnvoyees?: AmitieUncheckedCreateNestedManyWithoutDemandeurInput
+    demandesRecues?: AmitieUncheckedCreateNestedManyWithoutReceveurInput
+    groupes?: EtudiantGroupeUncheckedCreateNestedManyWithoutEtudiantInput
+    messagesGroupes?: MessageGroupeUncheckedCreateNestedManyWithoutAuteurInput
   }
 
   export type EtudiantUpdateInput = {
@@ -8935,6 +14201,10 @@ export namespace Prisma {
     annonces?: AnnonceUpdateManyWithoutAuteurNestedInput
     commentaires?: CommentaireUpdateManyWithoutAuteurNestedInput
     signalements?: SignalerUpdateManyWithoutEtudiantNestedInput
+    demandesEnvoyees?: AmitieUpdateManyWithoutDemandeurNestedInput
+    demandesRecues?: AmitieUpdateManyWithoutReceveurNestedInput
+    groupes?: EtudiantGroupeUpdateManyWithoutEtudiantNestedInput
+    messagesGroupes?: MessageGroupeUpdateManyWithoutAuteurNestedInput
   }
 
   export type EtudiantUncheckedUpdateInput = {
@@ -8955,6 +14225,10 @@ export namespace Prisma {
     annonces?: AnnonceUncheckedUpdateManyWithoutAuteurNestedInput
     commentaires?: CommentaireUncheckedUpdateManyWithoutAuteurNestedInput
     signalements?: SignalerUncheckedUpdateManyWithoutEtudiantNestedInput
+    demandesEnvoyees?: AmitieUncheckedUpdateManyWithoutDemandeurNestedInput
+    demandesRecues?: AmitieUncheckedUpdateManyWithoutReceveurNestedInput
+    groupes?: EtudiantGroupeUncheckedUpdateManyWithoutEtudiantNestedInput
+    messagesGroupes?: MessageGroupeUncheckedUpdateManyWithoutAuteurNestedInput
   }
 
   export type EtudiantCreateManyInput = {
@@ -9229,6 +14503,196 @@ export namespace Prisma {
     etudiantId?: IntFieldUpdateOperationsInput | number
   }
 
+  export type AmitieCreateInput = {
+    statut?: $Enums.StatutAmitie
+    dateDemande?: Date | string
+    dateAcceptation?: Date | string | null
+    demandeur: EtudiantCreateNestedOneWithoutDemandesEnvoyeesInput
+    receveur: EtudiantCreateNestedOneWithoutDemandesRecuesInput
+  }
+
+  export type AmitieUncheckedCreateInput = {
+    id?: number
+    demandeurId: number
+    receveurId: number
+    statut?: $Enums.StatutAmitie
+    dateDemande?: Date | string
+    dateAcceptation?: Date | string | null
+  }
+
+  export type AmitieUpdateInput = {
+    statut?: EnumStatutAmitieFieldUpdateOperationsInput | $Enums.StatutAmitie
+    dateDemande?: DateTimeFieldUpdateOperationsInput | Date | string
+    dateAcceptation?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    demandeur?: EtudiantUpdateOneRequiredWithoutDemandesEnvoyeesNestedInput
+    receveur?: EtudiantUpdateOneRequiredWithoutDemandesRecuesNestedInput
+  }
+
+  export type AmitieUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    demandeurId?: IntFieldUpdateOperationsInput | number
+    receveurId?: IntFieldUpdateOperationsInput | number
+    statut?: EnumStatutAmitieFieldUpdateOperationsInput | $Enums.StatutAmitie
+    dateDemande?: DateTimeFieldUpdateOperationsInput | Date | string
+    dateAcceptation?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type AmitieCreateManyInput = {
+    id?: number
+    demandeurId: number
+    receveurId: number
+    statut?: $Enums.StatutAmitie
+    dateDemande?: Date | string
+    dateAcceptation?: Date | string | null
+  }
+
+  export type AmitieUpdateManyMutationInput = {
+    statut?: EnumStatutAmitieFieldUpdateOperationsInput | $Enums.StatutAmitie
+    dateDemande?: DateTimeFieldUpdateOperationsInput | Date | string
+    dateAcceptation?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type AmitieUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    demandeurId?: IntFieldUpdateOperationsInput | number
+    receveurId?: IntFieldUpdateOperationsInput | number
+    statut?: EnumStatutAmitieFieldUpdateOperationsInput | $Enums.StatutAmitie
+    dateDemande?: DateTimeFieldUpdateOperationsInput | Date | string
+    dateAcceptation?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type GroupeCreateInput = {
+    nom: string
+    createdAt?: Date | string
+    membres?: EtudiantGroupeCreateNestedManyWithoutGroupeInput
+    messages?: MessageGroupeCreateNestedManyWithoutGroupeInput
+  }
+
+  export type GroupeUncheckedCreateInput = {
+    id?: number
+    nom: string
+    createdAt?: Date | string
+    membres?: EtudiantGroupeUncheckedCreateNestedManyWithoutGroupeInput
+    messages?: MessageGroupeUncheckedCreateNestedManyWithoutGroupeInput
+  }
+
+  export type GroupeUpdateInput = {
+    nom?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    membres?: EtudiantGroupeUpdateManyWithoutGroupeNestedInput
+    messages?: MessageGroupeUpdateManyWithoutGroupeNestedInput
+  }
+
+  export type GroupeUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    nom?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    membres?: EtudiantGroupeUncheckedUpdateManyWithoutGroupeNestedInput
+    messages?: MessageGroupeUncheckedUpdateManyWithoutGroupeNestedInput
+  }
+
+  export type GroupeCreateManyInput = {
+    id?: number
+    nom: string
+    createdAt?: Date | string
+  }
+
+  export type GroupeUpdateManyMutationInput = {
+    nom?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type GroupeUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    nom?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type EtudiantGroupeCreateInput = {
+    etudiant: EtudiantCreateNestedOneWithoutGroupesInput
+    groupe: GroupeCreateNestedOneWithoutMembresInput
+  }
+
+  export type EtudiantGroupeUncheckedCreateInput = {
+    etudiantId: number
+    groupeId: number
+  }
+
+  export type EtudiantGroupeUpdateInput = {
+    etudiant?: EtudiantUpdateOneRequiredWithoutGroupesNestedInput
+    groupe?: GroupeUpdateOneRequiredWithoutMembresNestedInput
+  }
+
+  export type EtudiantGroupeUncheckedUpdateInput = {
+    etudiantId?: IntFieldUpdateOperationsInput | number
+    groupeId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type EtudiantGroupeCreateManyInput = {
+    etudiantId: number
+    groupeId: number
+  }
+
+  export type EtudiantGroupeUpdateManyMutationInput = {
+
+  }
+
+  export type EtudiantGroupeUncheckedUpdateManyInput = {
+    etudiantId?: IntFieldUpdateOperationsInput | number
+    groupeId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type MessageGroupeCreateInput = {
+    contenu: string
+    date?: Date | string
+    auteur: EtudiantCreateNestedOneWithoutMessagesGroupesInput
+    groupe: GroupeCreateNestedOneWithoutMessagesInput
+  }
+
+  export type MessageGroupeUncheckedCreateInput = {
+    id?: number
+    contenu: string
+    date?: Date | string
+    auteurId: number
+    groupeId: number
+  }
+
+  export type MessageGroupeUpdateInput = {
+    contenu?: StringFieldUpdateOperationsInput | string
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    auteur?: EtudiantUpdateOneRequiredWithoutMessagesGroupesNestedInput
+    groupe?: GroupeUpdateOneRequiredWithoutMessagesNestedInput
+  }
+
+  export type MessageGroupeUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    contenu?: StringFieldUpdateOperationsInput | string
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    auteurId?: IntFieldUpdateOperationsInput | number
+    groupeId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type MessageGroupeCreateManyInput = {
+    id?: number
+    contenu: string
+    date?: Date | string
+    auteurId: number
+    groupeId: number
+  }
+
+  export type MessageGroupeUpdateManyMutationInput = {
+    contenu?: StringFieldUpdateOperationsInput | string
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MessageGroupeUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    contenu?: StringFieldUpdateOperationsInput | string
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    auteurId?: IntFieldUpdateOperationsInput | number
+    groupeId?: IntFieldUpdateOperationsInput | number
+  }
+
   export type IntFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
     in?: number[] | ListIntFieldRefInput<$PrismaModel>
@@ -9327,6 +14791,24 @@ export namespace Prisma {
     none?: SignalerWhereInput
   }
 
+  export type AmitieListRelationFilter = {
+    every?: AmitieWhereInput
+    some?: AmitieWhereInput
+    none?: AmitieWhereInput
+  }
+
+  export type EtudiantGroupeListRelationFilter = {
+    every?: EtudiantGroupeWhereInput
+    some?: EtudiantGroupeWhereInput
+    none?: EtudiantGroupeWhereInput
+  }
+
+  export type MessageGroupeListRelationFilter = {
+    every?: MessageGroupeWhereInput
+    some?: MessageGroupeWhereInput
+    none?: MessageGroupeWhereInput
+  }
+
   export type SortOrderInput = {
     sort: SortOrder
     nulls?: NullsOrder
@@ -9349,6 +14831,18 @@ export namespace Prisma {
   }
 
   export type SignalerOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type AmitieOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type EtudiantGroupeOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type MessageGroupeOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -9706,6 +15200,164 @@ export namespace Prisma {
     etudiantId?: SortOrder
   }
 
+  export type EnumStatutAmitieFilter<$PrismaModel = never> = {
+    equals?: $Enums.StatutAmitie | EnumStatutAmitieFieldRefInput<$PrismaModel>
+    in?: $Enums.StatutAmitie[] | ListEnumStatutAmitieFieldRefInput<$PrismaModel>
+    notIn?: $Enums.StatutAmitie[] | ListEnumStatutAmitieFieldRefInput<$PrismaModel>
+    not?: NestedEnumStatutAmitieFilter<$PrismaModel> | $Enums.StatutAmitie
+  }
+
+  export type AmitieDemandeurIdReceveurIdCompoundUniqueInput = {
+    demandeurId: number
+    receveurId: number
+  }
+
+  export type AmitieCountOrderByAggregateInput = {
+    id?: SortOrder
+    demandeurId?: SortOrder
+    receveurId?: SortOrder
+    statut?: SortOrder
+    dateDemande?: SortOrder
+    dateAcceptation?: SortOrder
+  }
+
+  export type AmitieAvgOrderByAggregateInput = {
+    id?: SortOrder
+    demandeurId?: SortOrder
+    receveurId?: SortOrder
+  }
+
+  export type AmitieMaxOrderByAggregateInput = {
+    id?: SortOrder
+    demandeurId?: SortOrder
+    receveurId?: SortOrder
+    statut?: SortOrder
+    dateDemande?: SortOrder
+    dateAcceptation?: SortOrder
+  }
+
+  export type AmitieMinOrderByAggregateInput = {
+    id?: SortOrder
+    demandeurId?: SortOrder
+    receveurId?: SortOrder
+    statut?: SortOrder
+    dateDemande?: SortOrder
+    dateAcceptation?: SortOrder
+  }
+
+  export type AmitieSumOrderByAggregateInput = {
+    id?: SortOrder
+    demandeurId?: SortOrder
+    receveurId?: SortOrder
+  }
+
+  export type EnumStatutAmitieWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.StatutAmitie | EnumStatutAmitieFieldRefInput<$PrismaModel>
+    in?: $Enums.StatutAmitie[] | ListEnumStatutAmitieFieldRefInput<$PrismaModel>
+    notIn?: $Enums.StatutAmitie[] | ListEnumStatutAmitieFieldRefInput<$PrismaModel>
+    not?: NestedEnumStatutAmitieWithAggregatesFilter<$PrismaModel> | $Enums.StatutAmitie
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumStatutAmitieFilter<$PrismaModel>
+    _max?: NestedEnumStatutAmitieFilter<$PrismaModel>
+  }
+
+  export type GroupeCountOrderByAggregateInput = {
+    id?: SortOrder
+    nom?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type GroupeAvgOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type GroupeMaxOrderByAggregateInput = {
+    id?: SortOrder
+    nom?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type GroupeMinOrderByAggregateInput = {
+    id?: SortOrder
+    nom?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type GroupeSumOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type GroupeScalarRelationFilter = {
+    is?: GroupeWhereInput
+    isNot?: GroupeWhereInput
+  }
+
+  export type EtudiantGroupeEtudiantIdGroupeIdCompoundUniqueInput = {
+    etudiantId: number
+    groupeId: number
+  }
+
+  export type EtudiantGroupeCountOrderByAggregateInput = {
+    etudiantId?: SortOrder
+    groupeId?: SortOrder
+  }
+
+  export type EtudiantGroupeAvgOrderByAggregateInput = {
+    etudiantId?: SortOrder
+    groupeId?: SortOrder
+  }
+
+  export type EtudiantGroupeMaxOrderByAggregateInput = {
+    etudiantId?: SortOrder
+    groupeId?: SortOrder
+  }
+
+  export type EtudiantGroupeMinOrderByAggregateInput = {
+    etudiantId?: SortOrder
+    groupeId?: SortOrder
+  }
+
+  export type EtudiantGroupeSumOrderByAggregateInput = {
+    etudiantId?: SortOrder
+    groupeId?: SortOrder
+  }
+
+  export type MessageGroupeCountOrderByAggregateInput = {
+    id?: SortOrder
+    contenu?: SortOrder
+    date?: SortOrder
+    auteurId?: SortOrder
+    groupeId?: SortOrder
+  }
+
+  export type MessageGroupeAvgOrderByAggregateInput = {
+    id?: SortOrder
+    auteurId?: SortOrder
+    groupeId?: SortOrder
+  }
+
+  export type MessageGroupeMaxOrderByAggregateInput = {
+    id?: SortOrder
+    contenu?: SortOrder
+    date?: SortOrder
+    auteurId?: SortOrder
+    groupeId?: SortOrder
+  }
+
+  export type MessageGroupeMinOrderByAggregateInput = {
+    id?: SortOrder
+    contenu?: SortOrder
+    date?: SortOrder
+    auteurId?: SortOrder
+    groupeId?: SortOrder
+  }
+
+  export type MessageGroupeSumOrderByAggregateInput = {
+    id?: SortOrder
+    auteurId?: SortOrder
+    groupeId?: SortOrder
+  }
+
   export type MessageCreateNestedManyWithoutEtudiantInput = {
     create?: XOR<MessageCreateWithoutEtudiantInput, MessageUncheckedCreateWithoutEtudiantInput> | MessageCreateWithoutEtudiantInput[] | MessageUncheckedCreateWithoutEtudiantInput[]
     connectOrCreate?: MessageCreateOrConnectWithoutEtudiantInput | MessageCreateOrConnectWithoutEtudiantInput[]
@@ -9741,6 +15393,34 @@ export namespace Prisma {
     connect?: SignalerWhereUniqueInput | SignalerWhereUniqueInput[]
   }
 
+  export type AmitieCreateNestedManyWithoutDemandeurInput = {
+    create?: XOR<AmitieCreateWithoutDemandeurInput, AmitieUncheckedCreateWithoutDemandeurInput> | AmitieCreateWithoutDemandeurInput[] | AmitieUncheckedCreateWithoutDemandeurInput[]
+    connectOrCreate?: AmitieCreateOrConnectWithoutDemandeurInput | AmitieCreateOrConnectWithoutDemandeurInput[]
+    createMany?: AmitieCreateManyDemandeurInputEnvelope
+    connect?: AmitieWhereUniqueInput | AmitieWhereUniqueInput[]
+  }
+
+  export type AmitieCreateNestedManyWithoutReceveurInput = {
+    create?: XOR<AmitieCreateWithoutReceveurInput, AmitieUncheckedCreateWithoutReceveurInput> | AmitieCreateWithoutReceveurInput[] | AmitieUncheckedCreateWithoutReceveurInput[]
+    connectOrCreate?: AmitieCreateOrConnectWithoutReceveurInput | AmitieCreateOrConnectWithoutReceveurInput[]
+    createMany?: AmitieCreateManyReceveurInputEnvelope
+    connect?: AmitieWhereUniqueInput | AmitieWhereUniqueInput[]
+  }
+
+  export type EtudiantGroupeCreateNestedManyWithoutEtudiantInput = {
+    create?: XOR<EtudiantGroupeCreateWithoutEtudiantInput, EtudiantGroupeUncheckedCreateWithoutEtudiantInput> | EtudiantGroupeCreateWithoutEtudiantInput[] | EtudiantGroupeUncheckedCreateWithoutEtudiantInput[]
+    connectOrCreate?: EtudiantGroupeCreateOrConnectWithoutEtudiantInput | EtudiantGroupeCreateOrConnectWithoutEtudiantInput[]
+    createMany?: EtudiantGroupeCreateManyEtudiantInputEnvelope
+    connect?: EtudiantGroupeWhereUniqueInput | EtudiantGroupeWhereUniqueInput[]
+  }
+
+  export type MessageGroupeCreateNestedManyWithoutAuteurInput = {
+    create?: XOR<MessageGroupeCreateWithoutAuteurInput, MessageGroupeUncheckedCreateWithoutAuteurInput> | MessageGroupeCreateWithoutAuteurInput[] | MessageGroupeUncheckedCreateWithoutAuteurInput[]
+    connectOrCreate?: MessageGroupeCreateOrConnectWithoutAuteurInput | MessageGroupeCreateOrConnectWithoutAuteurInput[]
+    createMany?: MessageGroupeCreateManyAuteurInputEnvelope
+    connect?: MessageGroupeWhereUniqueInput | MessageGroupeWhereUniqueInput[]
+  }
+
   export type MessageUncheckedCreateNestedManyWithoutEtudiantInput = {
     create?: XOR<MessageCreateWithoutEtudiantInput, MessageUncheckedCreateWithoutEtudiantInput> | MessageCreateWithoutEtudiantInput[] | MessageUncheckedCreateWithoutEtudiantInput[]
     connectOrCreate?: MessageCreateOrConnectWithoutEtudiantInput | MessageCreateOrConnectWithoutEtudiantInput[]
@@ -9774,6 +15454,34 @@ export namespace Prisma {
     connectOrCreate?: SignalerCreateOrConnectWithoutEtudiantInput | SignalerCreateOrConnectWithoutEtudiantInput[]
     createMany?: SignalerCreateManyEtudiantInputEnvelope
     connect?: SignalerWhereUniqueInput | SignalerWhereUniqueInput[]
+  }
+
+  export type AmitieUncheckedCreateNestedManyWithoutDemandeurInput = {
+    create?: XOR<AmitieCreateWithoutDemandeurInput, AmitieUncheckedCreateWithoutDemandeurInput> | AmitieCreateWithoutDemandeurInput[] | AmitieUncheckedCreateWithoutDemandeurInput[]
+    connectOrCreate?: AmitieCreateOrConnectWithoutDemandeurInput | AmitieCreateOrConnectWithoutDemandeurInput[]
+    createMany?: AmitieCreateManyDemandeurInputEnvelope
+    connect?: AmitieWhereUniqueInput | AmitieWhereUniqueInput[]
+  }
+
+  export type AmitieUncheckedCreateNestedManyWithoutReceveurInput = {
+    create?: XOR<AmitieCreateWithoutReceveurInput, AmitieUncheckedCreateWithoutReceveurInput> | AmitieCreateWithoutReceveurInput[] | AmitieUncheckedCreateWithoutReceveurInput[]
+    connectOrCreate?: AmitieCreateOrConnectWithoutReceveurInput | AmitieCreateOrConnectWithoutReceveurInput[]
+    createMany?: AmitieCreateManyReceveurInputEnvelope
+    connect?: AmitieWhereUniqueInput | AmitieWhereUniqueInput[]
+  }
+
+  export type EtudiantGroupeUncheckedCreateNestedManyWithoutEtudiantInput = {
+    create?: XOR<EtudiantGroupeCreateWithoutEtudiantInput, EtudiantGroupeUncheckedCreateWithoutEtudiantInput> | EtudiantGroupeCreateWithoutEtudiantInput[] | EtudiantGroupeUncheckedCreateWithoutEtudiantInput[]
+    connectOrCreate?: EtudiantGroupeCreateOrConnectWithoutEtudiantInput | EtudiantGroupeCreateOrConnectWithoutEtudiantInput[]
+    createMany?: EtudiantGroupeCreateManyEtudiantInputEnvelope
+    connect?: EtudiantGroupeWhereUniqueInput | EtudiantGroupeWhereUniqueInput[]
+  }
+
+  export type MessageGroupeUncheckedCreateNestedManyWithoutAuteurInput = {
+    create?: XOR<MessageGroupeCreateWithoutAuteurInput, MessageGroupeUncheckedCreateWithoutAuteurInput> | MessageGroupeCreateWithoutAuteurInput[] | MessageGroupeUncheckedCreateWithoutAuteurInput[]
+    connectOrCreate?: MessageGroupeCreateOrConnectWithoutAuteurInput | MessageGroupeCreateOrConnectWithoutAuteurInput[]
+    createMany?: MessageGroupeCreateManyAuteurInputEnvelope
+    connect?: MessageGroupeWhereUniqueInput | MessageGroupeWhereUniqueInput[]
   }
 
   export type NullableStringFieldUpdateOperationsInput = {
@@ -9866,6 +15574,62 @@ export namespace Prisma {
     deleteMany?: SignalerScalarWhereInput | SignalerScalarWhereInput[]
   }
 
+  export type AmitieUpdateManyWithoutDemandeurNestedInput = {
+    create?: XOR<AmitieCreateWithoutDemandeurInput, AmitieUncheckedCreateWithoutDemandeurInput> | AmitieCreateWithoutDemandeurInput[] | AmitieUncheckedCreateWithoutDemandeurInput[]
+    connectOrCreate?: AmitieCreateOrConnectWithoutDemandeurInput | AmitieCreateOrConnectWithoutDemandeurInput[]
+    upsert?: AmitieUpsertWithWhereUniqueWithoutDemandeurInput | AmitieUpsertWithWhereUniqueWithoutDemandeurInput[]
+    createMany?: AmitieCreateManyDemandeurInputEnvelope
+    set?: AmitieWhereUniqueInput | AmitieWhereUniqueInput[]
+    disconnect?: AmitieWhereUniqueInput | AmitieWhereUniqueInput[]
+    delete?: AmitieWhereUniqueInput | AmitieWhereUniqueInput[]
+    connect?: AmitieWhereUniqueInput | AmitieWhereUniqueInput[]
+    update?: AmitieUpdateWithWhereUniqueWithoutDemandeurInput | AmitieUpdateWithWhereUniqueWithoutDemandeurInput[]
+    updateMany?: AmitieUpdateManyWithWhereWithoutDemandeurInput | AmitieUpdateManyWithWhereWithoutDemandeurInput[]
+    deleteMany?: AmitieScalarWhereInput | AmitieScalarWhereInput[]
+  }
+
+  export type AmitieUpdateManyWithoutReceveurNestedInput = {
+    create?: XOR<AmitieCreateWithoutReceveurInput, AmitieUncheckedCreateWithoutReceveurInput> | AmitieCreateWithoutReceveurInput[] | AmitieUncheckedCreateWithoutReceveurInput[]
+    connectOrCreate?: AmitieCreateOrConnectWithoutReceveurInput | AmitieCreateOrConnectWithoutReceveurInput[]
+    upsert?: AmitieUpsertWithWhereUniqueWithoutReceveurInput | AmitieUpsertWithWhereUniqueWithoutReceveurInput[]
+    createMany?: AmitieCreateManyReceveurInputEnvelope
+    set?: AmitieWhereUniqueInput | AmitieWhereUniqueInput[]
+    disconnect?: AmitieWhereUniqueInput | AmitieWhereUniqueInput[]
+    delete?: AmitieWhereUniqueInput | AmitieWhereUniqueInput[]
+    connect?: AmitieWhereUniqueInput | AmitieWhereUniqueInput[]
+    update?: AmitieUpdateWithWhereUniqueWithoutReceveurInput | AmitieUpdateWithWhereUniqueWithoutReceveurInput[]
+    updateMany?: AmitieUpdateManyWithWhereWithoutReceveurInput | AmitieUpdateManyWithWhereWithoutReceveurInput[]
+    deleteMany?: AmitieScalarWhereInput | AmitieScalarWhereInput[]
+  }
+
+  export type EtudiantGroupeUpdateManyWithoutEtudiantNestedInput = {
+    create?: XOR<EtudiantGroupeCreateWithoutEtudiantInput, EtudiantGroupeUncheckedCreateWithoutEtudiantInput> | EtudiantGroupeCreateWithoutEtudiantInput[] | EtudiantGroupeUncheckedCreateWithoutEtudiantInput[]
+    connectOrCreate?: EtudiantGroupeCreateOrConnectWithoutEtudiantInput | EtudiantGroupeCreateOrConnectWithoutEtudiantInput[]
+    upsert?: EtudiantGroupeUpsertWithWhereUniqueWithoutEtudiantInput | EtudiantGroupeUpsertWithWhereUniqueWithoutEtudiantInput[]
+    createMany?: EtudiantGroupeCreateManyEtudiantInputEnvelope
+    set?: EtudiantGroupeWhereUniqueInput | EtudiantGroupeWhereUniqueInput[]
+    disconnect?: EtudiantGroupeWhereUniqueInput | EtudiantGroupeWhereUniqueInput[]
+    delete?: EtudiantGroupeWhereUniqueInput | EtudiantGroupeWhereUniqueInput[]
+    connect?: EtudiantGroupeWhereUniqueInput | EtudiantGroupeWhereUniqueInput[]
+    update?: EtudiantGroupeUpdateWithWhereUniqueWithoutEtudiantInput | EtudiantGroupeUpdateWithWhereUniqueWithoutEtudiantInput[]
+    updateMany?: EtudiantGroupeUpdateManyWithWhereWithoutEtudiantInput | EtudiantGroupeUpdateManyWithWhereWithoutEtudiantInput[]
+    deleteMany?: EtudiantGroupeScalarWhereInput | EtudiantGroupeScalarWhereInput[]
+  }
+
+  export type MessageGroupeUpdateManyWithoutAuteurNestedInput = {
+    create?: XOR<MessageGroupeCreateWithoutAuteurInput, MessageGroupeUncheckedCreateWithoutAuteurInput> | MessageGroupeCreateWithoutAuteurInput[] | MessageGroupeUncheckedCreateWithoutAuteurInput[]
+    connectOrCreate?: MessageGroupeCreateOrConnectWithoutAuteurInput | MessageGroupeCreateOrConnectWithoutAuteurInput[]
+    upsert?: MessageGroupeUpsertWithWhereUniqueWithoutAuteurInput | MessageGroupeUpsertWithWhereUniqueWithoutAuteurInput[]
+    createMany?: MessageGroupeCreateManyAuteurInputEnvelope
+    set?: MessageGroupeWhereUniqueInput | MessageGroupeWhereUniqueInput[]
+    disconnect?: MessageGroupeWhereUniqueInput | MessageGroupeWhereUniqueInput[]
+    delete?: MessageGroupeWhereUniqueInput | MessageGroupeWhereUniqueInput[]
+    connect?: MessageGroupeWhereUniqueInput | MessageGroupeWhereUniqueInput[]
+    update?: MessageGroupeUpdateWithWhereUniqueWithoutAuteurInput | MessageGroupeUpdateWithWhereUniqueWithoutAuteurInput[]
+    updateMany?: MessageGroupeUpdateManyWithWhereWithoutAuteurInput | MessageGroupeUpdateManyWithWhereWithoutAuteurInput[]
+    deleteMany?: MessageGroupeScalarWhereInput | MessageGroupeScalarWhereInput[]
+  }
+
   export type IntFieldUpdateOperationsInput = {
     set?: number
     increment?: number
@@ -9942,6 +15706,62 @@ export namespace Prisma {
     update?: SignalerUpdateWithWhereUniqueWithoutEtudiantInput | SignalerUpdateWithWhereUniqueWithoutEtudiantInput[]
     updateMany?: SignalerUpdateManyWithWhereWithoutEtudiantInput | SignalerUpdateManyWithWhereWithoutEtudiantInput[]
     deleteMany?: SignalerScalarWhereInput | SignalerScalarWhereInput[]
+  }
+
+  export type AmitieUncheckedUpdateManyWithoutDemandeurNestedInput = {
+    create?: XOR<AmitieCreateWithoutDemandeurInput, AmitieUncheckedCreateWithoutDemandeurInput> | AmitieCreateWithoutDemandeurInput[] | AmitieUncheckedCreateWithoutDemandeurInput[]
+    connectOrCreate?: AmitieCreateOrConnectWithoutDemandeurInput | AmitieCreateOrConnectWithoutDemandeurInput[]
+    upsert?: AmitieUpsertWithWhereUniqueWithoutDemandeurInput | AmitieUpsertWithWhereUniqueWithoutDemandeurInput[]
+    createMany?: AmitieCreateManyDemandeurInputEnvelope
+    set?: AmitieWhereUniqueInput | AmitieWhereUniqueInput[]
+    disconnect?: AmitieWhereUniqueInput | AmitieWhereUniqueInput[]
+    delete?: AmitieWhereUniqueInput | AmitieWhereUniqueInput[]
+    connect?: AmitieWhereUniqueInput | AmitieWhereUniqueInput[]
+    update?: AmitieUpdateWithWhereUniqueWithoutDemandeurInput | AmitieUpdateWithWhereUniqueWithoutDemandeurInput[]
+    updateMany?: AmitieUpdateManyWithWhereWithoutDemandeurInput | AmitieUpdateManyWithWhereWithoutDemandeurInput[]
+    deleteMany?: AmitieScalarWhereInput | AmitieScalarWhereInput[]
+  }
+
+  export type AmitieUncheckedUpdateManyWithoutReceveurNestedInput = {
+    create?: XOR<AmitieCreateWithoutReceveurInput, AmitieUncheckedCreateWithoutReceveurInput> | AmitieCreateWithoutReceveurInput[] | AmitieUncheckedCreateWithoutReceveurInput[]
+    connectOrCreate?: AmitieCreateOrConnectWithoutReceveurInput | AmitieCreateOrConnectWithoutReceveurInput[]
+    upsert?: AmitieUpsertWithWhereUniqueWithoutReceveurInput | AmitieUpsertWithWhereUniqueWithoutReceveurInput[]
+    createMany?: AmitieCreateManyReceveurInputEnvelope
+    set?: AmitieWhereUniqueInput | AmitieWhereUniqueInput[]
+    disconnect?: AmitieWhereUniqueInput | AmitieWhereUniqueInput[]
+    delete?: AmitieWhereUniqueInput | AmitieWhereUniqueInput[]
+    connect?: AmitieWhereUniqueInput | AmitieWhereUniqueInput[]
+    update?: AmitieUpdateWithWhereUniqueWithoutReceveurInput | AmitieUpdateWithWhereUniqueWithoutReceveurInput[]
+    updateMany?: AmitieUpdateManyWithWhereWithoutReceveurInput | AmitieUpdateManyWithWhereWithoutReceveurInput[]
+    deleteMany?: AmitieScalarWhereInput | AmitieScalarWhereInput[]
+  }
+
+  export type EtudiantGroupeUncheckedUpdateManyWithoutEtudiantNestedInput = {
+    create?: XOR<EtudiantGroupeCreateWithoutEtudiantInput, EtudiantGroupeUncheckedCreateWithoutEtudiantInput> | EtudiantGroupeCreateWithoutEtudiantInput[] | EtudiantGroupeUncheckedCreateWithoutEtudiantInput[]
+    connectOrCreate?: EtudiantGroupeCreateOrConnectWithoutEtudiantInput | EtudiantGroupeCreateOrConnectWithoutEtudiantInput[]
+    upsert?: EtudiantGroupeUpsertWithWhereUniqueWithoutEtudiantInput | EtudiantGroupeUpsertWithWhereUniqueWithoutEtudiantInput[]
+    createMany?: EtudiantGroupeCreateManyEtudiantInputEnvelope
+    set?: EtudiantGroupeWhereUniqueInput | EtudiantGroupeWhereUniqueInput[]
+    disconnect?: EtudiantGroupeWhereUniqueInput | EtudiantGroupeWhereUniqueInput[]
+    delete?: EtudiantGroupeWhereUniqueInput | EtudiantGroupeWhereUniqueInput[]
+    connect?: EtudiantGroupeWhereUniqueInput | EtudiantGroupeWhereUniqueInput[]
+    update?: EtudiantGroupeUpdateWithWhereUniqueWithoutEtudiantInput | EtudiantGroupeUpdateWithWhereUniqueWithoutEtudiantInput[]
+    updateMany?: EtudiantGroupeUpdateManyWithWhereWithoutEtudiantInput | EtudiantGroupeUpdateManyWithWhereWithoutEtudiantInput[]
+    deleteMany?: EtudiantGroupeScalarWhereInput | EtudiantGroupeScalarWhereInput[]
+  }
+
+  export type MessageGroupeUncheckedUpdateManyWithoutAuteurNestedInput = {
+    create?: XOR<MessageGroupeCreateWithoutAuteurInput, MessageGroupeUncheckedCreateWithoutAuteurInput> | MessageGroupeCreateWithoutAuteurInput[] | MessageGroupeUncheckedCreateWithoutAuteurInput[]
+    connectOrCreate?: MessageGroupeCreateOrConnectWithoutAuteurInput | MessageGroupeCreateOrConnectWithoutAuteurInput[]
+    upsert?: MessageGroupeUpsertWithWhereUniqueWithoutAuteurInput | MessageGroupeUpsertWithWhereUniqueWithoutAuteurInput[]
+    createMany?: MessageGroupeCreateManyAuteurInputEnvelope
+    set?: MessageGroupeWhereUniqueInput | MessageGroupeWhereUniqueInput[]
+    disconnect?: MessageGroupeWhereUniqueInput | MessageGroupeWhereUniqueInput[]
+    delete?: MessageGroupeWhereUniqueInput | MessageGroupeWhereUniqueInput[]
+    connect?: MessageGroupeWhereUniqueInput | MessageGroupeWhereUniqueInput[]
+    update?: MessageGroupeUpdateWithWhereUniqueWithoutAuteurInput | MessageGroupeUpdateWithWhereUniqueWithoutAuteurInput[]
+    updateMany?: MessageGroupeUpdateManyWithWhereWithoutAuteurInput | MessageGroupeUpdateManyWithWhereWithoutAuteurInput[]
+    deleteMany?: MessageGroupeScalarWhereInput | MessageGroupeScalarWhereInput[]
   }
 
   export type EtudiantCreateNestedOneWithoutMessagesEnvoyesInput = {
@@ -10196,6 +16016,178 @@ export namespace Prisma {
     update?: XOR<XOR<EtudiantUpdateToOneWithWhereWithoutSignalementsInput, EtudiantUpdateWithoutSignalementsInput>, EtudiantUncheckedUpdateWithoutSignalementsInput>
   }
 
+  export type EtudiantCreateNestedOneWithoutDemandesEnvoyeesInput = {
+    create?: XOR<EtudiantCreateWithoutDemandesEnvoyeesInput, EtudiantUncheckedCreateWithoutDemandesEnvoyeesInput>
+    connectOrCreate?: EtudiantCreateOrConnectWithoutDemandesEnvoyeesInput
+    connect?: EtudiantWhereUniqueInput
+  }
+
+  export type EtudiantCreateNestedOneWithoutDemandesRecuesInput = {
+    create?: XOR<EtudiantCreateWithoutDemandesRecuesInput, EtudiantUncheckedCreateWithoutDemandesRecuesInput>
+    connectOrCreate?: EtudiantCreateOrConnectWithoutDemandesRecuesInput
+    connect?: EtudiantWhereUniqueInput
+  }
+
+  export type EnumStatutAmitieFieldUpdateOperationsInput = {
+    set?: $Enums.StatutAmitie
+  }
+
+  export type EtudiantUpdateOneRequiredWithoutDemandesEnvoyeesNestedInput = {
+    create?: XOR<EtudiantCreateWithoutDemandesEnvoyeesInput, EtudiantUncheckedCreateWithoutDemandesEnvoyeesInput>
+    connectOrCreate?: EtudiantCreateOrConnectWithoutDemandesEnvoyeesInput
+    upsert?: EtudiantUpsertWithoutDemandesEnvoyeesInput
+    connect?: EtudiantWhereUniqueInput
+    update?: XOR<XOR<EtudiantUpdateToOneWithWhereWithoutDemandesEnvoyeesInput, EtudiantUpdateWithoutDemandesEnvoyeesInput>, EtudiantUncheckedUpdateWithoutDemandesEnvoyeesInput>
+  }
+
+  export type EtudiantUpdateOneRequiredWithoutDemandesRecuesNestedInput = {
+    create?: XOR<EtudiantCreateWithoutDemandesRecuesInput, EtudiantUncheckedCreateWithoutDemandesRecuesInput>
+    connectOrCreate?: EtudiantCreateOrConnectWithoutDemandesRecuesInput
+    upsert?: EtudiantUpsertWithoutDemandesRecuesInput
+    connect?: EtudiantWhereUniqueInput
+    update?: XOR<XOR<EtudiantUpdateToOneWithWhereWithoutDemandesRecuesInput, EtudiantUpdateWithoutDemandesRecuesInput>, EtudiantUncheckedUpdateWithoutDemandesRecuesInput>
+  }
+
+  export type EtudiantGroupeCreateNestedManyWithoutGroupeInput = {
+    create?: XOR<EtudiantGroupeCreateWithoutGroupeInput, EtudiantGroupeUncheckedCreateWithoutGroupeInput> | EtudiantGroupeCreateWithoutGroupeInput[] | EtudiantGroupeUncheckedCreateWithoutGroupeInput[]
+    connectOrCreate?: EtudiantGroupeCreateOrConnectWithoutGroupeInput | EtudiantGroupeCreateOrConnectWithoutGroupeInput[]
+    createMany?: EtudiantGroupeCreateManyGroupeInputEnvelope
+    connect?: EtudiantGroupeWhereUniqueInput | EtudiantGroupeWhereUniqueInput[]
+  }
+
+  export type MessageGroupeCreateNestedManyWithoutGroupeInput = {
+    create?: XOR<MessageGroupeCreateWithoutGroupeInput, MessageGroupeUncheckedCreateWithoutGroupeInput> | MessageGroupeCreateWithoutGroupeInput[] | MessageGroupeUncheckedCreateWithoutGroupeInput[]
+    connectOrCreate?: MessageGroupeCreateOrConnectWithoutGroupeInput | MessageGroupeCreateOrConnectWithoutGroupeInput[]
+    createMany?: MessageGroupeCreateManyGroupeInputEnvelope
+    connect?: MessageGroupeWhereUniqueInput | MessageGroupeWhereUniqueInput[]
+  }
+
+  export type EtudiantGroupeUncheckedCreateNestedManyWithoutGroupeInput = {
+    create?: XOR<EtudiantGroupeCreateWithoutGroupeInput, EtudiantGroupeUncheckedCreateWithoutGroupeInput> | EtudiantGroupeCreateWithoutGroupeInput[] | EtudiantGroupeUncheckedCreateWithoutGroupeInput[]
+    connectOrCreate?: EtudiantGroupeCreateOrConnectWithoutGroupeInput | EtudiantGroupeCreateOrConnectWithoutGroupeInput[]
+    createMany?: EtudiantGroupeCreateManyGroupeInputEnvelope
+    connect?: EtudiantGroupeWhereUniqueInput | EtudiantGroupeWhereUniqueInput[]
+  }
+
+  export type MessageGroupeUncheckedCreateNestedManyWithoutGroupeInput = {
+    create?: XOR<MessageGroupeCreateWithoutGroupeInput, MessageGroupeUncheckedCreateWithoutGroupeInput> | MessageGroupeCreateWithoutGroupeInput[] | MessageGroupeUncheckedCreateWithoutGroupeInput[]
+    connectOrCreate?: MessageGroupeCreateOrConnectWithoutGroupeInput | MessageGroupeCreateOrConnectWithoutGroupeInput[]
+    createMany?: MessageGroupeCreateManyGroupeInputEnvelope
+    connect?: MessageGroupeWhereUniqueInput | MessageGroupeWhereUniqueInput[]
+  }
+
+  export type EtudiantGroupeUpdateManyWithoutGroupeNestedInput = {
+    create?: XOR<EtudiantGroupeCreateWithoutGroupeInput, EtudiantGroupeUncheckedCreateWithoutGroupeInput> | EtudiantGroupeCreateWithoutGroupeInput[] | EtudiantGroupeUncheckedCreateWithoutGroupeInput[]
+    connectOrCreate?: EtudiantGroupeCreateOrConnectWithoutGroupeInput | EtudiantGroupeCreateOrConnectWithoutGroupeInput[]
+    upsert?: EtudiantGroupeUpsertWithWhereUniqueWithoutGroupeInput | EtudiantGroupeUpsertWithWhereUniqueWithoutGroupeInput[]
+    createMany?: EtudiantGroupeCreateManyGroupeInputEnvelope
+    set?: EtudiantGroupeWhereUniqueInput | EtudiantGroupeWhereUniqueInput[]
+    disconnect?: EtudiantGroupeWhereUniqueInput | EtudiantGroupeWhereUniqueInput[]
+    delete?: EtudiantGroupeWhereUniqueInput | EtudiantGroupeWhereUniqueInput[]
+    connect?: EtudiantGroupeWhereUniqueInput | EtudiantGroupeWhereUniqueInput[]
+    update?: EtudiantGroupeUpdateWithWhereUniqueWithoutGroupeInput | EtudiantGroupeUpdateWithWhereUniqueWithoutGroupeInput[]
+    updateMany?: EtudiantGroupeUpdateManyWithWhereWithoutGroupeInput | EtudiantGroupeUpdateManyWithWhereWithoutGroupeInput[]
+    deleteMany?: EtudiantGroupeScalarWhereInput | EtudiantGroupeScalarWhereInput[]
+  }
+
+  export type MessageGroupeUpdateManyWithoutGroupeNestedInput = {
+    create?: XOR<MessageGroupeCreateWithoutGroupeInput, MessageGroupeUncheckedCreateWithoutGroupeInput> | MessageGroupeCreateWithoutGroupeInput[] | MessageGroupeUncheckedCreateWithoutGroupeInput[]
+    connectOrCreate?: MessageGroupeCreateOrConnectWithoutGroupeInput | MessageGroupeCreateOrConnectWithoutGroupeInput[]
+    upsert?: MessageGroupeUpsertWithWhereUniqueWithoutGroupeInput | MessageGroupeUpsertWithWhereUniqueWithoutGroupeInput[]
+    createMany?: MessageGroupeCreateManyGroupeInputEnvelope
+    set?: MessageGroupeWhereUniqueInput | MessageGroupeWhereUniqueInput[]
+    disconnect?: MessageGroupeWhereUniqueInput | MessageGroupeWhereUniqueInput[]
+    delete?: MessageGroupeWhereUniqueInput | MessageGroupeWhereUniqueInput[]
+    connect?: MessageGroupeWhereUniqueInput | MessageGroupeWhereUniqueInput[]
+    update?: MessageGroupeUpdateWithWhereUniqueWithoutGroupeInput | MessageGroupeUpdateWithWhereUniqueWithoutGroupeInput[]
+    updateMany?: MessageGroupeUpdateManyWithWhereWithoutGroupeInput | MessageGroupeUpdateManyWithWhereWithoutGroupeInput[]
+    deleteMany?: MessageGroupeScalarWhereInput | MessageGroupeScalarWhereInput[]
+  }
+
+  export type EtudiantGroupeUncheckedUpdateManyWithoutGroupeNestedInput = {
+    create?: XOR<EtudiantGroupeCreateWithoutGroupeInput, EtudiantGroupeUncheckedCreateWithoutGroupeInput> | EtudiantGroupeCreateWithoutGroupeInput[] | EtudiantGroupeUncheckedCreateWithoutGroupeInput[]
+    connectOrCreate?: EtudiantGroupeCreateOrConnectWithoutGroupeInput | EtudiantGroupeCreateOrConnectWithoutGroupeInput[]
+    upsert?: EtudiantGroupeUpsertWithWhereUniqueWithoutGroupeInput | EtudiantGroupeUpsertWithWhereUniqueWithoutGroupeInput[]
+    createMany?: EtudiantGroupeCreateManyGroupeInputEnvelope
+    set?: EtudiantGroupeWhereUniqueInput | EtudiantGroupeWhereUniqueInput[]
+    disconnect?: EtudiantGroupeWhereUniqueInput | EtudiantGroupeWhereUniqueInput[]
+    delete?: EtudiantGroupeWhereUniqueInput | EtudiantGroupeWhereUniqueInput[]
+    connect?: EtudiantGroupeWhereUniqueInput | EtudiantGroupeWhereUniqueInput[]
+    update?: EtudiantGroupeUpdateWithWhereUniqueWithoutGroupeInput | EtudiantGroupeUpdateWithWhereUniqueWithoutGroupeInput[]
+    updateMany?: EtudiantGroupeUpdateManyWithWhereWithoutGroupeInput | EtudiantGroupeUpdateManyWithWhereWithoutGroupeInput[]
+    deleteMany?: EtudiantGroupeScalarWhereInput | EtudiantGroupeScalarWhereInput[]
+  }
+
+  export type MessageGroupeUncheckedUpdateManyWithoutGroupeNestedInput = {
+    create?: XOR<MessageGroupeCreateWithoutGroupeInput, MessageGroupeUncheckedCreateWithoutGroupeInput> | MessageGroupeCreateWithoutGroupeInput[] | MessageGroupeUncheckedCreateWithoutGroupeInput[]
+    connectOrCreate?: MessageGroupeCreateOrConnectWithoutGroupeInput | MessageGroupeCreateOrConnectWithoutGroupeInput[]
+    upsert?: MessageGroupeUpsertWithWhereUniqueWithoutGroupeInput | MessageGroupeUpsertWithWhereUniqueWithoutGroupeInput[]
+    createMany?: MessageGroupeCreateManyGroupeInputEnvelope
+    set?: MessageGroupeWhereUniqueInput | MessageGroupeWhereUniqueInput[]
+    disconnect?: MessageGroupeWhereUniqueInput | MessageGroupeWhereUniqueInput[]
+    delete?: MessageGroupeWhereUniqueInput | MessageGroupeWhereUniqueInput[]
+    connect?: MessageGroupeWhereUniqueInput | MessageGroupeWhereUniqueInput[]
+    update?: MessageGroupeUpdateWithWhereUniqueWithoutGroupeInput | MessageGroupeUpdateWithWhereUniqueWithoutGroupeInput[]
+    updateMany?: MessageGroupeUpdateManyWithWhereWithoutGroupeInput | MessageGroupeUpdateManyWithWhereWithoutGroupeInput[]
+    deleteMany?: MessageGroupeScalarWhereInput | MessageGroupeScalarWhereInput[]
+  }
+
+  export type EtudiantCreateNestedOneWithoutGroupesInput = {
+    create?: XOR<EtudiantCreateWithoutGroupesInput, EtudiantUncheckedCreateWithoutGroupesInput>
+    connectOrCreate?: EtudiantCreateOrConnectWithoutGroupesInput
+    connect?: EtudiantWhereUniqueInput
+  }
+
+  export type GroupeCreateNestedOneWithoutMembresInput = {
+    create?: XOR<GroupeCreateWithoutMembresInput, GroupeUncheckedCreateWithoutMembresInput>
+    connectOrCreate?: GroupeCreateOrConnectWithoutMembresInput
+    connect?: GroupeWhereUniqueInput
+  }
+
+  export type EtudiantUpdateOneRequiredWithoutGroupesNestedInput = {
+    create?: XOR<EtudiantCreateWithoutGroupesInput, EtudiantUncheckedCreateWithoutGroupesInput>
+    connectOrCreate?: EtudiantCreateOrConnectWithoutGroupesInput
+    upsert?: EtudiantUpsertWithoutGroupesInput
+    connect?: EtudiantWhereUniqueInput
+    update?: XOR<XOR<EtudiantUpdateToOneWithWhereWithoutGroupesInput, EtudiantUpdateWithoutGroupesInput>, EtudiantUncheckedUpdateWithoutGroupesInput>
+  }
+
+  export type GroupeUpdateOneRequiredWithoutMembresNestedInput = {
+    create?: XOR<GroupeCreateWithoutMembresInput, GroupeUncheckedCreateWithoutMembresInput>
+    connectOrCreate?: GroupeCreateOrConnectWithoutMembresInput
+    upsert?: GroupeUpsertWithoutMembresInput
+    connect?: GroupeWhereUniqueInput
+    update?: XOR<XOR<GroupeUpdateToOneWithWhereWithoutMembresInput, GroupeUpdateWithoutMembresInput>, GroupeUncheckedUpdateWithoutMembresInput>
+  }
+
+  export type EtudiantCreateNestedOneWithoutMessagesGroupesInput = {
+    create?: XOR<EtudiantCreateWithoutMessagesGroupesInput, EtudiantUncheckedCreateWithoutMessagesGroupesInput>
+    connectOrCreate?: EtudiantCreateOrConnectWithoutMessagesGroupesInput
+    connect?: EtudiantWhereUniqueInput
+  }
+
+  export type GroupeCreateNestedOneWithoutMessagesInput = {
+    create?: XOR<GroupeCreateWithoutMessagesInput, GroupeUncheckedCreateWithoutMessagesInput>
+    connectOrCreate?: GroupeCreateOrConnectWithoutMessagesInput
+    connect?: GroupeWhereUniqueInput
+  }
+
+  export type EtudiantUpdateOneRequiredWithoutMessagesGroupesNestedInput = {
+    create?: XOR<EtudiantCreateWithoutMessagesGroupesInput, EtudiantUncheckedCreateWithoutMessagesGroupesInput>
+    connectOrCreate?: EtudiantCreateOrConnectWithoutMessagesGroupesInput
+    upsert?: EtudiantUpsertWithoutMessagesGroupesInput
+    connect?: EtudiantWhereUniqueInput
+    update?: XOR<XOR<EtudiantUpdateToOneWithWhereWithoutMessagesGroupesInput, EtudiantUpdateWithoutMessagesGroupesInput>, EtudiantUncheckedUpdateWithoutMessagesGroupesInput>
+  }
+
+  export type GroupeUpdateOneRequiredWithoutMessagesNestedInput = {
+    create?: XOR<GroupeCreateWithoutMessagesInput, GroupeUncheckedCreateWithoutMessagesInput>
+    connectOrCreate?: GroupeCreateOrConnectWithoutMessagesInput
+    upsert?: GroupeUpsertWithoutMessagesInput
+    connect?: GroupeWhereUniqueInput
+    update?: XOR<XOR<GroupeUpdateToOneWithWhereWithoutMessagesInput, GroupeUpdateWithoutMessagesInput>, GroupeUncheckedUpdateWithoutMessagesInput>
+  }
+
   export type NestedIntFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
     in?: number[] | ListIntFieldRefInput<$PrismaModel>
@@ -10397,6 +16389,23 @@ export namespace Prisma {
     not?: NestedFloatNullableFilter<$PrismaModel> | number | null
   }
 
+  export type NestedEnumStatutAmitieFilter<$PrismaModel = never> = {
+    equals?: $Enums.StatutAmitie | EnumStatutAmitieFieldRefInput<$PrismaModel>
+    in?: $Enums.StatutAmitie[] | ListEnumStatutAmitieFieldRefInput<$PrismaModel>
+    notIn?: $Enums.StatutAmitie[] | ListEnumStatutAmitieFieldRefInput<$PrismaModel>
+    not?: NestedEnumStatutAmitieFilter<$PrismaModel> | $Enums.StatutAmitie
+  }
+
+  export type NestedEnumStatutAmitieWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.StatutAmitie | EnumStatutAmitieFieldRefInput<$PrismaModel>
+    in?: $Enums.StatutAmitie[] | ListEnumStatutAmitieFieldRefInput<$PrismaModel>
+    notIn?: $Enums.StatutAmitie[] | ListEnumStatutAmitieFieldRefInput<$PrismaModel>
+    not?: NestedEnumStatutAmitieWithAggregatesFilter<$PrismaModel> | $Enums.StatutAmitie
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumStatutAmitieFilter<$PrismaModel>
+    _max?: NestedEnumStatutAmitieFilter<$PrismaModel>
+  }
+
   export type MessageCreateWithoutEtudiantInput = {
     contenu?: string | null
     date?: Date | string
@@ -10503,6 +16512,97 @@ export namespace Prisma {
 
   export type SignalerCreateManyEtudiantInputEnvelope = {
     data: SignalerCreateManyEtudiantInput | SignalerCreateManyEtudiantInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type AmitieCreateWithoutDemandeurInput = {
+    statut?: $Enums.StatutAmitie
+    dateDemande?: Date | string
+    dateAcceptation?: Date | string | null
+    receveur: EtudiantCreateNestedOneWithoutDemandesRecuesInput
+  }
+
+  export type AmitieUncheckedCreateWithoutDemandeurInput = {
+    id?: number
+    receveurId: number
+    statut?: $Enums.StatutAmitie
+    dateDemande?: Date | string
+    dateAcceptation?: Date | string | null
+  }
+
+  export type AmitieCreateOrConnectWithoutDemandeurInput = {
+    where: AmitieWhereUniqueInput
+    create: XOR<AmitieCreateWithoutDemandeurInput, AmitieUncheckedCreateWithoutDemandeurInput>
+  }
+
+  export type AmitieCreateManyDemandeurInputEnvelope = {
+    data: AmitieCreateManyDemandeurInput | AmitieCreateManyDemandeurInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type AmitieCreateWithoutReceveurInput = {
+    statut?: $Enums.StatutAmitie
+    dateDemande?: Date | string
+    dateAcceptation?: Date | string | null
+    demandeur: EtudiantCreateNestedOneWithoutDemandesEnvoyeesInput
+  }
+
+  export type AmitieUncheckedCreateWithoutReceveurInput = {
+    id?: number
+    demandeurId: number
+    statut?: $Enums.StatutAmitie
+    dateDemande?: Date | string
+    dateAcceptation?: Date | string | null
+  }
+
+  export type AmitieCreateOrConnectWithoutReceveurInput = {
+    where: AmitieWhereUniqueInput
+    create: XOR<AmitieCreateWithoutReceveurInput, AmitieUncheckedCreateWithoutReceveurInput>
+  }
+
+  export type AmitieCreateManyReceveurInputEnvelope = {
+    data: AmitieCreateManyReceveurInput | AmitieCreateManyReceveurInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type EtudiantGroupeCreateWithoutEtudiantInput = {
+    groupe: GroupeCreateNestedOneWithoutMembresInput
+  }
+
+  export type EtudiantGroupeUncheckedCreateWithoutEtudiantInput = {
+    groupeId: number
+  }
+
+  export type EtudiantGroupeCreateOrConnectWithoutEtudiantInput = {
+    where: EtudiantGroupeWhereUniqueInput
+    create: XOR<EtudiantGroupeCreateWithoutEtudiantInput, EtudiantGroupeUncheckedCreateWithoutEtudiantInput>
+  }
+
+  export type EtudiantGroupeCreateManyEtudiantInputEnvelope = {
+    data: EtudiantGroupeCreateManyEtudiantInput | EtudiantGroupeCreateManyEtudiantInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type MessageGroupeCreateWithoutAuteurInput = {
+    contenu: string
+    date?: Date | string
+    groupe: GroupeCreateNestedOneWithoutMessagesInput
+  }
+
+  export type MessageGroupeUncheckedCreateWithoutAuteurInput = {
+    id?: number
+    contenu: string
+    date?: Date | string
+    groupeId: number
+  }
+
+  export type MessageGroupeCreateOrConnectWithoutAuteurInput = {
+    where: MessageGroupeWhereUniqueInput
+    create: XOR<MessageGroupeCreateWithoutAuteurInput, MessageGroupeUncheckedCreateWithoutAuteurInput>
+  }
+
+  export type MessageGroupeCreateManyAuteurInputEnvelope = {
+    data: MessageGroupeCreateManyAuteurInput | MessageGroupeCreateManyAuteurInput[]
     skipDuplicates?: boolean
   }
 
@@ -10634,6 +16734,101 @@ export namespace Prisma {
     etudiantId?: IntFilter<"Signaler"> | number
   }
 
+  export type AmitieUpsertWithWhereUniqueWithoutDemandeurInput = {
+    where: AmitieWhereUniqueInput
+    update: XOR<AmitieUpdateWithoutDemandeurInput, AmitieUncheckedUpdateWithoutDemandeurInput>
+    create: XOR<AmitieCreateWithoutDemandeurInput, AmitieUncheckedCreateWithoutDemandeurInput>
+  }
+
+  export type AmitieUpdateWithWhereUniqueWithoutDemandeurInput = {
+    where: AmitieWhereUniqueInput
+    data: XOR<AmitieUpdateWithoutDemandeurInput, AmitieUncheckedUpdateWithoutDemandeurInput>
+  }
+
+  export type AmitieUpdateManyWithWhereWithoutDemandeurInput = {
+    where: AmitieScalarWhereInput
+    data: XOR<AmitieUpdateManyMutationInput, AmitieUncheckedUpdateManyWithoutDemandeurInput>
+  }
+
+  export type AmitieScalarWhereInput = {
+    AND?: AmitieScalarWhereInput | AmitieScalarWhereInput[]
+    OR?: AmitieScalarWhereInput[]
+    NOT?: AmitieScalarWhereInput | AmitieScalarWhereInput[]
+    id?: IntFilter<"Amitie"> | number
+    demandeurId?: IntFilter<"Amitie"> | number
+    receveurId?: IntFilter<"Amitie"> | number
+    statut?: EnumStatutAmitieFilter<"Amitie"> | $Enums.StatutAmitie
+    dateDemande?: DateTimeFilter<"Amitie"> | Date | string
+    dateAcceptation?: DateTimeNullableFilter<"Amitie"> | Date | string | null
+  }
+
+  export type AmitieUpsertWithWhereUniqueWithoutReceveurInput = {
+    where: AmitieWhereUniqueInput
+    update: XOR<AmitieUpdateWithoutReceveurInput, AmitieUncheckedUpdateWithoutReceveurInput>
+    create: XOR<AmitieCreateWithoutReceveurInput, AmitieUncheckedCreateWithoutReceveurInput>
+  }
+
+  export type AmitieUpdateWithWhereUniqueWithoutReceveurInput = {
+    where: AmitieWhereUniqueInput
+    data: XOR<AmitieUpdateWithoutReceveurInput, AmitieUncheckedUpdateWithoutReceveurInput>
+  }
+
+  export type AmitieUpdateManyWithWhereWithoutReceveurInput = {
+    where: AmitieScalarWhereInput
+    data: XOR<AmitieUpdateManyMutationInput, AmitieUncheckedUpdateManyWithoutReceveurInput>
+  }
+
+  export type EtudiantGroupeUpsertWithWhereUniqueWithoutEtudiantInput = {
+    where: EtudiantGroupeWhereUniqueInput
+    update: XOR<EtudiantGroupeUpdateWithoutEtudiantInput, EtudiantGroupeUncheckedUpdateWithoutEtudiantInput>
+    create: XOR<EtudiantGroupeCreateWithoutEtudiantInput, EtudiantGroupeUncheckedCreateWithoutEtudiantInput>
+  }
+
+  export type EtudiantGroupeUpdateWithWhereUniqueWithoutEtudiantInput = {
+    where: EtudiantGroupeWhereUniqueInput
+    data: XOR<EtudiantGroupeUpdateWithoutEtudiantInput, EtudiantGroupeUncheckedUpdateWithoutEtudiantInput>
+  }
+
+  export type EtudiantGroupeUpdateManyWithWhereWithoutEtudiantInput = {
+    where: EtudiantGroupeScalarWhereInput
+    data: XOR<EtudiantGroupeUpdateManyMutationInput, EtudiantGroupeUncheckedUpdateManyWithoutEtudiantInput>
+  }
+
+  export type EtudiantGroupeScalarWhereInput = {
+    AND?: EtudiantGroupeScalarWhereInput | EtudiantGroupeScalarWhereInput[]
+    OR?: EtudiantGroupeScalarWhereInput[]
+    NOT?: EtudiantGroupeScalarWhereInput | EtudiantGroupeScalarWhereInput[]
+    etudiantId?: IntFilter<"EtudiantGroupe"> | number
+    groupeId?: IntFilter<"EtudiantGroupe"> | number
+  }
+
+  export type MessageGroupeUpsertWithWhereUniqueWithoutAuteurInput = {
+    where: MessageGroupeWhereUniqueInput
+    update: XOR<MessageGroupeUpdateWithoutAuteurInput, MessageGroupeUncheckedUpdateWithoutAuteurInput>
+    create: XOR<MessageGroupeCreateWithoutAuteurInput, MessageGroupeUncheckedCreateWithoutAuteurInput>
+  }
+
+  export type MessageGroupeUpdateWithWhereUniqueWithoutAuteurInput = {
+    where: MessageGroupeWhereUniqueInput
+    data: XOR<MessageGroupeUpdateWithoutAuteurInput, MessageGroupeUncheckedUpdateWithoutAuteurInput>
+  }
+
+  export type MessageGroupeUpdateManyWithWhereWithoutAuteurInput = {
+    where: MessageGroupeScalarWhereInput
+    data: XOR<MessageGroupeUpdateManyMutationInput, MessageGroupeUncheckedUpdateManyWithoutAuteurInput>
+  }
+
+  export type MessageGroupeScalarWhereInput = {
+    AND?: MessageGroupeScalarWhereInput | MessageGroupeScalarWhereInput[]
+    OR?: MessageGroupeScalarWhereInput[]
+    NOT?: MessageGroupeScalarWhereInput | MessageGroupeScalarWhereInput[]
+    id?: IntFilter<"MessageGroupe"> | number
+    contenu?: StringFilter<"MessageGroupe"> | string
+    date?: DateTimeFilter<"MessageGroupe"> | Date | string
+    auteurId?: IntFilter<"MessageGroupe"> | number
+    groupeId?: IntFilter<"MessageGroupe"> | number
+  }
+
   export type EtudiantCreateWithoutMessagesEnvoyesInput = {
     prenom?: string | null
     nom: string
@@ -10650,6 +16845,10 @@ export namespace Prisma {
     annonces?: AnnonceCreateNestedManyWithoutAuteurInput
     commentaires?: CommentaireCreateNestedManyWithoutAuteurInput
     signalements?: SignalerCreateNestedManyWithoutEtudiantInput
+    demandesEnvoyees?: AmitieCreateNestedManyWithoutDemandeurInput
+    demandesRecues?: AmitieCreateNestedManyWithoutReceveurInput
+    groupes?: EtudiantGroupeCreateNestedManyWithoutEtudiantInput
+    messagesGroupes?: MessageGroupeCreateNestedManyWithoutAuteurInput
   }
 
   export type EtudiantUncheckedCreateWithoutMessagesEnvoyesInput = {
@@ -10669,6 +16868,10 @@ export namespace Prisma {
     annonces?: AnnonceUncheckedCreateNestedManyWithoutAuteurInput
     commentaires?: CommentaireUncheckedCreateNestedManyWithoutAuteurInput
     signalements?: SignalerUncheckedCreateNestedManyWithoutEtudiantInput
+    demandesEnvoyees?: AmitieUncheckedCreateNestedManyWithoutDemandeurInput
+    demandesRecues?: AmitieUncheckedCreateNestedManyWithoutReceveurInput
+    groupes?: EtudiantGroupeUncheckedCreateNestedManyWithoutEtudiantInput
+    messagesGroupes?: MessageGroupeUncheckedCreateNestedManyWithoutAuteurInput
   }
 
   export type EtudiantCreateOrConnectWithoutMessagesEnvoyesInput = {
@@ -10721,6 +16924,10 @@ export namespace Prisma {
     annonces?: AnnonceUpdateManyWithoutAuteurNestedInput
     commentaires?: CommentaireUpdateManyWithoutAuteurNestedInput
     signalements?: SignalerUpdateManyWithoutEtudiantNestedInput
+    demandesEnvoyees?: AmitieUpdateManyWithoutDemandeurNestedInput
+    demandesRecues?: AmitieUpdateManyWithoutReceveurNestedInput
+    groupes?: EtudiantGroupeUpdateManyWithoutEtudiantNestedInput
+    messagesGroupes?: MessageGroupeUpdateManyWithoutAuteurNestedInput
   }
 
   export type EtudiantUncheckedUpdateWithoutMessagesEnvoyesInput = {
@@ -10740,6 +16947,10 @@ export namespace Prisma {
     annonces?: AnnonceUncheckedUpdateManyWithoutAuteurNestedInput
     commentaires?: CommentaireUncheckedUpdateManyWithoutAuteurNestedInput
     signalements?: SignalerUncheckedUpdateManyWithoutEtudiantNestedInput
+    demandesEnvoyees?: AmitieUncheckedUpdateManyWithoutDemandeurNestedInput
+    demandesRecues?: AmitieUncheckedUpdateManyWithoutReceveurNestedInput
+    groupes?: EtudiantGroupeUncheckedUpdateManyWithoutEtudiantNestedInput
+    messagesGroupes?: MessageGroupeUncheckedUpdateManyWithoutAuteurNestedInput
   }
 
   export type RecevoireUpsertWithWhereUniqueWithoutMessageInput = {
@@ -10774,6 +16985,10 @@ export namespace Prisma {
     annonces?: AnnonceCreateNestedManyWithoutAuteurInput
     commentaires?: CommentaireCreateNestedManyWithoutAuteurInput
     signalements?: SignalerCreateNestedManyWithoutEtudiantInput
+    demandesEnvoyees?: AmitieCreateNestedManyWithoutDemandeurInput
+    demandesRecues?: AmitieCreateNestedManyWithoutReceveurInput
+    groupes?: EtudiantGroupeCreateNestedManyWithoutEtudiantInput
+    messagesGroupes?: MessageGroupeCreateNestedManyWithoutAuteurInput
   }
 
   export type EtudiantUncheckedCreateWithoutMessagesRecusInput = {
@@ -10793,6 +17008,10 @@ export namespace Prisma {
     annonces?: AnnonceUncheckedCreateNestedManyWithoutAuteurInput
     commentaires?: CommentaireUncheckedCreateNestedManyWithoutAuteurInput
     signalements?: SignalerUncheckedCreateNestedManyWithoutEtudiantInput
+    demandesEnvoyees?: AmitieUncheckedCreateNestedManyWithoutDemandeurInput
+    demandesRecues?: AmitieUncheckedCreateNestedManyWithoutReceveurInput
+    groupes?: EtudiantGroupeUncheckedCreateNestedManyWithoutEtudiantInput
+    messagesGroupes?: MessageGroupeUncheckedCreateNestedManyWithoutAuteurInput
   }
 
   export type EtudiantCreateOrConnectWithoutMessagesRecusInput = {
@@ -10845,6 +17064,10 @@ export namespace Prisma {
     annonces?: AnnonceUpdateManyWithoutAuteurNestedInput
     commentaires?: CommentaireUpdateManyWithoutAuteurNestedInput
     signalements?: SignalerUpdateManyWithoutEtudiantNestedInput
+    demandesEnvoyees?: AmitieUpdateManyWithoutDemandeurNestedInput
+    demandesRecues?: AmitieUpdateManyWithoutReceveurNestedInput
+    groupes?: EtudiantGroupeUpdateManyWithoutEtudiantNestedInput
+    messagesGroupes?: MessageGroupeUpdateManyWithoutAuteurNestedInput
   }
 
   export type EtudiantUncheckedUpdateWithoutMessagesRecusInput = {
@@ -10864,6 +17087,10 @@ export namespace Prisma {
     annonces?: AnnonceUncheckedUpdateManyWithoutAuteurNestedInput
     commentaires?: CommentaireUncheckedUpdateManyWithoutAuteurNestedInput
     signalements?: SignalerUncheckedUpdateManyWithoutEtudiantNestedInput
+    demandesEnvoyees?: AmitieUncheckedUpdateManyWithoutDemandeurNestedInput
+    demandesRecues?: AmitieUncheckedUpdateManyWithoutReceveurNestedInput
+    groupes?: EtudiantGroupeUncheckedUpdateManyWithoutEtudiantNestedInput
+    messagesGroupes?: MessageGroupeUncheckedUpdateManyWithoutAuteurNestedInput
   }
 
   export type MessageUpsertWithoutReceveursInput = {
@@ -10906,6 +17133,10 @@ export namespace Prisma {
     messagesRecus?: RecevoireCreateNestedManyWithoutEtudiantInput
     commentaires?: CommentaireCreateNestedManyWithoutAuteurInput
     signalements?: SignalerCreateNestedManyWithoutEtudiantInput
+    demandesEnvoyees?: AmitieCreateNestedManyWithoutDemandeurInput
+    demandesRecues?: AmitieCreateNestedManyWithoutReceveurInput
+    groupes?: EtudiantGroupeCreateNestedManyWithoutEtudiantInput
+    messagesGroupes?: MessageGroupeCreateNestedManyWithoutAuteurInput
   }
 
   export type EtudiantUncheckedCreateWithoutAnnoncesInput = {
@@ -10925,6 +17156,10 @@ export namespace Prisma {
     messagesRecus?: RecevoireUncheckedCreateNestedManyWithoutEtudiantInput
     commentaires?: CommentaireUncheckedCreateNestedManyWithoutAuteurInput
     signalements?: SignalerUncheckedCreateNestedManyWithoutEtudiantInput
+    demandesEnvoyees?: AmitieUncheckedCreateNestedManyWithoutDemandeurInput
+    demandesRecues?: AmitieUncheckedCreateNestedManyWithoutReceveurInput
+    groupes?: EtudiantGroupeUncheckedCreateNestedManyWithoutEtudiantInput
+    messagesGroupes?: MessageGroupeUncheckedCreateNestedManyWithoutAuteurInput
   }
 
   export type EtudiantCreateOrConnectWithoutAnnoncesInput = {
@@ -10998,6 +17233,10 @@ export namespace Prisma {
     messagesRecus?: RecevoireUpdateManyWithoutEtudiantNestedInput
     commentaires?: CommentaireUpdateManyWithoutAuteurNestedInput
     signalements?: SignalerUpdateManyWithoutEtudiantNestedInput
+    demandesEnvoyees?: AmitieUpdateManyWithoutDemandeurNestedInput
+    demandesRecues?: AmitieUpdateManyWithoutReceveurNestedInput
+    groupes?: EtudiantGroupeUpdateManyWithoutEtudiantNestedInput
+    messagesGroupes?: MessageGroupeUpdateManyWithoutAuteurNestedInput
   }
 
   export type EtudiantUncheckedUpdateWithoutAnnoncesInput = {
@@ -11017,6 +17256,10 @@ export namespace Prisma {
     messagesRecus?: RecevoireUncheckedUpdateManyWithoutEtudiantNestedInput
     commentaires?: CommentaireUncheckedUpdateManyWithoutAuteurNestedInput
     signalements?: SignalerUncheckedUpdateManyWithoutEtudiantNestedInput
+    demandesEnvoyees?: AmitieUncheckedUpdateManyWithoutDemandeurNestedInput
+    demandesRecues?: AmitieUncheckedUpdateManyWithoutReceveurNestedInput
+    groupes?: EtudiantGroupeUncheckedUpdateManyWithoutEtudiantNestedInput
+    messagesGroupes?: MessageGroupeUncheckedUpdateManyWithoutAuteurNestedInput
   }
 
   export type CommentaireUpsertWithWhereUniqueWithoutAnnonceInput = {
@@ -11067,6 +17310,10 @@ export namespace Prisma {
     messagesRecus?: RecevoireCreateNestedManyWithoutEtudiantInput
     annonces?: AnnonceCreateNestedManyWithoutAuteurInput
     signalements?: SignalerCreateNestedManyWithoutEtudiantInput
+    demandesEnvoyees?: AmitieCreateNestedManyWithoutDemandeurInput
+    demandesRecues?: AmitieCreateNestedManyWithoutReceveurInput
+    groupes?: EtudiantGroupeCreateNestedManyWithoutEtudiantInput
+    messagesGroupes?: MessageGroupeCreateNestedManyWithoutAuteurInput
   }
 
   export type EtudiantUncheckedCreateWithoutCommentairesInput = {
@@ -11086,6 +17333,10 @@ export namespace Prisma {
     messagesRecus?: RecevoireUncheckedCreateNestedManyWithoutEtudiantInput
     annonces?: AnnonceUncheckedCreateNestedManyWithoutAuteurInput
     signalements?: SignalerUncheckedCreateNestedManyWithoutEtudiantInput
+    demandesEnvoyees?: AmitieUncheckedCreateNestedManyWithoutDemandeurInput
+    demandesRecues?: AmitieUncheckedCreateNestedManyWithoutReceveurInput
+    groupes?: EtudiantGroupeUncheckedCreateNestedManyWithoutEtudiantInput
+    messagesGroupes?: MessageGroupeUncheckedCreateNestedManyWithoutAuteurInput
   }
 
   export type EtudiantCreateOrConnectWithoutCommentairesInput = {
@@ -11144,6 +17395,10 @@ export namespace Prisma {
     messagesRecus?: RecevoireUpdateManyWithoutEtudiantNestedInput
     annonces?: AnnonceUpdateManyWithoutAuteurNestedInput
     signalements?: SignalerUpdateManyWithoutEtudiantNestedInput
+    demandesEnvoyees?: AmitieUpdateManyWithoutDemandeurNestedInput
+    demandesRecues?: AmitieUpdateManyWithoutReceveurNestedInput
+    groupes?: EtudiantGroupeUpdateManyWithoutEtudiantNestedInput
+    messagesGroupes?: MessageGroupeUpdateManyWithoutAuteurNestedInput
   }
 
   export type EtudiantUncheckedUpdateWithoutCommentairesInput = {
@@ -11163,6 +17418,10 @@ export namespace Prisma {
     messagesRecus?: RecevoireUncheckedUpdateManyWithoutEtudiantNestedInput
     annonces?: AnnonceUncheckedUpdateManyWithoutAuteurNestedInput
     signalements?: SignalerUncheckedUpdateManyWithoutEtudiantNestedInput
+    demandesEnvoyees?: AmitieUncheckedUpdateManyWithoutDemandeurNestedInput
+    demandesRecues?: AmitieUncheckedUpdateManyWithoutReceveurNestedInput
+    groupes?: EtudiantGroupeUncheckedUpdateManyWithoutEtudiantNestedInput
+    messagesGroupes?: MessageGroupeUncheckedUpdateManyWithoutAuteurNestedInput
   }
 
   export type AnnonceUpsertWithoutCommentairesInput = {
@@ -11235,6 +17494,10 @@ export namespace Prisma {
     messagesRecus?: RecevoireCreateNestedManyWithoutEtudiantInput
     annonces?: AnnonceCreateNestedManyWithoutAuteurInput
     commentaires?: CommentaireCreateNestedManyWithoutAuteurInput
+    demandesEnvoyees?: AmitieCreateNestedManyWithoutDemandeurInput
+    demandesRecues?: AmitieCreateNestedManyWithoutReceveurInput
+    groupes?: EtudiantGroupeCreateNestedManyWithoutEtudiantInput
+    messagesGroupes?: MessageGroupeCreateNestedManyWithoutAuteurInput
   }
 
   export type EtudiantUncheckedCreateWithoutSignalementsInput = {
@@ -11254,6 +17517,10 @@ export namespace Prisma {
     messagesRecus?: RecevoireUncheckedCreateNestedManyWithoutEtudiantInput
     annonces?: AnnonceUncheckedCreateNestedManyWithoutAuteurInput
     commentaires?: CommentaireUncheckedCreateNestedManyWithoutAuteurInput
+    demandesEnvoyees?: AmitieUncheckedCreateNestedManyWithoutDemandeurInput
+    demandesRecues?: AmitieUncheckedCreateNestedManyWithoutReceveurInput
+    groupes?: EtudiantGroupeUncheckedCreateNestedManyWithoutEtudiantInput
+    messagesGroupes?: MessageGroupeUncheckedCreateNestedManyWithoutAuteurInput
   }
 
   export type EtudiantCreateOrConnectWithoutSignalementsInput = {
@@ -11318,6 +17585,10 @@ export namespace Prisma {
     messagesRecus?: RecevoireUpdateManyWithoutEtudiantNestedInput
     annonces?: AnnonceUpdateManyWithoutAuteurNestedInput
     commentaires?: CommentaireUpdateManyWithoutAuteurNestedInput
+    demandesEnvoyees?: AmitieUpdateManyWithoutDemandeurNestedInput
+    demandesRecues?: AmitieUpdateManyWithoutReceveurNestedInput
+    groupes?: EtudiantGroupeUpdateManyWithoutEtudiantNestedInput
+    messagesGroupes?: MessageGroupeUpdateManyWithoutAuteurNestedInput
   }
 
   export type EtudiantUncheckedUpdateWithoutSignalementsInput = {
@@ -11337,6 +17608,591 @@ export namespace Prisma {
     messagesRecus?: RecevoireUncheckedUpdateManyWithoutEtudiantNestedInput
     annonces?: AnnonceUncheckedUpdateManyWithoutAuteurNestedInput
     commentaires?: CommentaireUncheckedUpdateManyWithoutAuteurNestedInput
+    demandesEnvoyees?: AmitieUncheckedUpdateManyWithoutDemandeurNestedInput
+    demandesRecues?: AmitieUncheckedUpdateManyWithoutReceveurNestedInput
+    groupes?: EtudiantGroupeUncheckedUpdateManyWithoutEtudiantNestedInput
+    messagesGroupes?: MessageGroupeUncheckedUpdateManyWithoutAuteurNestedInput
+  }
+
+  export type EtudiantCreateWithoutDemandesEnvoyeesInput = {
+    prenom?: string | null
+    nom: string
+    email: string
+    motDePasse: string
+    dateInscription?: Date | string
+    image?: string | null
+    accessToken?: string | null
+    refreshToken?: string | null
+    isAuthGoogle?: boolean
+    otpCode?: string | null
+    otpExpiresAt?: Date | string | null
+    messagesEnvoyes?: MessageCreateNestedManyWithoutEtudiantInput
+    messagesRecus?: RecevoireCreateNestedManyWithoutEtudiantInput
+    annonces?: AnnonceCreateNestedManyWithoutAuteurInput
+    commentaires?: CommentaireCreateNestedManyWithoutAuteurInput
+    signalements?: SignalerCreateNestedManyWithoutEtudiantInput
+    demandesRecues?: AmitieCreateNestedManyWithoutReceveurInput
+    groupes?: EtudiantGroupeCreateNestedManyWithoutEtudiantInput
+    messagesGroupes?: MessageGroupeCreateNestedManyWithoutAuteurInput
+  }
+
+  export type EtudiantUncheckedCreateWithoutDemandesEnvoyeesInput = {
+    id?: number
+    prenom?: string | null
+    nom: string
+    email: string
+    motDePasse: string
+    dateInscription?: Date | string
+    image?: string | null
+    accessToken?: string | null
+    refreshToken?: string | null
+    isAuthGoogle?: boolean
+    otpCode?: string | null
+    otpExpiresAt?: Date | string | null
+    messagesEnvoyes?: MessageUncheckedCreateNestedManyWithoutEtudiantInput
+    messagesRecus?: RecevoireUncheckedCreateNestedManyWithoutEtudiantInput
+    annonces?: AnnonceUncheckedCreateNestedManyWithoutAuteurInput
+    commentaires?: CommentaireUncheckedCreateNestedManyWithoutAuteurInput
+    signalements?: SignalerUncheckedCreateNestedManyWithoutEtudiantInput
+    demandesRecues?: AmitieUncheckedCreateNestedManyWithoutReceveurInput
+    groupes?: EtudiantGroupeUncheckedCreateNestedManyWithoutEtudiantInput
+    messagesGroupes?: MessageGroupeUncheckedCreateNestedManyWithoutAuteurInput
+  }
+
+  export type EtudiantCreateOrConnectWithoutDemandesEnvoyeesInput = {
+    where: EtudiantWhereUniqueInput
+    create: XOR<EtudiantCreateWithoutDemandesEnvoyeesInput, EtudiantUncheckedCreateWithoutDemandesEnvoyeesInput>
+  }
+
+  export type EtudiantCreateWithoutDemandesRecuesInput = {
+    prenom?: string | null
+    nom: string
+    email: string
+    motDePasse: string
+    dateInscription?: Date | string
+    image?: string | null
+    accessToken?: string | null
+    refreshToken?: string | null
+    isAuthGoogle?: boolean
+    otpCode?: string | null
+    otpExpiresAt?: Date | string | null
+    messagesEnvoyes?: MessageCreateNestedManyWithoutEtudiantInput
+    messagesRecus?: RecevoireCreateNestedManyWithoutEtudiantInput
+    annonces?: AnnonceCreateNestedManyWithoutAuteurInput
+    commentaires?: CommentaireCreateNestedManyWithoutAuteurInput
+    signalements?: SignalerCreateNestedManyWithoutEtudiantInput
+    demandesEnvoyees?: AmitieCreateNestedManyWithoutDemandeurInput
+    groupes?: EtudiantGroupeCreateNestedManyWithoutEtudiantInput
+    messagesGroupes?: MessageGroupeCreateNestedManyWithoutAuteurInput
+  }
+
+  export type EtudiantUncheckedCreateWithoutDemandesRecuesInput = {
+    id?: number
+    prenom?: string | null
+    nom: string
+    email: string
+    motDePasse: string
+    dateInscription?: Date | string
+    image?: string | null
+    accessToken?: string | null
+    refreshToken?: string | null
+    isAuthGoogle?: boolean
+    otpCode?: string | null
+    otpExpiresAt?: Date | string | null
+    messagesEnvoyes?: MessageUncheckedCreateNestedManyWithoutEtudiantInput
+    messagesRecus?: RecevoireUncheckedCreateNestedManyWithoutEtudiantInput
+    annonces?: AnnonceUncheckedCreateNestedManyWithoutAuteurInput
+    commentaires?: CommentaireUncheckedCreateNestedManyWithoutAuteurInput
+    signalements?: SignalerUncheckedCreateNestedManyWithoutEtudiantInput
+    demandesEnvoyees?: AmitieUncheckedCreateNestedManyWithoutDemandeurInput
+    groupes?: EtudiantGroupeUncheckedCreateNestedManyWithoutEtudiantInput
+    messagesGroupes?: MessageGroupeUncheckedCreateNestedManyWithoutAuteurInput
+  }
+
+  export type EtudiantCreateOrConnectWithoutDemandesRecuesInput = {
+    where: EtudiantWhereUniqueInput
+    create: XOR<EtudiantCreateWithoutDemandesRecuesInput, EtudiantUncheckedCreateWithoutDemandesRecuesInput>
+  }
+
+  export type EtudiantUpsertWithoutDemandesEnvoyeesInput = {
+    update: XOR<EtudiantUpdateWithoutDemandesEnvoyeesInput, EtudiantUncheckedUpdateWithoutDemandesEnvoyeesInput>
+    create: XOR<EtudiantCreateWithoutDemandesEnvoyeesInput, EtudiantUncheckedCreateWithoutDemandesEnvoyeesInput>
+    where?: EtudiantWhereInput
+  }
+
+  export type EtudiantUpdateToOneWithWhereWithoutDemandesEnvoyeesInput = {
+    where?: EtudiantWhereInput
+    data: XOR<EtudiantUpdateWithoutDemandesEnvoyeesInput, EtudiantUncheckedUpdateWithoutDemandesEnvoyeesInput>
+  }
+
+  export type EtudiantUpdateWithoutDemandesEnvoyeesInput = {
+    prenom?: NullableStringFieldUpdateOperationsInput | string | null
+    nom?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    motDePasse?: StringFieldUpdateOperationsInput | string
+    dateInscription?: DateTimeFieldUpdateOperationsInput | Date | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    accessToken?: NullableStringFieldUpdateOperationsInput | string | null
+    refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
+    isAuthGoogle?: BoolFieldUpdateOperationsInput | boolean
+    otpCode?: NullableStringFieldUpdateOperationsInput | string | null
+    otpExpiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    messagesEnvoyes?: MessageUpdateManyWithoutEtudiantNestedInput
+    messagesRecus?: RecevoireUpdateManyWithoutEtudiantNestedInput
+    annonces?: AnnonceUpdateManyWithoutAuteurNestedInput
+    commentaires?: CommentaireUpdateManyWithoutAuteurNestedInput
+    signalements?: SignalerUpdateManyWithoutEtudiantNestedInput
+    demandesRecues?: AmitieUpdateManyWithoutReceveurNestedInput
+    groupes?: EtudiantGroupeUpdateManyWithoutEtudiantNestedInput
+    messagesGroupes?: MessageGroupeUpdateManyWithoutAuteurNestedInput
+  }
+
+  export type EtudiantUncheckedUpdateWithoutDemandesEnvoyeesInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    prenom?: NullableStringFieldUpdateOperationsInput | string | null
+    nom?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    motDePasse?: StringFieldUpdateOperationsInput | string
+    dateInscription?: DateTimeFieldUpdateOperationsInput | Date | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    accessToken?: NullableStringFieldUpdateOperationsInput | string | null
+    refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
+    isAuthGoogle?: BoolFieldUpdateOperationsInput | boolean
+    otpCode?: NullableStringFieldUpdateOperationsInput | string | null
+    otpExpiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    messagesEnvoyes?: MessageUncheckedUpdateManyWithoutEtudiantNestedInput
+    messagesRecus?: RecevoireUncheckedUpdateManyWithoutEtudiantNestedInput
+    annonces?: AnnonceUncheckedUpdateManyWithoutAuteurNestedInput
+    commentaires?: CommentaireUncheckedUpdateManyWithoutAuteurNestedInput
+    signalements?: SignalerUncheckedUpdateManyWithoutEtudiantNestedInput
+    demandesRecues?: AmitieUncheckedUpdateManyWithoutReceveurNestedInput
+    groupes?: EtudiantGroupeUncheckedUpdateManyWithoutEtudiantNestedInput
+    messagesGroupes?: MessageGroupeUncheckedUpdateManyWithoutAuteurNestedInput
+  }
+
+  export type EtudiantUpsertWithoutDemandesRecuesInput = {
+    update: XOR<EtudiantUpdateWithoutDemandesRecuesInput, EtudiantUncheckedUpdateWithoutDemandesRecuesInput>
+    create: XOR<EtudiantCreateWithoutDemandesRecuesInput, EtudiantUncheckedCreateWithoutDemandesRecuesInput>
+    where?: EtudiantWhereInput
+  }
+
+  export type EtudiantUpdateToOneWithWhereWithoutDemandesRecuesInput = {
+    where?: EtudiantWhereInput
+    data: XOR<EtudiantUpdateWithoutDemandesRecuesInput, EtudiantUncheckedUpdateWithoutDemandesRecuesInput>
+  }
+
+  export type EtudiantUpdateWithoutDemandesRecuesInput = {
+    prenom?: NullableStringFieldUpdateOperationsInput | string | null
+    nom?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    motDePasse?: StringFieldUpdateOperationsInput | string
+    dateInscription?: DateTimeFieldUpdateOperationsInput | Date | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    accessToken?: NullableStringFieldUpdateOperationsInput | string | null
+    refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
+    isAuthGoogle?: BoolFieldUpdateOperationsInput | boolean
+    otpCode?: NullableStringFieldUpdateOperationsInput | string | null
+    otpExpiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    messagesEnvoyes?: MessageUpdateManyWithoutEtudiantNestedInput
+    messagesRecus?: RecevoireUpdateManyWithoutEtudiantNestedInput
+    annonces?: AnnonceUpdateManyWithoutAuteurNestedInput
+    commentaires?: CommentaireUpdateManyWithoutAuteurNestedInput
+    signalements?: SignalerUpdateManyWithoutEtudiantNestedInput
+    demandesEnvoyees?: AmitieUpdateManyWithoutDemandeurNestedInput
+    groupes?: EtudiantGroupeUpdateManyWithoutEtudiantNestedInput
+    messagesGroupes?: MessageGroupeUpdateManyWithoutAuteurNestedInput
+  }
+
+  export type EtudiantUncheckedUpdateWithoutDemandesRecuesInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    prenom?: NullableStringFieldUpdateOperationsInput | string | null
+    nom?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    motDePasse?: StringFieldUpdateOperationsInput | string
+    dateInscription?: DateTimeFieldUpdateOperationsInput | Date | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    accessToken?: NullableStringFieldUpdateOperationsInput | string | null
+    refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
+    isAuthGoogle?: BoolFieldUpdateOperationsInput | boolean
+    otpCode?: NullableStringFieldUpdateOperationsInput | string | null
+    otpExpiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    messagesEnvoyes?: MessageUncheckedUpdateManyWithoutEtudiantNestedInput
+    messagesRecus?: RecevoireUncheckedUpdateManyWithoutEtudiantNestedInput
+    annonces?: AnnonceUncheckedUpdateManyWithoutAuteurNestedInput
+    commentaires?: CommentaireUncheckedUpdateManyWithoutAuteurNestedInput
+    signalements?: SignalerUncheckedUpdateManyWithoutEtudiantNestedInput
+    demandesEnvoyees?: AmitieUncheckedUpdateManyWithoutDemandeurNestedInput
+    groupes?: EtudiantGroupeUncheckedUpdateManyWithoutEtudiantNestedInput
+    messagesGroupes?: MessageGroupeUncheckedUpdateManyWithoutAuteurNestedInput
+  }
+
+  export type EtudiantGroupeCreateWithoutGroupeInput = {
+    etudiant: EtudiantCreateNestedOneWithoutGroupesInput
+  }
+
+  export type EtudiantGroupeUncheckedCreateWithoutGroupeInput = {
+    etudiantId: number
+  }
+
+  export type EtudiantGroupeCreateOrConnectWithoutGroupeInput = {
+    where: EtudiantGroupeWhereUniqueInput
+    create: XOR<EtudiantGroupeCreateWithoutGroupeInput, EtudiantGroupeUncheckedCreateWithoutGroupeInput>
+  }
+
+  export type EtudiantGroupeCreateManyGroupeInputEnvelope = {
+    data: EtudiantGroupeCreateManyGroupeInput | EtudiantGroupeCreateManyGroupeInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type MessageGroupeCreateWithoutGroupeInput = {
+    contenu: string
+    date?: Date | string
+    auteur: EtudiantCreateNestedOneWithoutMessagesGroupesInput
+  }
+
+  export type MessageGroupeUncheckedCreateWithoutGroupeInput = {
+    id?: number
+    contenu: string
+    date?: Date | string
+    auteurId: number
+  }
+
+  export type MessageGroupeCreateOrConnectWithoutGroupeInput = {
+    where: MessageGroupeWhereUniqueInput
+    create: XOR<MessageGroupeCreateWithoutGroupeInput, MessageGroupeUncheckedCreateWithoutGroupeInput>
+  }
+
+  export type MessageGroupeCreateManyGroupeInputEnvelope = {
+    data: MessageGroupeCreateManyGroupeInput | MessageGroupeCreateManyGroupeInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type EtudiantGroupeUpsertWithWhereUniqueWithoutGroupeInput = {
+    where: EtudiantGroupeWhereUniqueInput
+    update: XOR<EtudiantGroupeUpdateWithoutGroupeInput, EtudiantGroupeUncheckedUpdateWithoutGroupeInput>
+    create: XOR<EtudiantGroupeCreateWithoutGroupeInput, EtudiantGroupeUncheckedCreateWithoutGroupeInput>
+  }
+
+  export type EtudiantGroupeUpdateWithWhereUniqueWithoutGroupeInput = {
+    where: EtudiantGroupeWhereUniqueInput
+    data: XOR<EtudiantGroupeUpdateWithoutGroupeInput, EtudiantGroupeUncheckedUpdateWithoutGroupeInput>
+  }
+
+  export type EtudiantGroupeUpdateManyWithWhereWithoutGroupeInput = {
+    where: EtudiantGroupeScalarWhereInput
+    data: XOR<EtudiantGroupeUpdateManyMutationInput, EtudiantGroupeUncheckedUpdateManyWithoutGroupeInput>
+  }
+
+  export type MessageGroupeUpsertWithWhereUniqueWithoutGroupeInput = {
+    where: MessageGroupeWhereUniqueInput
+    update: XOR<MessageGroupeUpdateWithoutGroupeInput, MessageGroupeUncheckedUpdateWithoutGroupeInput>
+    create: XOR<MessageGroupeCreateWithoutGroupeInput, MessageGroupeUncheckedCreateWithoutGroupeInput>
+  }
+
+  export type MessageGroupeUpdateWithWhereUniqueWithoutGroupeInput = {
+    where: MessageGroupeWhereUniqueInput
+    data: XOR<MessageGroupeUpdateWithoutGroupeInput, MessageGroupeUncheckedUpdateWithoutGroupeInput>
+  }
+
+  export type MessageGroupeUpdateManyWithWhereWithoutGroupeInput = {
+    where: MessageGroupeScalarWhereInput
+    data: XOR<MessageGroupeUpdateManyMutationInput, MessageGroupeUncheckedUpdateManyWithoutGroupeInput>
+  }
+
+  export type EtudiantCreateWithoutGroupesInput = {
+    prenom?: string | null
+    nom: string
+    email: string
+    motDePasse: string
+    dateInscription?: Date | string
+    image?: string | null
+    accessToken?: string | null
+    refreshToken?: string | null
+    isAuthGoogle?: boolean
+    otpCode?: string | null
+    otpExpiresAt?: Date | string | null
+    messagesEnvoyes?: MessageCreateNestedManyWithoutEtudiantInput
+    messagesRecus?: RecevoireCreateNestedManyWithoutEtudiantInput
+    annonces?: AnnonceCreateNestedManyWithoutAuteurInput
+    commentaires?: CommentaireCreateNestedManyWithoutAuteurInput
+    signalements?: SignalerCreateNestedManyWithoutEtudiantInput
+    demandesEnvoyees?: AmitieCreateNestedManyWithoutDemandeurInput
+    demandesRecues?: AmitieCreateNestedManyWithoutReceveurInput
+    messagesGroupes?: MessageGroupeCreateNestedManyWithoutAuteurInput
+  }
+
+  export type EtudiantUncheckedCreateWithoutGroupesInput = {
+    id?: number
+    prenom?: string | null
+    nom: string
+    email: string
+    motDePasse: string
+    dateInscription?: Date | string
+    image?: string | null
+    accessToken?: string | null
+    refreshToken?: string | null
+    isAuthGoogle?: boolean
+    otpCode?: string | null
+    otpExpiresAt?: Date | string | null
+    messagesEnvoyes?: MessageUncheckedCreateNestedManyWithoutEtudiantInput
+    messagesRecus?: RecevoireUncheckedCreateNestedManyWithoutEtudiantInput
+    annonces?: AnnonceUncheckedCreateNestedManyWithoutAuteurInput
+    commentaires?: CommentaireUncheckedCreateNestedManyWithoutAuteurInput
+    signalements?: SignalerUncheckedCreateNestedManyWithoutEtudiantInput
+    demandesEnvoyees?: AmitieUncheckedCreateNestedManyWithoutDemandeurInput
+    demandesRecues?: AmitieUncheckedCreateNestedManyWithoutReceveurInput
+    messagesGroupes?: MessageGroupeUncheckedCreateNestedManyWithoutAuteurInput
+  }
+
+  export type EtudiantCreateOrConnectWithoutGroupesInput = {
+    where: EtudiantWhereUniqueInput
+    create: XOR<EtudiantCreateWithoutGroupesInput, EtudiantUncheckedCreateWithoutGroupesInput>
+  }
+
+  export type GroupeCreateWithoutMembresInput = {
+    nom: string
+    createdAt?: Date | string
+    messages?: MessageGroupeCreateNestedManyWithoutGroupeInput
+  }
+
+  export type GroupeUncheckedCreateWithoutMembresInput = {
+    id?: number
+    nom: string
+    createdAt?: Date | string
+    messages?: MessageGroupeUncheckedCreateNestedManyWithoutGroupeInput
+  }
+
+  export type GroupeCreateOrConnectWithoutMembresInput = {
+    where: GroupeWhereUniqueInput
+    create: XOR<GroupeCreateWithoutMembresInput, GroupeUncheckedCreateWithoutMembresInput>
+  }
+
+  export type EtudiantUpsertWithoutGroupesInput = {
+    update: XOR<EtudiantUpdateWithoutGroupesInput, EtudiantUncheckedUpdateWithoutGroupesInput>
+    create: XOR<EtudiantCreateWithoutGroupesInput, EtudiantUncheckedCreateWithoutGroupesInput>
+    where?: EtudiantWhereInput
+  }
+
+  export type EtudiantUpdateToOneWithWhereWithoutGroupesInput = {
+    where?: EtudiantWhereInput
+    data: XOR<EtudiantUpdateWithoutGroupesInput, EtudiantUncheckedUpdateWithoutGroupesInput>
+  }
+
+  export type EtudiantUpdateWithoutGroupesInput = {
+    prenom?: NullableStringFieldUpdateOperationsInput | string | null
+    nom?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    motDePasse?: StringFieldUpdateOperationsInput | string
+    dateInscription?: DateTimeFieldUpdateOperationsInput | Date | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    accessToken?: NullableStringFieldUpdateOperationsInput | string | null
+    refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
+    isAuthGoogle?: BoolFieldUpdateOperationsInput | boolean
+    otpCode?: NullableStringFieldUpdateOperationsInput | string | null
+    otpExpiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    messagesEnvoyes?: MessageUpdateManyWithoutEtudiantNestedInput
+    messagesRecus?: RecevoireUpdateManyWithoutEtudiantNestedInput
+    annonces?: AnnonceUpdateManyWithoutAuteurNestedInput
+    commentaires?: CommentaireUpdateManyWithoutAuteurNestedInput
+    signalements?: SignalerUpdateManyWithoutEtudiantNestedInput
+    demandesEnvoyees?: AmitieUpdateManyWithoutDemandeurNestedInput
+    demandesRecues?: AmitieUpdateManyWithoutReceveurNestedInput
+    messagesGroupes?: MessageGroupeUpdateManyWithoutAuteurNestedInput
+  }
+
+  export type EtudiantUncheckedUpdateWithoutGroupesInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    prenom?: NullableStringFieldUpdateOperationsInput | string | null
+    nom?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    motDePasse?: StringFieldUpdateOperationsInput | string
+    dateInscription?: DateTimeFieldUpdateOperationsInput | Date | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    accessToken?: NullableStringFieldUpdateOperationsInput | string | null
+    refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
+    isAuthGoogle?: BoolFieldUpdateOperationsInput | boolean
+    otpCode?: NullableStringFieldUpdateOperationsInput | string | null
+    otpExpiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    messagesEnvoyes?: MessageUncheckedUpdateManyWithoutEtudiantNestedInput
+    messagesRecus?: RecevoireUncheckedUpdateManyWithoutEtudiantNestedInput
+    annonces?: AnnonceUncheckedUpdateManyWithoutAuteurNestedInput
+    commentaires?: CommentaireUncheckedUpdateManyWithoutAuteurNestedInput
+    signalements?: SignalerUncheckedUpdateManyWithoutEtudiantNestedInput
+    demandesEnvoyees?: AmitieUncheckedUpdateManyWithoutDemandeurNestedInput
+    demandesRecues?: AmitieUncheckedUpdateManyWithoutReceveurNestedInput
+    messagesGroupes?: MessageGroupeUncheckedUpdateManyWithoutAuteurNestedInput
+  }
+
+  export type GroupeUpsertWithoutMembresInput = {
+    update: XOR<GroupeUpdateWithoutMembresInput, GroupeUncheckedUpdateWithoutMembresInput>
+    create: XOR<GroupeCreateWithoutMembresInput, GroupeUncheckedCreateWithoutMembresInput>
+    where?: GroupeWhereInput
+  }
+
+  export type GroupeUpdateToOneWithWhereWithoutMembresInput = {
+    where?: GroupeWhereInput
+    data: XOR<GroupeUpdateWithoutMembresInput, GroupeUncheckedUpdateWithoutMembresInput>
+  }
+
+  export type GroupeUpdateWithoutMembresInput = {
+    nom?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    messages?: MessageGroupeUpdateManyWithoutGroupeNestedInput
+  }
+
+  export type GroupeUncheckedUpdateWithoutMembresInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    nom?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    messages?: MessageGroupeUncheckedUpdateManyWithoutGroupeNestedInput
+  }
+
+  export type EtudiantCreateWithoutMessagesGroupesInput = {
+    prenom?: string | null
+    nom: string
+    email: string
+    motDePasse: string
+    dateInscription?: Date | string
+    image?: string | null
+    accessToken?: string | null
+    refreshToken?: string | null
+    isAuthGoogle?: boolean
+    otpCode?: string | null
+    otpExpiresAt?: Date | string | null
+    messagesEnvoyes?: MessageCreateNestedManyWithoutEtudiantInput
+    messagesRecus?: RecevoireCreateNestedManyWithoutEtudiantInput
+    annonces?: AnnonceCreateNestedManyWithoutAuteurInput
+    commentaires?: CommentaireCreateNestedManyWithoutAuteurInput
+    signalements?: SignalerCreateNestedManyWithoutEtudiantInput
+    demandesEnvoyees?: AmitieCreateNestedManyWithoutDemandeurInput
+    demandesRecues?: AmitieCreateNestedManyWithoutReceveurInput
+    groupes?: EtudiantGroupeCreateNestedManyWithoutEtudiantInput
+  }
+
+  export type EtudiantUncheckedCreateWithoutMessagesGroupesInput = {
+    id?: number
+    prenom?: string | null
+    nom: string
+    email: string
+    motDePasse: string
+    dateInscription?: Date | string
+    image?: string | null
+    accessToken?: string | null
+    refreshToken?: string | null
+    isAuthGoogle?: boolean
+    otpCode?: string | null
+    otpExpiresAt?: Date | string | null
+    messagesEnvoyes?: MessageUncheckedCreateNestedManyWithoutEtudiantInput
+    messagesRecus?: RecevoireUncheckedCreateNestedManyWithoutEtudiantInput
+    annonces?: AnnonceUncheckedCreateNestedManyWithoutAuteurInput
+    commentaires?: CommentaireUncheckedCreateNestedManyWithoutAuteurInput
+    signalements?: SignalerUncheckedCreateNestedManyWithoutEtudiantInput
+    demandesEnvoyees?: AmitieUncheckedCreateNestedManyWithoutDemandeurInput
+    demandesRecues?: AmitieUncheckedCreateNestedManyWithoutReceveurInput
+    groupes?: EtudiantGroupeUncheckedCreateNestedManyWithoutEtudiantInput
+  }
+
+  export type EtudiantCreateOrConnectWithoutMessagesGroupesInput = {
+    where: EtudiantWhereUniqueInput
+    create: XOR<EtudiantCreateWithoutMessagesGroupesInput, EtudiantUncheckedCreateWithoutMessagesGroupesInput>
+  }
+
+  export type GroupeCreateWithoutMessagesInput = {
+    nom: string
+    createdAt?: Date | string
+    membres?: EtudiantGroupeCreateNestedManyWithoutGroupeInput
+  }
+
+  export type GroupeUncheckedCreateWithoutMessagesInput = {
+    id?: number
+    nom: string
+    createdAt?: Date | string
+    membres?: EtudiantGroupeUncheckedCreateNestedManyWithoutGroupeInput
+  }
+
+  export type GroupeCreateOrConnectWithoutMessagesInput = {
+    where: GroupeWhereUniqueInput
+    create: XOR<GroupeCreateWithoutMessagesInput, GroupeUncheckedCreateWithoutMessagesInput>
+  }
+
+  export type EtudiantUpsertWithoutMessagesGroupesInput = {
+    update: XOR<EtudiantUpdateWithoutMessagesGroupesInput, EtudiantUncheckedUpdateWithoutMessagesGroupesInput>
+    create: XOR<EtudiantCreateWithoutMessagesGroupesInput, EtudiantUncheckedCreateWithoutMessagesGroupesInput>
+    where?: EtudiantWhereInput
+  }
+
+  export type EtudiantUpdateToOneWithWhereWithoutMessagesGroupesInput = {
+    where?: EtudiantWhereInput
+    data: XOR<EtudiantUpdateWithoutMessagesGroupesInput, EtudiantUncheckedUpdateWithoutMessagesGroupesInput>
+  }
+
+  export type EtudiantUpdateWithoutMessagesGroupesInput = {
+    prenom?: NullableStringFieldUpdateOperationsInput | string | null
+    nom?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    motDePasse?: StringFieldUpdateOperationsInput | string
+    dateInscription?: DateTimeFieldUpdateOperationsInput | Date | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    accessToken?: NullableStringFieldUpdateOperationsInput | string | null
+    refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
+    isAuthGoogle?: BoolFieldUpdateOperationsInput | boolean
+    otpCode?: NullableStringFieldUpdateOperationsInput | string | null
+    otpExpiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    messagesEnvoyes?: MessageUpdateManyWithoutEtudiantNestedInput
+    messagesRecus?: RecevoireUpdateManyWithoutEtudiantNestedInput
+    annonces?: AnnonceUpdateManyWithoutAuteurNestedInput
+    commentaires?: CommentaireUpdateManyWithoutAuteurNestedInput
+    signalements?: SignalerUpdateManyWithoutEtudiantNestedInput
+    demandesEnvoyees?: AmitieUpdateManyWithoutDemandeurNestedInput
+    demandesRecues?: AmitieUpdateManyWithoutReceveurNestedInput
+    groupes?: EtudiantGroupeUpdateManyWithoutEtudiantNestedInput
+  }
+
+  export type EtudiantUncheckedUpdateWithoutMessagesGroupesInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    prenom?: NullableStringFieldUpdateOperationsInput | string | null
+    nom?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    motDePasse?: StringFieldUpdateOperationsInput | string
+    dateInscription?: DateTimeFieldUpdateOperationsInput | Date | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    accessToken?: NullableStringFieldUpdateOperationsInput | string | null
+    refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
+    isAuthGoogle?: BoolFieldUpdateOperationsInput | boolean
+    otpCode?: NullableStringFieldUpdateOperationsInput | string | null
+    otpExpiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    messagesEnvoyes?: MessageUncheckedUpdateManyWithoutEtudiantNestedInput
+    messagesRecus?: RecevoireUncheckedUpdateManyWithoutEtudiantNestedInput
+    annonces?: AnnonceUncheckedUpdateManyWithoutAuteurNestedInput
+    commentaires?: CommentaireUncheckedUpdateManyWithoutAuteurNestedInput
+    signalements?: SignalerUncheckedUpdateManyWithoutEtudiantNestedInput
+    demandesEnvoyees?: AmitieUncheckedUpdateManyWithoutDemandeurNestedInput
+    demandesRecues?: AmitieUncheckedUpdateManyWithoutReceveurNestedInput
+    groupes?: EtudiantGroupeUncheckedUpdateManyWithoutEtudiantNestedInput
+  }
+
+  export type GroupeUpsertWithoutMessagesInput = {
+    update: XOR<GroupeUpdateWithoutMessagesInput, GroupeUncheckedUpdateWithoutMessagesInput>
+    create: XOR<GroupeCreateWithoutMessagesInput, GroupeUncheckedCreateWithoutMessagesInput>
+    where?: GroupeWhereInput
+  }
+
+  export type GroupeUpdateToOneWithWhereWithoutMessagesInput = {
+    where?: GroupeWhereInput
+    data: XOR<GroupeUpdateWithoutMessagesInput, GroupeUncheckedUpdateWithoutMessagesInput>
+  }
+
+  export type GroupeUpdateWithoutMessagesInput = {
+    nom?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    membres?: EtudiantGroupeUpdateManyWithoutGroupeNestedInput
+  }
+
+  export type GroupeUncheckedUpdateWithoutMessagesInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    nom?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    membres?: EtudiantGroupeUncheckedUpdateManyWithoutGroupeNestedInput
   }
 
   export type MessageCreateManyEtudiantInput = {
@@ -11365,6 +18221,33 @@ export namespace Prisma {
 
   export type SignalerCreateManyEtudiantInput = {
     annonceId: number
+  }
+
+  export type AmitieCreateManyDemandeurInput = {
+    id?: number
+    receveurId: number
+    statut?: $Enums.StatutAmitie
+    dateDemande?: Date | string
+    dateAcceptation?: Date | string | null
+  }
+
+  export type AmitieCreateManyReceveurInput = {
+    id?: number
+    demandeurId: number
+    statut?: $Enums.StatutAmitie
+    dateDemande?: Date | string
+    dateAcceptation?: Date | string | null
+  }
+
+  export type EtudiantGroupeCreateManyEtudiantInput = {
+    groupeId: number
+  }
+
+  export type MessageGroupeCreateManyAuteurInput = {
+    id?: number
+    contenu: string
+    date?: Date | string
+    groupeId: number
   }
 
   export type MessageUpdateWithoutEtudiantInput = {
@@ -11454,6 +18337,84 @@ export namespace Prisma {
     annonceId?: IntFieldUpdateOperationsInput | number
   }
 
+  export type AmitieUpdateWithoutDemandeurInput = {
+    statut?: EnumStatutAmitieFieldUpdateOperationsInput | $Enums.StatutAmitie
+    dateDemande?: DateTimeFieldUpdateOperationsInput | Date | string
+    dateAcceptation?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    receveur?: EtudiantUpdateOneRequiredWithoutDemandesRecuesNestedInput
+  }
+
+  export type AmitieUncheckedUpdateWithoutDemandeurInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    receveurId?: IntFieldUpdateOperationsInput | number
+    statut?: EnumStatutAmitieFieldUpdateOperationsInput | $Enums.StatutAmitie
+    dateDemande?: DateTimeFieldUpdateOperationsInput | Date | string
+    dateAcceptation?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type AmitieUncheckedUpdateManyWithoutDemandeurInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    receveurId?: IntFieldUpdateOperationsInput | number
+    statut?: EnumStatutAmitieFieldUpdateOperationsInput | $Enums.StatutAmitie
+    dateDemande?: DateTimeFieldUpdateOperationsInput | Date | string
+    dateAcceptation?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type AmitieUpdateWithoutReceveurInput = {
+    statut?: EnumStatutAmitieFieldUpdateOperationsInput | $Enums.StatutAmitie
+    dateDemande?: DateTimeFieldUpdateOperationsInput | Date | string
+    dateAcceptation?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    demandeur?: EtudiantUpdateOneRequiredWithoutDemandesEnvoyeesNestedInput
+  }
+
+  export type AmitieUncheckedUpdateWithoutReceveurInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    demandeurId?: IntFieldUpdateOperationsInput | number
+    statut?: EnumStatutAmitieFieldUpdateOperationsInput | $Enums.StatutAmitie
+    dateDemande?: DateTimeFieldUpdateOperationsInput | Date | string
+    dateAcceptation?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type AmitieUncheckedUpdateManyWithoutReceveurInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    demandeurId?: IntFieldUpdateOperationsInput | number
+    statut?: EnumStatutAmitieFieldUpdateOperationsInput | $Enums.StatutAmitie
+    dateDemande?: DateTimeFieldUpdateOperationsInput | Date | string
+    dateAcceptation?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type EtudiantGroupeUpdateWithoutEtudiantInput = {
+    groupe?: GroupeUpdateOneRequiredWithoutMembresNestedInput
+  }
+
+  export type EtudiantGroupeUncheckedUpdateWithoutEtudiantInput = {
+    groupeId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type EtudiantGroupeUncheckedUpdateManyWithoutEtudiantInput = {
+    groupeId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type MessageGroupeUpdateWithoutAuteurInput = {
+    contenu?: StringFieldUpdateOperationsInput | string
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    groupe?: GroupeUpdateOneRequiredWithoutMessagesNestedInput
+  }
+
+  export type MessageGroupeUncheckedUpdateWithoutAuteurInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    contenu?: StringFieldUpdateOperationsInput | string
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    groupeId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type MessageGroupeUncheckedUpdateManyWithoutAuteurInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    contenu?: StringFieldUpdateOperationsInput | string
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    groupeId?: IntFieldUpdateOperationsInput | number
+  }
+
   export type RecevoireCreateManyMessageInput = {
     etudiantId: number
   }
@@ -11507,6 +18468,49 @@ export namespace Prisma {
 
   export type SignalerUncheckedUpdateManyWithoutAnnonceInput = {
     etudiantId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type EtudiantGroupeCreateManyGroupeInput = {
+    etudiantId: number
+  }
+
+  export type MessageGroupeCreateManyGroupeInput = {
+    id?: number
+    contenu: string
+    date?: Date | string
+    auteurId: number
+  }
+
+  export type EtudiantGroupeUpdateWithoutGroupeInput = {
+    etudiant?: EtudiantUpdateOneRequiredWithoutGroupesNestedInput
+  }
+
+  export type EtudiantGroupeUncheckedUpdateWithoutGroupeInput = {
+    etudiantId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type EtudiantGroupeUncheckedUpdateManyWithoutGroupeInput = {
+    etudiantId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type MessageGroupeUpdateWithoutGroupeInput = {
+    contenu?: StringFieldUpdateOperationsInput | string
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    auteur?: EtudiantUpdateOneRequiredWithoutMessagesGroupesNestedInput
+  }
+
+  export type MessageGroupeUncheckedUpdateWithoutGroupeInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    contenu?: StringFieldUpdateOperationsInput | string
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    auteurId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type MessageGroupeUncheckedUpdateManyWithoutGroupeInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    contenu?: StringFieldUpdateOperationsInput | string
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    auteurId?: IntFieldUpdateOperationsInput | number
   }
 
 

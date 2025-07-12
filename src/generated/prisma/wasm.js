@@ -168,6 +168,34 @@ exports.Prisma.SignalerScalarFieldEnum = {
   etudiantId: 'etudiantId'
 };
 
+exports.Prisma.AmitieScalarFieldEnum = {
+  id: 'id',
+  demandeurId: 'demandeurId',
+  receveurId: 'receveurId',
+  statut: 'statut',
+  dateDemande: 'dateDemande',
+  dateAcceptation: 'dateAcceptation'
+};
+
+exports.Prisma.GroupeScalarFieldEnum = {
+  id: 'id',
+  nom: 'nom',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.EtudiantGroupeScalarFieldEnum = {
+  etudiantId: 'etudiantId',
+  groupeId: 'groupeId'
+};
+
+exports.Prisma.MessageGroupeScalarFieldEnum = {
+  id: 'id',
+  contenu: 'contenu',
+  date: 'date',
+  auteurId: 'auteurId',
+  groupeId: 'groupeId'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -182,7 +210,11 @@ exports.Prisma.NullsOrder = {
   first: 'first',
   last: 'last'
 };
-
+exports.StatutAmitie = exports.$Enums.StatutAmitie = {
+  EN_ATTENTE: 'EN_ATTENTE',
+  ACCEPTEE: 'ACCEPTEE',
+  REFUSEE: 'REFUSEE'
+};
 
 exports.Prisma.ModelName = {
   Etudiant: 'Etudiant',
@@ -190,7 +222,11 @@ exports.Prisma.ModelName = {
   Recevoire: 'Recevoire',
   Annonce: 'Annonce',
   Commentaire: 'Commentaire',
-  Signaler: 'Signaler'
+  Signaler: 'Signaler',
+  Amitie: 'Amitie',
+  Groupe: 'Groupe',
+  EtudiantGroupe: 'EtudiantGroupe',
+  MessageGroupe: 'MessageGroupe'
 };
 
 /**
