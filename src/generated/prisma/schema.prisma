@@ -21,6 +21,9 @@ model Etudiant {
   annonces        Annonce[]
   commentaires    Commentaire[]
   signalements    Signaler[]
+  accessToken     String?       @db.Text
+  refreshToken    String?       @db.Text
+  isAuthGoogle    Boolean       @default(false)
 }
 
 model Message {

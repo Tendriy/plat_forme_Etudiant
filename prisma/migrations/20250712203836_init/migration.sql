@@ -7,6 +7,9 @@ CREATE TABLE "Etudiant" (
     "motDePasse" VARCHAR(255) NOT NULL,
     "dateInscription" TIMESTAMP(6) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "image" VARCHAR(250),
+    "accessToken" TEXT,
+    "refreshToken" TEXT,
+    "isAuthGoogle" BOOLEAN NOT NULL DEFAULT false,
 
     CONSTRAINT "Etudiant_pkey" PRIMARY KEY ("id")
 );
@@ -58,6 +61,9 @@ CREATE TABLE "Signaler" (
 
     CONSTRAINT "Signaler_pkey" PRIMARY KEY ("annonceId","etudiantId")
 );
+
+-- CreateIndex
+CREATE UNIQUE INDEX "Etudiant_email_key" ON "Etudiant"("email");
 
 -- AddForeignKey
 ALTER TABLE "Message" ADD CONSTRAINT "Message_etudiantId_fkey" FOREIGN KEY ("etudiantId") REFERENCES "Etudiant"("id") ON DELETE CASCADE ON UPDATE CASCADE;
