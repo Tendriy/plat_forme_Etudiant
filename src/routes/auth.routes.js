@@ -19,7 +19,13 @@ router.post('/sign-up', async (req, res) => {
   const newUser = await prisma.etudiant.create({
     data: { prenom, nom, email, motDePasse: hashedPassword },
   });
-  res.status(201).json(newUser);
+
+  res.status(201).json({
+    id: newUser.id,
+    prenom,
+    nom,
+    email,
+  });
 });
 
 router.post('/sign-in', async (req, res) => {
@@ -87,7 +93,7 @@ router.get('/google',
 router.get('/google/callback',
   passport.authenticate('google', { failureRedirect: '/login-fail' }),
   (req, res) => {
-    res.redirect(`${process.env.FRONTEND_URL}?accessToken=${req.user.accessToken}&refreshToken=${req.user.refreshToken}`);
+    res.redirect(`${process.env.FRONTEND_URL}/auth/google/redirect?accessToken=${req.user.accessToken}&refreshToken=${req.user.refreshToken}`);
   }
 );
 
