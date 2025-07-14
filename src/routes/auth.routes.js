@@ -16,15 +16,16 @@ router.post('/sign-up', async (req, res) => {
   if (existingUser) return res.status(400).json({ message: 'Email déjà utilisé' });
 
   const hashedPassword = await bcrypt.hash(motDePasse, SALT_ROUNDS);
-  const newUser = await prisma.etudiant.create({
+  const { id, isAuthGoogle } = await prisma.etudiant.create({
     data: { prenom, nom, email, motDePasse: hashedPassword },
   });
 
   res.status(201).json({
-    id: newUser.id,
+    id: id,
     prenom,
     nom,
     email,
+    isAuthGoogle
   });
 });
 
@@ -59,7 +60,7 @@ router.post('/token', async (req, res) => {
   const newAccessToken = generateAccessToken(user);
   await prisma.etudiant.update({ where: { id: user.id }, data: { accessToken: newAccessToken } });
   res.json({ accessToken: newAccessToken });
- 
+
 });
 
 router.delete('/logout', async (req, res) => {
@@ -72,7 +73,7 @@ router.delete('/logout', async (req, res) => {
     data: { accessToken: null, refreshToken: null },
   });
   res.json({ message: 'Déconnexion réussie' });
-  
+
 });
 
 router.get('/profile', async (req, res) => {
@@ -81,7 +82,7 @@ router.get('/profile', async (req, res) => {
 
   const user = await prisma.etudiant.findUnique({
     where: { id: userId },
-    select: { id: true, prenom: true, nom: true, email: true, image: true },
+    select: { id: true, prenom: true, nom: true, email: true, image: true, isAuthGoogle: true },
   });
   res.json({ message: 'Bienvenue !', user });
 });

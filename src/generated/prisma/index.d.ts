@@ -6731,6 +6731,7 @@ export namespace Prisma {
     date: Date | null
     etudiantId: number | null
     annonceId: number | null
+    contenu: string | null
   }
 
   export type CommentaireMaxAggregateOutputType = {
@@ -6738,6 +6739,7 @@ export namespace Prisma {
     date: Date | null
     etudiantId: number | null
     annonceId: number | null
+    contenu: string | null
   }
 
   export type CommentaireCountAggregateOutputType = {
@@ -6745,6 +6747,7 @@ export namespace Prisma {
     date: number
     etudiantId: number
     annonceId: number
+    contenu: number
     _all: number
   }
 
@@ -6766,6 +6769,7 @@ export namespace Prisma {
     date?: true
     etudiantId?: true
     annonceId?: true
+    contenu?: true
   }
 
   export type CommentaireMaxAggregateInputType = {
@@ -6773,6 +6777,7 @@ export namespace Prisma {
     date?: true
     etudiantId?: true
     annonceId?: true
+    contenu?: true
   }
 
   export type CommentaireCountAggregateInputType = {
@@ -6780,6 +6785,7 @@ export namespace Prisma {
     date?: true
     etudiantId?: true
     annonceId?: true
+    contenu?: true
     _all?: true
   }
 
@@ -6874,6 +6880,7 @@ export namespace Prisma {
     date: Date
     etudiantId: number | null
     annonceId: number | null
+    contenu: string | null
     _count: CommentaireCountAggregateOutputType | null
     _avg: CommentaireAvgAggregateOutputType | null
     _sum: CommentaireSumAggregateOutputType | null
@@ -6900,6 +6907,7 @@ export namespace Prisma {
     date?: boolean
     etudiantId?: boolean
     annonceId?: boolean
+    contenu?: boolean
     auteur?: boolean | Commentaire$auteurArgs<ExtArgs>
     annonce?: boolean | Commentaire$annonceArgs<ExtArgs>
   }, ExtArgs["result"]["commentaire"]>
@@ -6909,6 +6917,7 @@ export namespace Prisma {
     date?: boolean
     etudiantId?: boolean
     annonceId?: boolean
+    contenu?: boolean
     auteur?: boolean | Commentaire$auteurArgs<ExtArgs>
     annonce?: boolean | Commentaire$annonceArgs<ExtArgs>
   }, ExtArgs["result"]["commentaire"]>
@@ -6918,6 +6927,7 @@ export namespace Prisma {
     date?: boolean
     etudiantId?: boolean
     annonceId?: boolean
+    contenu?: boolean
     auteur?: boolean | Commentaire$auteurArgs<ExtArgs>
     annonce?: boolean | Commentaire$annonceArgs<ExtArgs>
   }, ExtArgs["result"]["commentaire"]>
@@ -6927,9 +6937,10 @@ export namespace Prisma {
     date?: boolean
     etudiantId?: boolean
     annonceId?: boolean
+    contenu?: boolean
   }
 
-  export type CommentaireOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "date" | "etudiantId" | "annonceId", ExtArgs["result"]["commentaire"]>
+  export type CommentaireOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "date" | "etudiantId" | "annonceId" | "contenu", ExtArgs["result"]["commentaire"]>
   export type CommentaireInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     auteur?: boolean | Commentaire$auteurArgs<ExtArgs>
     annonce?: boolean | Commentaire$annonceArgs<ExtArgs>
@@ -6954,6 +6965,7 @@ export namespace Prisma {
       date: Date
       etudiantId: number | null
       annonceId: number | null
+      contenu: string | null
     }, ExtArgs["result"]["commentaire"]>
     composites: {}
   }
@@ -7383,6 +7395,7 @@ export namespace Prisma {
     readonly date: FieldRef<"Commentaire", 'DateTime'>
     readonly etudiantId: FieldRef<"Commentaire", 'Int'>
     readonly annonceId: FieldRef<"Commentaire", 'Int'>
+    readonly contenu: FieldRef<"Commentaire", 'String'>
   }
     
 
@@ -13366,7 +13379,8 @@ export namespace Prisma {
     id: 'id',
     date: 'date',
     etudiantId: 'etudiantId',
-    annonceId: 'annonceId'
+    annonceId: 'annonceId',
+    contenu: 'contenu'
   };
 
   export type CommentaireScalarFieldEnum = (typeof CommentaireScalarFieldEnum)[keyof typeof CommentaireScalarFieldEnum]
@@ -13822,6 +13836,7 @@ export namespace Prisma {
     date?: DateTimeFilter<"Commentaire"> | Date | string
     etudiantId?: IntNullableFilter<"Commentaire"> | number | null
     annonceId?: IntNullableFilter<"Commentaire"> | number | null
+    contenu?: StringNullableFilter<"Commentaire"> | string | null
     auteur?: XOR<EtudiantNullableScalarRelationFilter, EtudiantWhereInput> | null
     annonce?: XOR<AnnonceNullableScalarRelationFilter, AnnonceWhereInput> | null
   }
@@ -13831,6 +13846,7 @@ export namespace Prisma {
     date?: SortOrder
     etudiantId?: SortOrderInput | SortOrder
     annonceId?: SortOrderInput | SortOrder
+    contenu?: SortOrderInput | SortOrder
     auteur?: EtudiantOrderByWithRelationInput
     annonce?: AnnonceOrderByWithRelationInput
   }
@@ -13843,6 +13859,7 @@ export namespace Prisma {
     date?: DateTimeFilter<"Commentaire"> | Date | string
     etudiantId?: IntNullableFilter<"Commentaire"> | number | null
     annonceId?: IntNullableFilter<"Commentaire"> | number | null
+    contenu?: StringNullableFilter<"Commentaire"> | string | null
     auteur?: XOR<EtudiantNullableScalarRelationFilter, EtudiantWhereInput> | null
     annonce?: XOR<AnnonceNullableScalarRelationFilter, AnnonceWhereInput> | null
   }, "id">
@@ -13852,6 +13869,7 @@ export namespace Prisma {
     date?: SortOrder
     etudiantId?: SortOrderInput | SortOrder
     annonceId?: SortOrderInput | SortOrder
+    contenu?: SortOrderInput | SortOrder
     _count?: CommentaireCountOrderByAggregateInput
     _avg?: CommentaireAvgOrderByAggregateInput
     _max?: CommentaireMaxOrderByAggregateInput
@@ -13867,6 +13885,7 @@ export namespace Prisma {
     date?: DateTimeWithAggregatesFilter<"Commentaire"> | Date | string
     etudiantId?: IntNullableWithAggregatesFilter<"Commentaire"> | number | null
     annonceId?: IntNullableWithAggregatesFilter<"Commentaire"> | number | null
+    contenu?: StringNullableWithAggregatesFilter<"Commentaire"> | string | null
   }
 
   export type SignalerWhereInput = {
@@ -14427,6 +14446,7 @@ export namespace Prisma {
 
   export type CommentaireCreateInput = {
     date?: Date | string
+    contenu?: string | null
     auteur?: EtudiantCreateNestedOneWithoutCommentairesInput
     annonce?: AnnonceCreateNestedOneWithoutCommentairesInput
   }
@@ -14436,10 +14456,12 @@ export namespace Prisma {
     date?: Date | string
     etudiantId?: number | null
     annonceId?: number | null
+    contenu?: string | null
   }
 
   export type CommentaireUpdateInput = {
     date?: DateTimeFieldUpdateOperationsInput | Date | string
+    contenu?: NullableStringFieldUpdateOperationsInput | string | null
     auteur?: EtudiantUpdateOneWithoutCommentairesNestedInput
     annonce?: AnnonceUpdateOneWithoutCommentairesNestedInput
   }
@@ -14449,6 +14471,7 @@ export namespace Prisma {
     date?: DateTimeFieldUpdateOperationsInput | Date | string
     etudiantId?: NullableIntFieldUpdateOperationsInput | number | null
     annonceId?: NullableIntFieldUpdateOperationsInput | number | null
+    contenu?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type CommentaireCreateManyInput = {
@@ -14456,10 +14479,12 @@ export namespace Prisma {
     date?: Date | string
     etudiantId?: number | null
     annonceId?: number | null
+    contenu?: string | null
   }
 
   export type CommentaireUpdateManyMutationInput = {
     date?: DateTimeFieldUpdateOperationsInput | Date | string
+    contenu?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type CommentaireUncheckedUpdateManyInput = {
@@ -14467,6 +14492,7 @@ export namespace Prisma {
     date?: DateTimeFieldUpdateOperationsInput | Date | string
     etudiantId?: NullableIntFieldUpdateOperationsInput | number | null
     annonceId?: NullableIntFieldUpdateOperationsInput | number | null
+    contenu?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type SignalerCreateInput = {
@@ -15137,6 +15163,7 @@ export namespace Prisma {
     date?: SortOrder
     etudiantId?: SortOrder
     annonceId?: SortOrder
+    contenu?: SortOrder
   }
 
   export type CommentaireAvgOrderByAggregateInput = {
@@ -15150,6 +15177,7 @@ export namespace Prisma {
     date?: SortOrder
     etudiantId?: SortOrder
     annonceId?: SortOrder
+    contenu?: SortOrder
   }
 
   export type CommentaireMinOrderByAggregateInput = {
@@ -15157,6 +15185,7 @@ export namespace Prisma {
     date?: SortOrder
     etudiantId?: SortOrder
     annonceId?: SortOrder
+    contenu?: SortOrder
   }
 
   export type CommentaireSumOrderByAggregateInput = {
@@ -16478,6 +16507,7 @@ export namespace Prisma {
 
   export type CommentaireCreateWithoutAuteurInput = {
     date?: Date | string
+    contenu?: string | null
     annonce?: AnnonceCreateNestedOneWithoutCommentairesInput
   }
 
@@ -16485,6 +16515,7 @@ export namespace Prisma {
     id?: number
     date?: Date | string
     annonceId?: number | null
+    contenu?: string | null
   }
 
   export type CommentaireCreateOrConnectWithoutAuteurInput = {
@@ -16708,6 +16739,7 @@ export namespace Prisma {
     date?: DateTimeFilter<"Commentaire"> | Date | string
     etudiantId?: IntNullableFilter<"Commentaire"> | number | null
     annonceId?: IntNullableFilter<"Commentaire"> | number | null
+    contenu?: StringNullableFilter<"Commentaire"> | string | null
   }
 
   export type SignalerUpsertWithWhereUniqueWithoutEtudiantInput = {
@@ -17169,6 +17201,7 @@ export namespace Prisma {
 
   export type CommentaireCreateWithoutAnnonceInput = {
     date?: Date | string
+    contenu?: string | null
     auteur?: EtudiantCreateNestedOneWithoutCommentairesInput
   }
 
@@ -17176,6 +17209,7 @@ export namespace Prisma {
     id?: number
     date?: Date | string
     etudiantId?: number | null
+    contenu?: string | null
   }
 
   export type CommentaireCreateOrConnectWithoutAnnonceInput = {
@@ -18217,6 +18251,7 @@ export namespace Prisma {
     id?: number
     date?: Date | string
     annonceId?: number | null
+    contenu?: string | null
   }
 
   export type SignalerCreateManyEtudiantInput = {
@@ -18310,6 +18345,7 @@ export namespace Prisma {
 
   export type CommentaireUpdateWithoutAuteurInput = {
     date?: DateTimeFieldUpdateOperationsInput | Date | string
+    contenu?: NullableStringFieldUpdateOperationsInput | string | null
     annonce?: AnnonceUpdateOneWithoutCommentairesNestedInput
   }
 
@@ -18317,12 +18353,14 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     date?: DateTimeFieldUpdateOperationsInput | Date | string
     annonceId?: NullableIntFieldUpdateOperationsInput | number | null
+    contenu?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type CommentaireUncheckedUpdateManyWithoutAuteurInput = {
     id?: IntFieldUpdateOperationsInput | number
     date?: DateTimeFieldUpdateOperationsInput | Date | string
     annonceId?: NullableIntFieldUpdateOperationsInput | number | null
+    contenu?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type SignalerUpdateWithoutEtudiantInput = {
@@ -18435,6 +18473,7 @@ export namespace Prisma {
     id?: number
     date?: Date | string
     etudiantId?: number | null
+    contenu?: string | null
   }
 
   export type SignalerCreateManyAnnonceInput = {
@@ -18443,6 +18482,7 @@ export namespace Prisma {
 
   export type CommentaireUpdateWithoutAnnonceInput = {
     date?: DateTimeFieldUpdateOperationsInput | Date | string
+    contenu?: NullableStringFieldUpdateOperationsInput | string | null
     auteur?: EtudiantUpdateOneWithoutCommentairesNestedInput
   }
 
@@ -18450,12 +18490,14 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     date?: DateTimeFieldUpdateOperationsInput | Date | string
     etudiantId?: NullableIntFieldUpdateOperationsInput | number | null
+    contenu?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type CommentaireUncheckedUpdateManyWithoutAnnonceInput = {
     id?: IntFieldUpdateOperationsInput | number
     date?: DateTimeFieldUpdateOperationsInput | Date | string
     etudiantId?: NullableIntFieldUpdateOperationsInput | number | null
+    contenu?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type SignalerUpdateWithoutAnnonceInput = {
