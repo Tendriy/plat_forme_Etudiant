@@ -160,7 +160,8 @@ exports.Prisma.CommentaireScalarFieldEnum = {
   id: 'id',
   date: 'date',
   etudiantId: 'etudiantId',
-  annonceId: 'annonceId'
+  annonceId: 'annonceId',
+  contenu: 'contenu'
 };
 
 exports.Prisma.SignalerScalarFieldEnum = {

@@ -67,6 +67,7 @@ model Commentaire {
   date       DateTime  @default(now()) @db.Timestamp(6)
   etudiantId Int?
   annonceId  Int?
+  contenu    String?   @db.Text()
   auteur     Etudiant? @relation(fields: [etudiantId], references: [id], onDelete: SetNull)
   annonce    Annonce?  @relation(fields: [annonceId], references: [id], onDelete: SetNull)
 }

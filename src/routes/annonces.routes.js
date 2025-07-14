@@ -4,15 +4,14 @@ import { createUploadMiddleware } from '../middlewares/uploadMiddleware.js';
 import fs from 'fs';
 import path from 'path';
 import HttpException from '../utils/httpException.js';
+import requireAuth from '../middlewares/requireAuth.js';
 
 const router = Router();
 
 const uploadByAuth = createUploadMiddleware(req => req.auth?.id?.toString(), 'image', 'annonces');
 
-router.post('/', uploadByAuth, async (req, res) => {
-  const etudiantId = req.auth?.id;
-  if (!etudiantId) throw new HttpException(401, 'Token invalide ou manquant');
-
+router.post('/', uploadByAuth, requireAuth, async (req, res) => {
+  const etudiantId = req.auth.id;
   const { titre, contenu } = req.body;
   if (!titre || titre.length > 150) throw new HttpException(400, 'Titre invalide');
 
@@ -61,9 +60,8 @@ const annonces = await prisma.annonce.findMany({
 });
 
 
-router.put('/:id', uploadByAuth, async (req, res) => {
-  const etudiantId = req.auth?.id;
-  if (!etudiantId) throw new HttpException(401, 'Token invalide ou manquant');
+router.put('/:id', uploadByAuth,requireAuth, async (req, res) => {
+  const etudiantId = req.auth.id;
 
   const annonceId = parseInt(req.params.id, 10);
   if (isNaN(annonceId)) throw new HttpException(400, 'ID annonce invalide');
@@ -91,9 +89,8 @@ router.put('/:id', uploadByAuth, async (req, res) => {
   res.json(updatedAnnonce);
 });
 
-router.delete('/:id', async (req, res) => {
-  const etudiantId = req.auth?.id;
-  if (!etudiantId) throw new HttpException(401, 'Token invalide ou manquant');
+router.delete('/:id', requireAuth, async (req, res) => {
+  const etudiantId = req.auth.id;
 
   const annonceId = parseInt(req.params.id, 10);
   if (isNaN(annonceId)) throw new HttpException(400, 'ID annonce invalide');
@@ -113,10 +110,8 @@ router.delete('/:id', async (req, res) => {
   res.json({ message: 'Annonce supprimée avec succès' });
 });
 
-router.get('/etudiant', async (req, res, next) => {
-  const etudiantId = req.auth?.id;
-  if (!etudiantId) throw new HttpException(401, 'Token invalide ou absent');
-
+router.get('/etudiant', requireAuth,  async (req, res) => {
+  const etudiantId = req.auth.id;
   const annonces = await prisma.annonce.findMany({
     where: { etudiantId },
     include: { auteur: true, commentaires: true },
@@ -125,10 +120,8 @@ router.get('/etudiant', async (req, res, next) => {
   res.json(annonces);
 });
 
-router.get('/etudiant/total', async (req, res, next) => {
-  const etudiantId = req.auth?.id;
-  if (!etudiantId) throw new HttpException(401, 'Token invalide ou absent');
-
+router.get('/etudiant/total',requireAuth, async (req, res) => {
+  const etudiantId = req.auth.id;
   const total = await prisma.annonce.count({ where: { etudiantId } });
   res.json({ total });
 });
