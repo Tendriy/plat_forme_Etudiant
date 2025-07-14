@@ -212,7 +212,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "/home/tantely/Desktop/annissa/plateform-api/src/generated/prisma",
+      "value": "/home/tendry/Bureau/plateform/plateform-api/src/generated/prisma",
       "fromEnvVar": null
     },
     "config": {
@@ -226,7 +226,7 @@ const config = {
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "/home/tantely/Desktop/annissa/plateform-api/prisma/schema.prisma",
+    "sourceFilePath": "/home/tendry/Bureau/plateform/plateform-api/prisma/schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
