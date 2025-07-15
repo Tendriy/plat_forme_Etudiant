@@ -13,7 +13,7 @@ const uploadByAuth = createUploadMiddleware(req => req.auth?.id?.toString(), 'im
 router.post('/', uploadByAuth, requireAuth, async (req, res) => {
   const etudiantId = req.auth.id;
   const { titre, contenu } = req.body;
-  if (!titre || titre.length > 150) throw new HttpException(400, 'Titre invalide');
+  if (!titre || titre.length > 150) throw new HttpException('Titre invalide', 400);
 
   const imagePath = req.file ? `/public/annonces/${etudiantId}/${req.file.filename}` : null;
 
@@ -64,15 +64,15 @@ router.put('/:id', uploadByAuth,requireAuth, async (req, res) => {
   const etudiantId = req.auth.id;
 
   const annonceId = parseInt(req.params.id, 10);
-  if (isNaN(annonceId)) throw new HttpException(400, 'ID annonce invalide');
+  if (isNaN(annonceId)) throw new HttpException( 'ID annonce invalide', 400);
 
   const { titre, contenu } = req.body;
-  if (!titre || titre.length > 150) throw new HttpException(400, 'Titre invalide');
+  if (!titre || titre.length > 150) throw new HttpException( 'Titre invalide', 400);
 
   const annonce = await prisma.annonce.findUnique({ where: { id: annonceId } });
 
-  if (!annonce) throw new HttpException(404, 'Annonce non trouvée');
-  if (annonce.etudiantId !== etudiantId) throw new HttpException(403, 'Accès refusé');
+  if (!annonce) throw new HttpException('Annonce non trouvée', 4034);
+  if (annonce.etudiantId !== etudiantId) throw new HttpException( 'Accès refusé', 403);
 
   if (req.file && annonce.image) {
     const oldImagePath = path.join(process.cwd(), annonce.image);
@@ -93,12 +93,12 @@ router.delete('/:id', requireAuth, async (req, res) => {
   const etudiantId = req.auth.id;
 
   const annonceId = parseInt(req.params.id, 10);
-  if (isNaN(annonceId)) throw new HttpException(400, 'ID annonce invalide');
+  if (isNaN(annonceId)) throw new HttpException( 'ID annonce invalide',400);
 
   const annonce = await prisma.annonce.findUnique({ where: { id: annonceId } });
 
   if (!annonce) throw new HttpException(404, 'Annonce non trouvée');
-  if (annonce.etudiantId !== etudiantId) throw new HttpException(403, 'Accès refusé');
+  if (annonce.etudiantId !== etudiantId) throw new HttpException( 'Accès refusé', 403);
 
   if (annonce.image) {
     const imagePath = path.join(process.cwd(), annonce.image);

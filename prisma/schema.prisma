@@ -30,6 +30,8 @@ model Etudiant {
   demandesRecues   Amitie[]     @relation("DemandesRecues")
   groupes          EtudiantGroupe[]
   messagesGroupes  MessageGroupe[]
+
+  @@unique([nom, prenom, email])
 }
 
 

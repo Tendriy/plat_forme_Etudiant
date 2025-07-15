@@ -1,57 +1,66 @@
-import { Server } from 'socket.io'
-import prisma from '../utils/prisma.js'
+import { Server } from "socket.io";
+import prisma from "../utils/prisma.js";
+import jwt from "jsonwebtoken";
 
 export default function setupChatSocket(httpServer) {
   const io = new Server(httpServer, {
     cors: {
-      origin: process.env.FRONTEND_URL,
-      credentials: true
+      origin: process.env.FRONTEND_URL || "http://localhost:5173",
+      credentials: true,
+    },
+  });
+
+  io.use((socket, next) => {
+    const token = socket.handshake.auth.token;
+    if (!token) return next(new Error("Token manquant"));
+    try {
+      const payload = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
+      socket.user = payload;
+      next();
+    } catch {
+      next(new Error("Token invalide"));
     }
-  })
+  });
 
-  io.on('connection', socket => {
-    socket.on('join_room', ({ etudiant1Id, etudiant2Id }) => {
-      const roomId = [etudiant1Id, etudiant2Id].sort().join('-')
-      socket.join(roomId)
-    })
+  io.on("connection", (socket) => {
+    console.log("Utilisateur connecté:", socket.user.id);
 
-    socket.on('send_message', async ({ senderId, receiverId, content }) => {
-      const roomId = [senderId, receiverId].sort().join('-')
+    socket.on("join_room", ({ etudiant1Id, etudiant2Id }) => {
+      const roomId = [etudiant1Id, etudiant2Id].sort().join("-");
+      console.log(`Socket ${socket.id} rejoint room ${roomId}`);
+      socket.join(roomId);
+    });
 
-      const message = await prisma.message.create({
-        data: {
-          contenu: content,
-          etudiantId: senderId,
-          receveurs: {
-            create: [{ etudiantId: receiverId }]
-          }
-        }
-      })
+    socket.on("send_message", async ({ senderId, receiverId, content, roomId }) => {
+      console.log(`Message de ${senderId} vers ${receiverId} dans room ${roomId}`);
 
-      io.to(roomId).emit('receive_message', {
-        senderId,
-        receiverId,
-        content,
-        date: message.date
-      })
-    })
+      try {
+        const message = await prisma.message.create({
+          data: {
+            contenu: content,
+            etudiantId: senderId,
+            receveurs: {
+              create: [{ etudiantId: receiverId }],
+            },
+          },
+        });
 
-    socket.on('join_group', ({ groupeId }) => {
-      const room = `group-${groupeId}`
-      socket.join(room)
-    })
+        io.to(roomId).emit("receive_message", {
+          senderId,
+          receiverId,
+          content,
+          date: message.createdAt,
+          roomId,
+        });
+      } catch (error) {
+        console.error("Erreur sauvegarde message :", error);
+      }
+    });
 
-    socket.on('send_group_message', async ({ auteurId, groupeId, contenu }) => {
-      const message = await prisma.messageGroupe.create({
-        data: { auteurId, groupeId, contenu }
-      })
+    socket.on("disconnect", () => {
+      console.log("Utilisateur déconnecté:", socket.user.id);
+    });
+  });
 
-      io.to(`group-${groupeId}`).emit('receive_group_message', {
-        auteurId,
-        groupeId,
-        contenu,
-        date: message.date
-      })
-    })
-  })
+  return io;
 }

@@ -13597,6 +13597,7 @@ export namespace Prisma {
   export type EtudiantWhereUniqueInput = Prisma.AtLeast<{
     id?: number
     email?: string
+    nom_prenom_email?: EtudiantNomPrenomEmailCompoundUniqueInput
     AND?: EtudiantWhereInput | EtudiantWhereInput[]
     OR?: EtudiantWhereInput[]
     NOT?: EtudiantWhereInput | EtudiantWhereInput[]
@@ -13619,7 +13620,7 @@ export namespace Prisma {
     demandesRecues?: AmitieListRelationFilter
     groupes?: EtudiantGroupeListRelationFilter
     messagesGroupes?: MessageGroupeListRelationFilter
-  }, "id" | "email">
+  }, "id" | "email" | "nom_prenom_email">
 
   export type EtudiantOrderByWithAggregationInput = {
     id?: SortOrder
@@ -14870,6 +14871,12 @@ export namespace Prisma {
 
   export type MessageGroupeOrderByRelationAggregateInput = {
     _count?: SortOrder
+  }
+
+  export type EtudiantNomPrenomEmailCompoundUniqueInput = {
+    nom: string
+    prenom: string
+    email: string
   }
 
   export type EtudiantCountOrderByAggregateInput = {

@@ -5,11 +5,10 @@ import requireAuth from '../middlewares/requireAuth.js';
 
 const router = Router();
 
-
-router.get('/', requireAuth ,async (req, res) => {
+router.get('/', requireAuth, async (req, res) => {
   const currentUserId = Number(req.auth.id);
   if (!currentUserId) {
-    throw new HttpException(400, 'currentUserId est requis en query param');
+    throw new HttpException('Utilisateur non authentifié', 400);
   }
 
   const etudiants = await prisma.etudiant.findMany({
@@ -24,41 +23,65 @@ router.get('/', requireAuth ,async (req, res) => {
       image: true,
       demandesEnvoyees: {
         where: { receveurId: currentUserId },
-        select: {
-          statut: true
-        }
+        select: { statut: true }
       },
       demandesRecues: {
         where: { demandeurId: currentUserId },
-        select: {
-          statut: true
-        }
+        select: { statut: true }
       }
     }
   });
 
-  const etudiantsAvecStatut = etudiants.map(e => {
+  const etudiantsAvecStatut = etudiants.map(etudiant => {
     let statut = 'NON_AMI';
-    const demandeEnvoyee = e.demandesRecues[0];
-    const demandeRecue = e.demandesEnvoyees[0];
-    if (demandeEnvoyee) statut = demandeEnvoyee.statut;
-    else if (demandeRecue) {
-      if (demandeRecue.statut === 'EN_ATTENTE') statut = 'EN_ATTENTE_DE_LUI';
-      else statut = demandeRecue.statut;
+    
+    const demandeReçue = etudiant.demandesRecues[0];
+    const demandeEnvoyée = etudiant.demandesEnvoyees[0];
+
+    if (demandeReçue) {
+      statut = demandeReçue.statut; 
+    } else if (demandeEnvoyée) {
+      if (demandeEnvoyée.statut === 'EN_ATTENTE') {
+        statut = 'EN_ATTENTE_DE_LUI'; 
+      } else {
+        statut = demandeEnvoyée.statut; 
+      }
     }
 
     return {
-      id: e.id,
-      prenom: e.prenom,
-      nom: e.nom,
-      email: e.email,
-      image: e.image,
+      id: etudiant.id,
+      prenom: etudiant.prenom,
+      nom: etudiant.nom,
+      email: etudiant.email,
+      image: etudiant.image,
       statutAmitie: statut
     };
   });
 
   res.json(etudiantsAvecStatut);
-
 });
+
+router.get("/disponibles", requireAuth, async (req, res) => {
+  const userId = Number(req.auth.id);
+
+  const relations = await prisma.amitie.findMany({
+    where: {
+      OR: [{ demandeurId: userId }, { receveurId: userId }],
+    },
+  });
+
+  const exclureIds = new Set([userId]);
+  for (const r of relations) {
+    exclureIds.add(r.demandeurId === userId ? r.receveurId : r.demandeurId);
+  }
+
+  const etudiants = await prisma.etudiant.findMany({
+    where: { id: { notIn: Array.from(exclureIds) } },
+    select: { id: true, nom: true, prenom: true, email: true },
+  });
+
+  res.json(etudiants);
+});
+
 
 export default router;
